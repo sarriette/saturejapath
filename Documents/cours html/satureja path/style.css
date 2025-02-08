@@ -378,12 +378,6 @@ fixe quand on défile */
 }
 
 /* about me */
-/*.identity {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-}*/
-
 .identity {
     display: flex;
     flex-wrap: nowrap; /* Empêche le retour à la ligne */
