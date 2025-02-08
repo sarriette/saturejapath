@@ -15,6 +15,6 @@ Pictures/
 Videos/
 
 # Exclure tous les fichiers sauf le dossier satureja path
-/*
+../../*
 !.gitignore
 !satureja path/
