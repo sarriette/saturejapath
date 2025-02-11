@@ -216,6 +216,11 @@ button {
     background-color: white;
 }
 
+.text-footer {
+    font-family: "Rubik", sans-serif;
+    font-size: 9pt;
+}
+
 /* background-attachment: fixed; pour une image de bannière qui reste
 fixe quand on défile */
 
