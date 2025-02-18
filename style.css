@@ -834,6 +834,78 @@ p.cyan {
     color:#13ebe7;
 }
 
+/* newsletters */
+/* Add some padding and a grey background color to containers */
+/* .container-newsletters {
+    margin-left:50px;
+    margin-right:50px;
+    margin-bottom:40px;
+    margin-top:-10px;
+  } */
+  
+  /* Style the input elements and the submit button */
+  /* input[type=text], input[type=submit] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-family: "Press Start 2P", serif;
+    font-weight: 400;
+    font-size: 8pt;
+    border-radius: 5px;
+  } */
+  
+  /* Style the submit button */
+  /* input[type=submit] {
+    background-color: #09232b;
+    color: rgb(255, 0, 255);
+    border: none;
+    font-family: "Press Start 2P", serif;
+    font-weight: 400;
+    font-size: 8pt;
+  }
+  
+  input[type=submit]:hover {
+    opacity: 0.8;
+  } */
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.button-newsletters {
+    display: flex;
+    background-color: #09232b;
+    color: rgb(255, 0, 255);
+    border: none;
+    border-radius: 5px;
+    font-family: "Press Start 2P", serif;
+    font-weight: 400;
+    font-size: 12pt;
+    padding:12px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+    animation: pulse 1.5s infinite ease-in-out;
+    transition: transform 0.2s ease-in-out;
+}
+
+.button-newsletters:hover {
+    animation: none;
+    color:rgb(17, 238, 24)
+}
+
+.container-newsletters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:auto;
+}
+
 /*index note à l'attention des visiteurs et visiteuses*/
 .a-l-attention {
     align-items: center;
