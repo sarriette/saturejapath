@@ -916,7 +916,7 @@ p.p-blanc {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    background: linear-gradient(#403e29 60%, #1b2e47) ;
+    background: linear-gradient(#403e29 60%, #1c200a) ;
     align-items: center;
     justify-content: center;
 }
