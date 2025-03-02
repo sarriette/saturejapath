@@ -1085,6 +1085,7 @@ p.p-blanc {
 .cartel {
     position: relative; /* Crée un contexte pour les éléments enfants absolus */
     display: inline-block; /* Pour que .cartel-caption reste lié à l'image */
+    cursor: url('images/mag-glass.cur'), pointer;
 }
 
 .cartel-caption {
