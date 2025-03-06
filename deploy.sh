@@ -6,4 +6,4 @@ git commit -m "automatic website updates"
 git push origin main
 
 # Synchroniser Neocities
-neocities psuh .
+neocities push --exclude ".git/*" --exclude "*.cur"
