@@ -1154,11 +1154,13 @@ p.p-blanc {
     align-content: center;
     justify-content: center;
     /*background-image: url(images/massilia/leopard-fond.png);*/
-    background-image: url(images/massilia/pink-leopard-skin-background.jpg);
+    /*background-image: url(images/massilia/pink-leopard-skin-background.jpg);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    /*background-size: 25%;*/
-    background-size: cover;
+    background-attachment: fixed;*/
+    background-image: url(images/massilia/giphy\ \(3\).webp);
+    background-repeat: repeat;
+    background-size: 25%;
+    /*background-size: cover;*/
 }
 
 .lecteur-video {
@@ -1170,7 +1172,7 @@ p.p-blanc {
 .video-massilia iframe {
     position: absolute;
     top: 3.9em;
-    left: 9.3em;
+    left: 10em;
     width: 55%;
     height: 38%;
     z-index: 1; /* La vidéo est en arrière-plan */
