@@ -60,6 +60,13 @@ p {
     text-align: justify;
 }
 
+p.mono {
+    font-family: "Space Mono";
+    margin-left:50px;
+    margin-right:50px;
+    text-align: center;
+}
+
 li {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -1146,7 +1153,8 @@ p.p-blanc {
     display: flex;
     align-content: center;
     justify-content: center;
-    background-image: url(images/massilia/leopard-fond.png);
+    /*background-image: url(images/massilia/leopard-fond.png);*/
+    background-image: url(images/massilia/pink-leopard-skin-background.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     /*background-size: 25%;*/
@@ -1176,4 +1184,26 @@ p.p-blanc {
     height: 100%;
     z-index: 2; /* L'image est au-dessus */
     pointer-events: none; /* Empêche l'image de bloquer les clics sur la vidéo */
+}
+
+.massilia-pix-container {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 70px;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    /*background-image: url(images/banner-50.png);
+    background-repeat: repeat;*/
+    /*background-color: white;*/
+    border-radius: 20px;
+}
+
+.massilia-pic {
+    height: 200px;
+    width:auto;
+    margin: 2em;
 }
