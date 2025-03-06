@@ -550,6 +550,36 @@ a {
     font-size: 24px;
 }
 
+/* index - bottom with buttons etc */
+.box-buttons {
+    margin-left: 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+/* youtube music */
+.video-container {
+    width: 300px;
+    height: 80px; /* Hauteur réduite */
+    overflow: hidden;
+    border-radius: 0px;
+    position: relative;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+iframe {
+    width: 300px;
+    height: 168px; /* Hauteur normale pour garder le ratio */
+    position: absolute;
+    top: -44px; /* Décale vers le haut pour masquer une partie */
+}
+
+.index-ligne-bas {
+    display: flex;
+    flex-direction: row;
+}
+
 /*Titouan's room*/
 header.header-tit {
     display: flex;
