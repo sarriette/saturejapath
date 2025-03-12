@@ -81,34 +81,44 @@
         </div>
 
         <div class="massilia-pix-container">
-            <img src="images/massilia/carte-marseille.png" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232838-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232907-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/Screenshot_2023-05-03-20-15-56-221_com.camerasideas.instashot.jpg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232743-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/montange.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232930-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232822-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/WhatsApp Image 2025-03-06 at 18.50.55.jpeg" class="massilia-pic">
-            <img src="images/massilia/ju.jpeg" class="massilia-pic">
-            <img src="images/massilia/grostruc.jpeg" class="massilia-pic">
-            <img src="images/massilia/WhatsApp Image 2025-03-06 at 18.56.26.jpeg" class="massilia-pic">
-            <img src="images/massilia/pigeons.jpeg" class="massilia-pic">
-            <img src="images/massilia/kevadams.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232600-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/calanques.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232539.jpg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232333.jpg" class="massilia-pic">
-            <img src="images/massilia/lunettes.jpeg" class="massilia-pic">
-            <img src="images/massilia/julia.jpeg" class="massilia-pic">
-            <img src="images/massilia/mer.jpeg" class="massilia-pic">
-            <img src="images/massilia/réunion.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232200.jpg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232224.jpg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232244.jpg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232654-01.jpeg" class="massilia-pic">
-            <img src="images/massilia/IMG_20230407_232633-01.jpeg" class="massilia-pic">
+            <img src="images/massilia/carte-marseille.png" class="massilia-pic" onclick="openGallery(0)">
+            <img src="images/massilia/IMG_20230407_232838-01.jpeg" class="massilia-pic" onclick="openGallery(1)">
+            <img src="images/massilia/IMG_20230407_232907-01.jpeg" class="massilia-pic" onclick="openGallery(2)">
+            <img src="images/massilia/Screenshot_2023-05-03-20-15-56-221_com.camerasideas.instashot.jpg" class="massilia-pic" onclick="openGallery(3)">
+            <img src="images/massilia/IMG_20230407_232743-01.jpeg" class="massilia-pic" onclick="openGallery(4)">
+            <img src="images/massilia/montange.jpeg" class="massilia-pic" onclick="openGallery(5)">
+            <img src="images/massilia/IMG_20230407_232930-01.jpeg" class="massilia-pic" onclick="openGallery(6)">
+            <img src="images/massilia/IMG_20230407_232822-01.jpeg" class="massilia-pic" onclick="openGallery(7)">
+            <img src="images/massilia/WhatsApp Image 2025-03-06 at 18.50.55.jpeg" class="massilia-pic" onclick="openGallery(8)">
+            <img src="images/massilia/ju.jpeg" class="massilia-pic" onclick="openGallery(9)">
+            <img src="images/massilia/grostruc.jpeg" class="massilia-pic" onclick="openGallery(10)">
+            <img src="images/massilia/WhatsApp Image 2025-03-06 at 18.56.26.jpeg" class="massilia-pic" onclick="openGallery(11)">
+            <img src="images/massilia/pigeons.jpeg" class="massilia-pic" onclick="openGallery(12)">
+            <img src="images/massilia/kevadams.jpeg" class="massilia-pic" onclick="openGallery(13)">
+            <img src="images/massilia/IMG_20230407_232600-01.jpeg" class="massilia-pic" onclick="openGallery(14)">
+            <img src="images/massilia/calanques.jpeg" class="massilia-pic" onclick="openGallery(15)">
+            <img src="images/massilia/IMG_20230407_232539.jpg" class="massilia-pic" onclick="openGallery(16)">
+            <img src="images/massilia/IMG_20230407_232333.jpg" class="massilia-pic" onclick="openGallery(17)">
+            <img src="images/massilia/lunettes.jpeg" class="massilia-pic" onclick="openGallery(18)">
+            <img src="images/massilia/julia.jpeg" class="massilia-pic" onclick="openGallery(19)">
+            <img src="images/massilia/mer.jpeg" class="massilia-pic" onclick="openGallery(20)">
+            <img src="images/massilia/réunion.jpeg" class="massilia-pic" onclick="openGallery(21)">
+            <img src="images/massilia/IMG_20230407_232200.jpg" class="massilia-pic" onclick="openGallery(22)">
+            <img src="images/massilia/IMG_20230407_232224.jpg" class="massilia-pic" onclick="openGallery(23)">
+            <img src="images/massilia/IMG_20230407_232244.jpg" class="massilia-pic" onclick="openGallery(24)">
+            <img src="images/massilia/IMG_20230407_232654-01.jpeg" class="massilia-pic" onclick="openGallery(25)">
+            <img src="images/massilia/IMG_20230407_232633-01.jpeg" class="massilia-pic" onclick="openGallery(26)">
         </div>
+
+        <!-- Modal Gallery -->
+        <div id="galleryModal" class="modal">
+            <span class="close" onclick="closeGallery()">&times;</span>
+            <button class="prev" onclick="navigate(-1)">&#10094;</button>
+            <img id="largeImage" src="" alt="Large Image">
+            <button class="next" onclick="navigate(1)">&#10095;</button>
+        </div>
+
+        <script src="script2.js"></script>
     </main>
 
     <footer>

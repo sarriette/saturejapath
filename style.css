@@ -1153,14 +1153,14 @@ p.p-blanc {
     display: flex;
     align-content: center;
     justify-content: center;
-    /*background-image: url(images/massilia/leopard-fond.png);*/
-    /*background-image: url(images/massilia/pink-leopard-skin-background.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;*/
-    background-image: url(images/massilia/giphy\ \(3\).webp);
-    background-repeat: repeat;
-    background-size: 25%;
-    /*background-size: cover;*/
+    background-image: url(images/massilia/leopard-fond.png);
+    /*background-image: url(images/massilia/pink-leopard-skin-background.jpg);*/
+    /*background-repeat: no-repeat;*/
+    background-attachment: fixed;
+    /*background-image: url(images/massilia/giphy\ \(3\).webp);*/
+    /*background-repeat: repeat;
+    background-size: 25%;*/
+    background-size: cover;
 }
 
 .lecteur-video {
@@ -1207,5 +1207,13 @@ p.p-blanc {
 .massilia-pic {
     height: 200px;
     width:auto;
-    margin: 2em;
+    margin: 2em;    
+    transition: transform 5s ease, box-shadow 0.3s ease;
+}
+
+/* Animation on hover */
+.massilia-pic:hover {
+    transform: scale(0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: url('images/mag-glass.cur'), pointer;
 }
