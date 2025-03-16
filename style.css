@@ -67,6 +67,10 @@ p.mono {
     text-align: center;
 }
 
+.mono {
+    font-family: "Space Mono";
+}
+
 li {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -1208,12 +1212,14 @@ p.p-blanc {
     height: 200px;
     width:auto;
     margin: 2em;    
-    transition: transform 5s ease, box-shadow 0.3s ease;
+    transition: transform 35s ease, box-shadow 0.3s ease;
 }
 
 /* Animation on hover */
 .massilia-pic:hover {
-    transform: scale(0.2);
+    transform: scale(0);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     cursor: url('images/mag-glass.cur'), pointer;
 }
+
+/* all projects */
