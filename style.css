@@ -64,7 +64,7 @@ p.mono {
     font-family: "Space Mono";
     margin-left:50px;
     margin-right:50px;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .mono {
@@ -92,7 +92,10 @@ a:hover {
     color:black;
     text-decoration: none;
 }
-/* mettre une couleur ou surligner les liens */
+
+a.underline:hover {
+    text-decoration: underline;
+}
 
 body {
     background-color: rgb(242, 208, 242);
@@ -1222,4 +1225,71 @@ p.p-blanc {
     cursor: url('images/mag-glass.cur'), pointer;
 }
 
-/* all projects */
+/* all projects - side bar */
+.ap-side-bar {
+    align-items: center;
+    border-radius: 15px;
+    margin: 2em;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-image: url(images/banner-50.png);
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: center;
+    /*position:static;*/
+    /*background-size: 100% 100%;*/
+    height: fit-content;
+    width: fit-content;
+    position: sticky;
+    top: 30px; /* Ajustez selon vos besoins */
+    align-self: flex-start;
+}
+
+.ap-side-bar p {
+    font-size: 14pt;
+}
+
+.ap-side-bar li {
+    font-size: 10pt;
+    white-space: nowrap;
+}
+
+ul.ap-months {
+    list-style-type: none;
+  }
+
+.ap-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.ap-some-space {
+    margin: 5em;
+}
+
+/* h1.center {
+    text-align:center;
+} */
+
+.zdoubidou {
+    /*display: block;  
+    margin: 0 auto;  
+    text-align: center; 
+    width: fit-content; */
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.ap-container {
+    /*display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;*/
+    width: 100%;
+} 
+
+.ap-content {
+    text-align: left;
+    width: 100%;
+}
