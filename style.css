@@ -1215,7 +1215,7 @@ p.p-blanc {
     height: 200px;
     width:auto;
     margin: 2em;    
-    transition: transform 35s ease, box-shadow 0.3s ease;
+    transition: transform 125s ease, box-shadow 0.3s ease;
 }
 
 /* Animation on hover */
