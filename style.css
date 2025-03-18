@@ -542,16 +542,16 @@ a {
     display: inline-block;
     padding: 10px 20px;
     color: white;
-    background-color: #cc58c5;
+    background-color:rgb(242, 208, 242);
     text-decoration: none;
     border-radius: 15px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    font-size: 14px;
+    transition: transform 0.3s;
     justify-content: center;
 }
 
 .see-all:hover {
-    background-color: #510d4d;
+    background-color: rgb(242, 208, 242);
     transition: transform 0.3s ease;
 }
 
@@ -561,7 +561,7 @@ a {
 }
 
 .see-all a {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 /* index - bottom with buttons etc */
