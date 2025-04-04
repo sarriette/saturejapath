@@ -569,6 +569,34 @@ a {
     margin-left: 3em;
     display: flex;
     flex-direction: column;
+    border-color: #13ebe7;
+    border-style: solid;
+    border-width: 8px;
+    background-image: url(images/carreaux.jpg);
+    background-size: cover;
+    padding : 15px;
+}
+
+.px88 {
+    width:88px;
+    height:auto;
+}
+
+.site-button {
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    border-color: rgb(255, 0, 255);
+    border-style: solid;
+    border-width: 8px;
+    background-image: url(images/banner-50.png);
+}
+
+.sitebuttonandvideo {
+    display: flex;
+    flex-direction: column;
 }
 
 /* youtube music */
@@ -578,6 +606,7 @@ a {
     /*overflow: hidden;*/
     border-radius: 0px;
     position: relative;
+    margin-top: 1em;
     margin-left: 2em;
     margin-right: 2em;
 }
@@ -587,9 +616,16 @@ iframe {
     height: 100%;
 }
 
+.haralda {
+    height:321px;
+    width:314px;
+}
+
 .index-ligne-bas {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
+    height : 321px;
 }
 
 /*Titouan's room*/
@@ -887,7 +923,7 @@ p.cyan {
 .button-newsletters {
     display: flex;
     background-color: #09232b;
-    color: rgb(255, 0, 255);
+    color: rgb(225, 255, 54);
     border: none;
     border-radius: 5px;
     font-family: "Press Start 2P", serif;
@@ -906,11 +942,36 @@ p.cyan {
     color:rgb(17, 238, 24)
 }
 
-.container-newsletters {
+.container-newsletters { /*ancien à supprimer à terme*/
     display: flex;
     align-items: center;
     justify-content: center;
     height:auto;
+}
+
+.big-cont-newsletters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    border-color: rgb(17, 238, 24);
+    border-style: solid;
+    border-width: 8px;
+    background-image: url(images/backgrounds/dentelle.png);
+}
+
+.mailicons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.mailicon {
+    height:30px;
+    width:auto;
+    margin:10px;
 }
 
 /*index note à l'attention des visiteurs et visiteuses*/
@@ -1301,9 +1362,9 @@ ul.ap-months {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-image: url(images/portraits/fond.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url(images/banner-50.png);
+    margin: 1.4em;
+    border-radius: 15px;
 }
 
 .portrait {
@@ -1317,6 +1378,6 @@ ul.ap-months {
     transform: scale(1.05);
 }
 
-body.fonce {
-    background-color: #36362a;
+body.sky {
+    background-image: url(images/portraits/wildpurpleweb.gif);
 }
