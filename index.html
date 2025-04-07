@@ -8,8 +8,15 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Beastly&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Beastly&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <style>
+            model-viewer {
+              /*background-color: #f0f0f0;*/
+              background-image: url(images/backgrounds/greengrid.jpg);
+            }
+          </style>
     </head>
 
     <body>
@@ -127,25 +134,47 @@
                 Des libertés peuvent être prises quant à la mise en page et valorisation des photographies afin de refléter au mieu l'image que j'ai d'une personne.</p>
 
             <div class="section-fin">
-                <!-- chat box -->
-                <div class="chatbox">
-                    <h4 class="titre-chat-box">la chatbox des bgs et des bgettes</p>
-                <div id="chat-box"></div>
-                <div id="input-box">
-                  <input type="text" id="username" placeholder="ton pseudo" maxlength="20">
-                  <input type="text" id="message" placeholder="écris ton message ici" maxlength="150">
-                  <button id="send">envoyer</button>
-                </div>
-                </div>
+                    <!-- chat box -->
+                    <div class="chatbox">
+                        <h4 class="titre-chat-box">la chatbox des bgs et des bgettes</p>
+                        <div id="chat-box"></div>
+                        <div id="input-box">
+                          <input type="text" id="username" placeholder="ton pseudo" maxlength="20">
+                          <input type="text" id="message" placeholder="écris ton message ici" maxlength="150">
+                          <button id="send">envoyer</button>
+                        </div>
+                    </div>
 
-                <div class="brosse-a-dents">
-                    <p class="center cyan">Ne t'approche pas de cette clémentine!!</p>
-                    <img src="images/clementine.png" class="image-brosse">
+                    <img src="images/buttons/suffinternetpivot.gif" class="stuffinternet">
+
+                    <div class="brosse-a-dents">
+                        <p class="center cyan">Ne t'approche pas de cette clémentine!!</p>
+                        <img src="images/clementine.png" class="image-brosse">
+                    </div>
+                
+
+                <div class="mdv-column-index">
+                    <div class="mono decale1em" style="font-size: 10px;">things I had in my pocket #1</div>
+                    <div class="mdv1">
+                        <model-viewer 
+                            src="images/compressed.glb"
+                            camera-controls 
+                            auto-rotate>
+                        </model-viewer>
+                    </div>
+
+                    <br>
+
+                    <div class="mono decale1em" style="font-size: 10px;">things I had in my pocket #2</div>
+                    <div class="mdv2">
+                        <model-viewer 
+                            src="images/lichen.glb"
+                            camera-controls 
+                            auto-rotate>
+                        </model-viewer>
+                    </div>
                 </div>
             </div>
-
-            <br>
-            <br>
 
             <div class="index-ligne-bas">
                 <div class="box-buttons center">

@@ -791,9 +791,12 @@ nav.blue-nav {
 
 /* index chat box */
 .chatbox {
-    margin-left:3em;
+    /*margin-left:3em;
     margin-right:3em;
+    margin-top:3em;*/
     margin-top:3em;
+    margin-left: 2em;
+    /*margin-right: 1em;*/
 }
 
 .titre-chat-box {
@@ -888,11 +891,17 @@ nav.blue-nav {
 .section-fin {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin-left:3em;
     margin-right:3em;
     align-items: center;
-    justify-content: baseline;
+    justify-content: center;
+}
+
+.stuffinternet {
+    height:350px;
+    margin-right:1em;
+    margin-top:2em;
 }
 
 .brosse-a-dents {
@@ -905,12 +914,54 @@ nav.blue-nav {
     background-color: #09232b;
     border-style: solid;
     border-width: 8px;
-    margin-left:10em;
+    /*margin-left:10em;*/
+    margin-left:1em;
+    margin-right:1em;
+    height:400px;
+    width:25em;
+    margin-top:4.5em;
 }
 
 p.cyan {
     color:#13ebe7;
 }
+
+.mdv1 {
+    border: magenta;
+    border-style: solid;
+    border-width: 8px;
+    margin-left:1em;
+    margin-right:1em;
+}
+
+.mdv2 {
+    border: magenta;
+    border-style: solid;
+    border-width: 8px;
+    margin-left:1em;
+    margin-right:1em;
+}
+
+.mdv1 model-viewer,
+.mdv2 model-viewer {
+    width: 230px; /* ou 100% si tu veux qu'il prenne toute la colonne */
+    height: 166px;
+}
+
+.decale1em {
+    margin-left:1em;
+}
+
+.mdv-column-index {
+    min-height: 320px; /* ou 2 * 150px + marges, selon ce que tu veux */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between; /* optionnel, pour espacer les modèles */
+    margin-top: 4.5em;
+}
+
 
 /* newsletters */
 
@@ -1379,5 +1430,5 @@ ul.ap-months {
 }
 
 body.sky {
-    background-image: url(images/portraits/wildpurpleweb.gif);
+    background-image: url(images/portraits/sky.png);
 }
