@@ -10,7 +10,21 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Beastly&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    </head>
+<style>
+    body {
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .poisson {
+      position: fixed;
+      width: 90px;
+      pointer-events: none;
+      transition: transform 1s;
+    }
+  </style>    
+
+</head>
 
     <body class="sky">
         <nav>
@@ -38,20 +52,8 @@
 
                 <div class="dropdown">
                     <button>
-                        <span class="button_top"><a> Portraits </a> </span>
+                        <span class="button_top"><a href="portraits.html"> Portraits </a> </span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#project3">Aloÿse</a></li>
-                        <li><a href="#project3">Anthéa</a></li>
-                        <li><a href="#project3">Hippolyte</a></li>
-                        <li><a href="#project3">Jasmine</a></li>
-                        <li><a href="#project3">Kévin</a></li>
-                        <li><a href="#project3">Malo</a></li>
-                        <li><a href="#project2">Maxime</a></li>
-                        <li><a href="#project1">Laureline</a></li>
-                        <li><a href="#project3">Raph</a></li>
-                        <li><a href="#project3">Thomas</a></li>
-                    </ul>
                 </div>
 
                 <button>
@@ -94,6 +96,51 @@
                 <a href="https://www.instagram.com/messyflowerzzzz/" target="_blank" class="lien-icone" title="artistic account: @messyflowerzzzz"><img src="images/instagram.png"></a>
             </div>
         </footer>
+
+        <script>
+            const imageURL = "images/brochet.gif";
+          
+            function createFish() {
+              const fish = document.createElement('img');
+              fish.src = imageURL;
+              fish.className = "poisson";
+          
+              // Position verticale aléatoire
+              const y = Math.random() * (window.innerHeight - 100);
+              fish.style.top = `${y}px`;
+              fish.style.left = `-120px`; // hors écran à gauche
+          
+              // sens du poisson (aléatoire)
+              const direction = Math.random() > 0.5 ? 1 : -1;
+              if (direction === -1) {
+                fish.style.transform = "scaleX(-1)"; // retourne l'image
+                fish.style.left = `${window.innerWidth + 120}px`; // part de la droite
+              }
+          
+              document.body.appendChild(fish);
+          
+              // animation
+              const duration = 10000 + Math.random() * 15000; // 10–15s
+              setTimeout(() => {
+                fish.style.transition = `left ${duration}ms linear`;
+                fish.style.left = direction === 1 ? `${window.innerWidth + 120}px` : `-120px`;
+              }, 50);
+          
+              // supprimer après passage
+              setTimeout(() => {
+                fish.remove();
+              }, duration + 1000);
+            }
+          
+            // Fait apparaître un poisson à un intervalle aléatoire
+            function spawnFish() {
+              createFish();
+              const next = 2000 + Math.random() * 15000;
+              setTimeout(spawnFish, next);
+            }
+          
+            spawnFish(); // on lance la boucle !
+          </script>
     </body>
 </html>
         
