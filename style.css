@@ -1432,3 +1432,53 @@ ul.ap-months {
 body.sky {
     background-image: url(images/portraits/sky.png);
 }
+
+/* cats - les chats */
+body.roses {
+    background-image: url(images/backgrounds/pattern\ 356.gif);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+}
+
+p.jacquarda {
+    font-family: "Jacquarda Bastarda 9";
+}
+
+.cat-container-left {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5em;
+    margin-right: 5em;
+    align-items: center;
+}
+
+.cat-container-right {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5em;
+    margin-right: 5em;
+    align-items: center;
+    justify-items: right;
+}
+
+.cat-name {
+    font-family: "Jacquarda Bastarda 9";
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom:0px;
+}
+
+.cat-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-picture {
+    width: 500px;
+    height:auto;
+    cursor: url(images/cursors/CatPaw_alternative.cur), pointer;
+}
+
+.right {
+    text-align: justify;
+    text-align-last: right;
+}
