@@ -1482,3 +1482,8 @@ p.jacquarda {
     text-align: justify;
     text-align-last: right;
 }
+
+.cat-a-hover:hover {
+    text-decoration: underline;
+    cursor: url(images/cursors/CatPaw_alternative.cur), pointer;
+}
