@@ -1439,7 +1439,8 @@ body.roses {
     cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
 }
 
-p.jacquarda {
+p.jacquarda,
+.cat-a-hover {
     font-family: "Jacquarda Bastarda 9";
 }
 
@@ -1486,4 +1487,53 @@ p.jacquarda {
 .cat-a-hover:hover {
     text-decoration: underline;
     cursor: url(images/cursors/CatPaw_alternative.cur), pointer;
+}
+
+/* pages individuelles des chats */
+
+/* charlouse */
+.body-charlouse {
+    background-image: url(images/backgrounds/music\ notes\ 2.gif);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+}
+
+.cat-container-pictures {
+    border-width: 2px;
+    border-style: dotted;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 45%;
+    /*background-color: white;*/
+}
+
+.cat-container-pictures img {
+    max-width: 100%;
+    height: auto; 
+    margin-bottom: -10px;
+}
+
+.cat-container-pictures img.max67 {
+    max-width: 67%;
+    height: auto;
+    margin-bottom: -10px;
+}
+
+/* ciboulette */
+.body-ciboulette {
+    background-image: url(images/backgrounds/purplestars.gif);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+}
+
+/* echalote */
+.body-echalote {
+    background-image: url(images/backgrounds/flowers\ 5.jpg);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+}
+
+.body-harvey {
+    background-image: url(images/backgrounds/pattern\ 138.gif);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
 }
