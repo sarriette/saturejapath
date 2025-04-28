@@ -1071,8 +1071,7 @@ p.p-blanc {
     flex-wrap: wrap;
     flex-direction: column;
     background: linear-gradient(#403e29 60%, #1c200a) ;
-    align-items: center;
-    justify-content: center;
+    background-image: url(images/backgrounds/seamless_cropped_pattern2.jpg);
 }
 
 .ligne1 {
