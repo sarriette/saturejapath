@@ -1495,6 +1495,7 @@ p.jacquarda,
 .body-charlouse {
     background-image: url(images/backgrounds/music\ notes\ 2.gif);
     cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
 }
 
 .cat-container-pictures {
@@ -1525,15 +1526,61 @@ p.jacquarda,
 .body-ciboulette {
     background-image: url(images/backgrounds/purplestars.gif);
     cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
 }
 
 /* echalote */
 .body-echalote {
-    background-image: url(images/backgrounds/flowers\ 5.jpg);
+    background-image: url(images/backgrounds/ruututausta.gif);
     cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
 }
 
 .body-harvey {
-    background-image: url(images/backgrounds/pattern\ 138.gif);
+    background-image: url(images/backgrounds/prrbg.jpg);
     cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
+}
+
+.body-petiteboule {
+    background-image: url(images/backgrounds/mushrooms502.png);
+    background-color: rgb(243, 242, 177);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
+    background-blend-mode:difference;
+}
+
+.body-petitpois {
+    background-image: url(images/backgrounds/tapisserie40.png);
+    background-color: rgb(219, 232, 195);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
+    background-blend-mode:multiply;
+}
+
+.body-spatule {
+    background-image: url(images/backgrounds/bg_periwinkle.teardrop.jpg);
+    background-color: rgb(159, 182, 215);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
+}
+
+.body-tulba {
+    background-image: url(images/backgrounds/image10.png);
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
+}
+
+.body-family {
+    background-image: url(images/backgrounds/flowers\ 26.gif);
+    background-blend-mode:exclusion;
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
+}
+
+.body-randomcats {
+    background-image: url(images/backgrounds/starsrbowbg.gif);
+    background-blend-mode:color;
+    cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
+    background-attachment: fixed;
 }
