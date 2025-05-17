@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mindmap - Satureja path</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    .node {
+      position: absolute;
+      /*padding: 10px 20px;*/
+      background-color: rgba(255, 255, 255, 0);
+      /*padding: 5px 10px;*/
+      padding: 3px 5px;
+      /*border-radius: 0px;
+      box-shadow: 3px -3px rgb(0, 0, 0);*/
+      border: 1px solid;
+      cursor: grab;
+      user-select: none;
+      text-align: center;
+      max-width: 280px;
+    }
+    .node a {
+      text-decoration: none;
+      color: black;
+    }
+    .node a:hover {
+        text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+            <div class="en-tete">
+                
+                <a href="index.html"><img src="images/logo-petit2.png" alt="logo satureja path"></a>
+
+                <button>
+                    <span class="button_top"><a href="index.html"> Home </a> </span>
+                </button>
+
+                <div class="dropdown">
+                    <button>
+                        <span class="button_top"><a href="all-projects.html"> Projects </a> </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="all-projects.html"><i>All projects</i></a></li>
+                        <li><a href="coco-elements.html">Cocohouse elements</a></li>
+                        <li><a href="kakis.html">Les kakis de Raph chez Kévin</a></li>
+                        <li><a href="titouan-s-room.html">Titouan's room</a></li>
+                        <li><a href="posters.html">Posters</a></li>
+                        <li><a href="massilia.html">Massilia</a></li>
+                    </ul>
+                </div>
+
+                <div class="dropdown">
+                    <button>
+                        <span class="button_top"><a> Portraits </a> </span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="cats2.html">Cats</a></li>
+                        <li><a href="portraits.html">Friends</a></li>
+                    </ul>
+                </div>
+
+                <button>
+                    <span class="button_top"><a href="a-propos.html"> About me </a> </span>
+                </button>
+            </div>
+        </nav>
+
+
+
+
+
+  <div class="node mono" id="center" style="top: 40%; left: 45%; font-size: 24pt; font-weight: bold;">All Projects</div>
+
+  <!-- Catégories -->
+  <div class="node mono" id="photography" style="top: 33%; left: 30%; font-size: 18pt; font-weight: bold;">Photography</div>
+  <div class="node mono" id="interactive" style="top: 30%; left: 60%; font-size: 18pt; font-weight: bold;">Interactive</div>
+  <div class="node mono" id="fun" style="top: 76%; left: 30%; font-size: 18pt; font-weight: bold;">Fun/wtf/other</div>
+  <div class="node mono" id="flowers" style="top: 80%; left: 60%; font-size: 18pt; font-weight: bold;">Flowers</div>
+
+  <div class="node" style="top: 65%; left: 75%;"><a href="all-projects.html" class="mono" style="color:blue;">All projects (chronological)</a></div>
+
+  <!-- Projets (avec lien) -->
+  <div class="node" id="cats" style="top: 23%; left: 20%;"><a href="cats2.html" class="mono">Cats</a></div>
+  <div class="node" id="charlouse" style="top: 13%; left: 10%;"><a href="charlouse.html" class="mono cat-subdivision">Charlouse</a></div>
+  <div class="node" id="ciboulette" style="top: 33%; left: 10%;"><a href="ciboulette.html" class="mono cat-subdivision">Ciboulette</a></div>
+  <div class="node" id="coco" style="top: 53%; left: 75%;"><a href="coco-elements.html" class="mono">Coco house elements</a></div>
+  <div class="node" id="echalote" style="top: 20%; left: 5%;"><a href="echalote.html" class="mono cat-subdivision">Echalote</a></div>
+  <div class="node" id="family" style="top: 15%; left: 5%;"><a href="family-pictures.html" class="mono cat-subdivision">family pictures</a></div>
+  <div class="node" id="harvey" style="top: 24%; left: 5%;"><a href="harvey.html" class="mono cat-subdivision">Harvey</a></div>
+  <div class="node" id="kakis" style="top: 13%; left: 55%;"><a href="kakis.html" class="mono">Les kakis de Raph chez Kévin</a></div>
+  <div class="node" id="massilia" style="top: 43%; left: 16%;"><a href="massilia.html" class="mono">Massilia</a></div>
+  <div class="node" id="petiteboule" style="top: 13%; left: 30%;"><a href="petiteboule.html" class="mono cat-subdivision">Petite boule</a></div>
+  <div class="node" id="petitpois" style="top: 27%; left: 28%;"><a href="petitpois.html" class="mono cat-subdivision">Petit pois</a></div>
+  <div class="node" id="portraits" style="top: 62%; left: 10%;"><a href="portraits.html" class="mono">Friends portraits</a></div>
+  <div class="node" id="posters" style="top: 48%; left: 15%;"><a href="posters.html" class="mono">Posters</a></div>
+  <div class="node" id="randomcats" style="top: 30%; left: 4%;"><a href="randomcats.html" class="mono cat-subdivision">Random cats</a></div>
+  <div class="node" id="spatule" style="top: 16%; left: 31%;"><a href="spatule.html" class="mono cat-subdivision">Spatule</a></div>
+  <div class="node" id="titou" style="top: 55%; left: 12%;"><a href="titouan-s-room.html" class="mono">Titouan's room</a></div>
+  <div class="node" id="tulba" style="top: 21%; left: 30%;"><a href="tulba.html" class="mono cat-subdivision">Tulba</a></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/leader-line"></script>
+  <script>
+    // Fonction pour rendre un élément draggable
+    function makeDraggable(element) {
+      let offsetX, offsetY, isDown = false;
+
+      element.addEventListener('mousedown', function(e) {
+        isDown = true;
+        offsetX = e.clientX - element.offsetLeft;
+        offsetY = e.clientY - element.offsetTop;
+        element.style.cursor = 'grabbing';
+      });
+
+      document.addEventListener('mouseup', function() {
+        isDown = false;
+        element.style.cursor = 'grab';
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!isDown) return;
+        element.style.left = (e.clientX - offsetX) + 'px';
+        element.style.top = (e.clientY - offsetY) + 'px';
+        updateLines();
+      });
+    }
+
+    const nodes = document.querySelectorAll('.node');
+    nodes.forEach(makeDraggable);
+
+    // Connexions avec LeaderLine
+    const lines = [];
+
+    function connect(a, b) {
+      lines.push(new LeaderLine(
+        document.getElementById(a),
+        document.getElementById(b),
+        { color: '#ff0000', size: 1 }
+      ));
+    }
+
+    function updateLines() {
+      lines.forEach(line => line.position());
+    }
+
+    // Connexions principales
+    connect('center', 'photography');
+    connect('center', 'interactive');
+    connect('center', 'fun');
+    connect('center', 'flowers');
+
+    // Connexions projets → catégories
+    connect('photography', 'kakis'); 
+    connect('photography', 'titou'); 
+    connect('photography', 'massilia'); 
+    connect('photography', 'posters'); 
+    connect('photography', 'portraits'); 
+    connect('photography', 'cats'); 
+    connect('interactive', 'coco'); 
+    connect('interactive', 'kakis'); 
+    connect('fun', 'cats'); 
+    connect('fun', 'coco'); 
+    connect('fun', 'portraits'); 
+
+    //cat connexions
+    connect('cats', 'charlouse'); 
+    connect('cats', 'ciboulette');
+    connect('cats', 'echalote');
+    connect('cats', 'harvey');
+    connect('cats', 'family');
+    connect('cats', 'petiteboule');
+    connect('cats', 'petitpois');
+    connect('cats', 'tulba');
+    connect('cats', 'spatule');
+    connect('cats', 'randomcats');
+
+  </script>
+</body>
+</html>

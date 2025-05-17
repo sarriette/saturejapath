@@ -1583,3 +1583,14 @@ p.jacquarda,
     cursor: url(images/cursors/CatPaw_Normal.cur), pointer;
     background-attachment: fixed;
 }
+
+/* experiments */
+body.tiles1 {
+    background-image: url(images/backgrounds/tiles_psy4_SPcolors.png);
+    background-repeat: repeat;
+}
+
+/* mindmap */
+.cat-subdivision {
+    font-size: 8pt;
+}
