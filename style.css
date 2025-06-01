@@ -1585,12 +1585,134 @@ p.jacquarda,
 }
 
 /* experiments */
-body.tiles1 {
+/*body.tiles1 {
     background-image: url(images/backgrounds/tiles_psy4_SPcolors.png);
     background-repeat: repeat;
-}
+}*/
 
 /* mindmap */
 .cat-subdivision {
     font-size: 8pt;
+}
+
+/* messyflowerzz */
+.body-black {
+    background: black;
+}
+
+p.white {
+    color:white;
+}
+
+a.white {
+    color:white;
+}
+
+a.mono {
+    font-family: "Space Mono";
+}
+
+a.underline:hover {
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.mf-title {
+    font-size: 80pt;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+p.minecraft {
+    font-size : 8pt;
+}
+
+.mf-video1 {
+    width: 50vw; /* 70% de la largeur de la fenêtre */
+    margin: 0 auto; /* centre horizontalement */
+    position: relative;
+    padding-bottom: 30%; /* ratio 16:9 */
+    height: 0;
+}
+
+.mf-video1 iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+.mf-section1 {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 7em;
+    margin-right: 5em;
+    padding-bottom: 5em;
+}
+
+.mf-1a { /* video pissenlit*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 410px;
+    height: 230px;
+}
+
+.mf-1b {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- fonts ---- */
+@font-face {
+    font-family: Minecraft;
+    src:url("fonts/minecraft_standard/MinecraftStandard.otf");
+}
+
+.minecraft {
+    font-family: Minecraft;
+}
+
+@font-face {
+    font-family: Eutemia;
+    src:url("fonts/eutemia/Eutemia.ttf");
+}
+
+.eutemia {
+    font-family: Eutemia;
+}
+
+@font-face {
+    font-family: Chopin;
+    src:url("fonts/ChopinScript.otf");
+}
+
+.chopin {
+    font-family: Chopin;
+}
+
+@font-face {
+    font-family: Graziela;
+    src:url("fonts/La\ Graziela\ Script\ Demo.otf");
+}
+
+.graziela {
+    font-family: Graziela;
+}
+
+/* oekoumene */
+.oekou-app {
+    display: flex;
+}
+
+.oekou-app iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
