@@ -1667,6 +1667,52 @@ p.minecraft {
     flex-direction: column;
 }
 
+.mf-section2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-left: 7em;
+    margin-right: 7em;
+    /* border-width: 2px;
+    border-style: dotted;
+    border-color: #ccc; */
+}
+
+.mf-2a {
+    grid-column: 1 / 3;
+    grid-row: 1 / 4;
+    margin: 1em;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* border-width: 2px;
+    border-style: dotted;
+    border-color: #ccc; */
+}
+
+.mf-2a-img {
+    width: 180px;
+    height: auto;
+    margin: 1em;
+}
+
+.mf-2b {
+    grid-column: 3;
+    grid-row: 1 / 4;
+    margin: 1em;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* border-width: 2px;
+    border-style: dotted;
+    border-color: #ccc; */
+}
+
 /* ---- fonts ---- */
 @font-face {
     font-family: Minecraft;
