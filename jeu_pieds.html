@@ -2,26 +2,38 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Le jeu des pieds- Satureja path</title>
+<title>Devine pieds - Satureja path</title>
+
 
 <style>
   body {
     font-family: sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    
   }
 
-  .container-haut {
+  .container-haut, .container-bas {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 20px;
+    margin: 20px 0;
   }
-
   .container-bas {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     margin-top: 100px;
+  }
+
+  .item {
+    position: relative;
+    display: inline-block;
+  }
+
+  .portrait img {
+    width: 150px;
+    height: auto;
+    border-radius: 0px;
   }
 
   .point {
@@ -30,39 +42,60 @@
     width: 20px;
     height: 20px;
     border: 2px solid #ccc;
-    border-radius: 8px;
-    background-size: cover;
-    background-position: center;
+    border-radius: 0%;
+    background-color: white;
     cursor: pointer;
+    transform: translateX(-50%);
   }
 
-  /* coche en haut */
-#objects .point {
-  top: -10px; /* décalage vers le haut */
-  transform: translateX(-50%);
-}
-
-/* coche en bas */
+  /* Points en haut (personnes) */
 #persons .point {
-  bottom: -10px; /* décalage vers le bas */
+  top: 80%;
+  bottom: auto; /* pour annuler bottom */
+  left: 50%;
   transform: translateX(-50%);
 }
 
-  .item {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .portrait img {
-    width: 150px;
-    heigth: auto;
-  }
+/* Points en bas (pieds) */
+#objects .point {
+  bottom: 100%;
+  top: auto; /* pour annuler top */
+  left: 50%;
+  transform: translateX(-50%);
+}
 
   .button-text {
     background-color: blue;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 0px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
   }
-</style>
 
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  /* Taille maximale pour les photos de pieds */
+#objects .portrait img {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: contain; /* Pour que l'image garde ses proportions */
+}
+#objects .portrait img:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+  z-index: 10;
+  position: relative;
+  border-radius: 0 !important;
+}
+
+
+
+
+</style>
 <meta charset="utf-8">
         <title>messyflowerzz - Satureja path</title> 
         <link rel="stylesheet" href="style.css">
@@ -72,67 +105,291 @@
 <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Jacquarda+Bastarda+9&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
+<audio id="failSound" src="sounds/fart.mp3" preload="auto"></audio>
+<h1>Relie les pieds à leur propriétaire</h1>
 
-<h1 style="text-align:center; margin-bottom:20px;">Relie les pieds à leur propriétaire</h1>
+<div class="container-haut" id="persons"></div>
 
-
-  <div class="container-haut" id="persons">
-    <div class="item"><div class="portrait"><img src="images/portraits/anthea.jpg"></div><div class="point" data-id="Anthea"></div></div>
-    <div class="item"><div class="portrait"><img src="images/portraits/bullefesse.jpg"></div><div class="point" data-id="Bullefesse"></div></div>
-    <div class="item"><div class="portrait"><img src="images/portraits/cyril.jpg"></div><div class="point" data-id="Cyril"></div></div>
-    <div class="item"><div class="portrait"><img src="images/portraits/hippo.jpg"></div><div class="point" data-id="Hippo"></div></div>
-    <div class="item"><div class="portrait"><img src="images/portraits/hugot.jpg"></div><div class="point" data-id="Hugo"></div></div>
-    <div class="item"><div class="portrait"><img src="images/portraits/jasmine.jpg"></div><div class="point" data-id="Jasmine"></div></div>
-    <!-- <div class="item"><div class="point" data-id="Kévin"></div><img src="images/portraits/kevin.jpg"></div>
-    <div class="item"><div class="point" data-id="Laura"></div><img src="images/portraits/laura.jpg"></div>
-    <div class="item"><div class="point" data-id="Laureu"></div><img src="images/portraits/laureu.jpg"></div>
-    <div class="item"><div class="point" data-id="Louise"></div><img src="images/portraits/louise.jpg"></div>
-    <div class="item"><div class="point" data-id="MaloL"></div><img src="images/portraits/malol.jpg"></div>
-    <div class="item"><div class="point" data-id="Mateo"></div><img src="images/portraits/mateo.jpg"></div>
-    <div class="item"><div class="point" data-id="Maxime"></div><img src="images/portraits/maxime.jpg"></div>
-    <div class="item"><div class="point" data-id="Raph"></div><img src="images/portraits/raph.jpg"></div>
-    <div class="item"><div class="point" data-id="Thomas"></div><img src="images/portraits/thomas.jpg"></div>
-    <div class="item"><div class="point" data-id="Titouan"></div><img src="images/portraits/titouan.jpg"></div>
-    <div class="item"><div class="point" data-id="Yann"></div><img src="images/portraits/yann.jpg"></div> -->
-  </div>
-
-  <!-- SVG pour tracer les lignes -->
+<!-- SVG pour tracer les lignes -->
 <svg id="lines" style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
-<!-- Images du bas (objets) -->
-<div class="container-bas" id="objects">
-  <div class="item"><div class="point" data-id="f-anthea"></div><div class="portrait"><img src="images/portraits/anthea.jpg"></div></div>
-    <div class="item"><div class="point" data-id="f-bullefesse"></div><div class="portrait"><img src="images/portraits/bullefesse.jpg"></div></div>
-    <div class="item"><div class="point" data-id="f-cyril"></div><div class="portrait"><img src="images/portraits/cyril.jpg"></div></div>
-    <div class="item"><div class="point" data-id="f-hippo"></div><div class="portrait"><img src="images/portraits/hippo.jpg"></div></div>
-    <div class="item"><div class="point" data-id="f-hugo"></div><div class="portrait"><img src="images/portraits/hugot.jpg"></div></div>
-    <div class="item"><div class="point" data-id="f-jasmine"></div><div class="portrait"><img src="images/portraits/jasmine.jpg"></div></div>
-</div>
+<div class="container-bas" id="objects"></div>
 
-<!-- Score -->
 <h3 id="score"></h3>
 
-<!-- Boutons -->
-<div style="margin:20px;">
-  <button id="check"><div class="button-text">Vérifier</div></button>
-  <button onclick="location.reload()"><div class="button-text">Recommencer</div></button>
+<div style="margin: 20px;">
+  <button id="check" class="button-text">Vérifier</button>
+  <button onclick="location.reload()" class="button-text">Recommencer</button>
 </div>
 
 <script>
+// Données : portraits + plusieurs images pieds par personne
+const personsData = {
+  Kevin: {
+    portrait: 'images/portraits/kevin.jpg',
+    feet: [
+      'images/pieds_crop/Kevin/Image1.webp',
+      'images/pieds_crop/Kevin/Image2.webp',
+      'images/pieds_crop/Kevin/Image3.webp'
+    ]
+  },
+  Bullefesse: {
+    portrait: 'images/portraits/bullefesse.jpg',
+    feet: [
+      'images/pieds_crop/Aloyse/IMG_1971.webp',
+      'images/pieds_crop/Aloyse/IMG_1994.webp',
+      'images/pieds_crop/Aloyse/IMG_2025.webp',
+      'images/pieds_crop/Aloyse/IMG_2029.webp',
+      'images/pieds_crop/Aloyse/IMG_2032.webp',
+      'images/pieds_crop/Aloyse/IMG_2033.webp',
+      'images/pieds_crop/Aloyse/IMG_2089.webp',
+      'images/pieds_crop/Aloyse/IMG_2090.webp'
+    ]
+  },
+  Cyril: {
+    portrait: 'images/portraits/cyril.jpg',
+    feet: [
+      'images/pieds_crop/Cyril/IMG_0614.webp',
+      'images/pieds_crop/Cyril/IMG_0872.webp',
+      'images/pieds_crop/Cyril/IMG_0615.webp'
+    ]
+  },
+  Hippo: {
+    portrait: 'images/portraits/hippo.jpg',
+    feet: [
+      'images/pieds_crop/Hippo/Image1.webp',
+      'images/pieds_crop/Hippo/Image2.webp',
+      'images/pieds_crop/Hippo/Image3.webp',
+      'images/pieds_crop/Hippo/Image4.webp',
+      'images/pieds_crop/Hippo/Image5.webp',
+      'images/pieds_crop/Hippo/Image6.webp',
+      'images/pieds_crop/Hippo/Image7.webp',
+      'images/pieds_crop/Hippo/Image8.webp',
+      'images/pieds_crop/Hippo/Image9.webp',
+      'images/pieds_crop/Hippo/Image10.webp',
+      'images/pieds_crop/Hippo/Image11.webp',
+      'images/pieds_crop/Hippo/Image12.webp',
+      'images/pieds_crop/Hippo/Image13.webp',
+      'images/pieds_crop/Hippo/Image14.webp'
+
+    ]
+  },
+  Hugo: {
+    portrait: 'images/portraits/hugot.jpg',
+    feet: [
+      'images/pieds_crop/Hugot/Image1.webp',
+      'images/pieds_crop/Hugot/Image2.webp',
+      'images/pieds_crop/Hugot/Image3.webp'
+    ]
+  },
+  Jasmine: {
+    portrait: 'images/portraits/jasmine.jpg',
+    feet: [
+      'images/pieds_crop/Jasmine/Image1.webp',
+      'images/pieds_crop/Jasmine/Image2.webp',
+      'images/pieds_crop/Jasmine/Image3.webp'
+    ]
+  },
+   Emma: {
+    portrait: 'images/portraits/emma.jpg',
+    feet: [
+      'images/pieds_crop/Emma/Image1.webp',
+      'images/pieds_crop/Emma/Image2.webp',
+      'images/pieds_crop/Emma/Image3.webp',
+      'images/pieds_crop/Emma/Image4.webp',
+      'images/pieds_crop/Emma/Image5.webp'
+    ]
+  },
+  Laura: {
+    portrait: 'images/portraits/laura.jpg',
+    feet: [
+      'images/pieds_crop/Laura/Image1.webp',
+      'images/pieds_crop/Laura/Image2.webp',
+      'images/pieds_crop/Laura/Image3.webp'
+    ]
+  },
+  Laureu: {
+    portrait: 'images/portraits/laureu.jpg',
+    feet: [
+      'images/pieds_crop/Laureu/Image1.webp',
+      'images/pieds_crop/Laureu/Image2.webp',
+      'images/pieds_crop/Laureu/Image3.webp',
+      'images/pieds_crop/Laureu/Image4.webp',
+      'images/pieds_crop/Laureu/Image5.webp',
+      'images/pieds_crop/Laureu/Image6.webp'
+    ]
+  },
+  Louise: {
+    portrait: 'images/portraits/louise.jpg',
+    feet: [
+      'images/pieds_crop/Louise/Image1.webp',
+      'images/pieds_crop/Louise/Image2.webp',
+      'images/pieds_crop/Louise/Image3.webp'
+    ]
+  },
+  Lucile: {
+    portrait: 'images/portraits/Lucile.jpg',
+    feet: [
+      'images/pieds_crop/Lucile/Image1.webp',
+      'images/pieds_crop/Lucile/Image2.webp',
+      'images/pieds_crop/Lucile/Image3.webp'
+    ]
+  },
+  Malol: {
+    portrait: 'images/portraits/malol.jpg',
+    feet: [
+      'images/pieds_crop/Malol/Image1.webp',
+      'images/pieds_crop/Malol/Image2.webp',
+      'images/pieds_crop/Malol/Image3.webp',
+      'images/pieds_crop/Malol/Image4.webp'
+    ]
+  },
+  Mateo: {
+    portrait: 'images/portraits/mateo.jpg',
+    feet: [
+      'images/pieds_crop/Mateo/Image1.webp',
+      'images/pieds_crop/Mateo/Image2.webp',
+      'images/pieds_crop/Mateo/Image3.webp'
+    ]
+  },
+  Maxime: {
+    portrait: 'images/portraits/maxime.jpg',
+    feet: [
+      'images/pieds_crop/Maxime/Image1.webp',
+      'images/pieds_crop/Maxime/Image2.webp',
+      'images/pieds_crop/Maxime/Image3.webp',
+      'images/pieds_crop/Maxime/Image4.webp',
+      'images/pieds_crop/Maxime/Image5.webp',
+      'images/pieds_crop/Maxime/Image6.webp',
+      'images/pieds_crop/Maxime/Image7.webp',
+      'images/pieds_crop/Maxime/Image8.webp'
+    ]
+  },
+  Raph: {
+    portrait: 'images/portraits/raph.jpg',
+    feet: [
+      'images/pieds_crop/Raph/Image1.webp',
+      'images/pieds_crop/Raph/Image2.webp',
+      'images/pieds_crop/Raph/Image3.webp',
+      'images/pieds_crop/Raph/Image4.webp',
+      'images/pieds_crop/Raph/Image5.webp'
+    ]
+  },
+  Salome: {
+    portrait: 'images/portraits/salome.jpeg',
+    feet: [
+      'images/pieds_crop/Salome/Image1.webp',
+      'images/pieds_crop/Salome/Image2.webp',
+      'images/pieds_crop/Salome/Image3.webp'
+    ]
+  },
+   Titouan: {
+    portrait: 'images/portraits/titouan.jpg',
+    feet: [
+      'images/pieds_crop/Titouan/Image1.webp',
+      'images/pieds_crop/Titouan/Image2.webp',
+      'images/pieds_crop/Titouan/Image3.webp'
+    ]
+  },
+   Yann: {
+    portrait: 'images/portraits/yann.jpg',
+    feet: [
+      'images/pieds_crop/Yann/Image1.webp',
+      'images/pieds_crop/Yann/Image2.webp',
+      'images/pieds_crop/Yann/Image3.webp',
+      'images/pieds_crop/Yann/Image4.webp',
+      'images/pieds_crop/Yann/Image5.webp'
+    ]
+  },
+   Ylo: {
+    portrait: 'images/portraits/ylo.jpg',
+    feet: [
+      'images/pieds_crop/Ylo/Image1.webp',
+      'images/pieds_crop/Ylo/Image2.webp',
+      'images/pieds_crop/Ylo/Image3.webp'
+    ]
+  }
+};
+
+// Tirer un élément aléatoire d'un tableau
+function randomChoice(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// Tirer N personnes aléatoires
+function getRandomPersons(data, count = 5) {
+  const keys = Object.keys(data);
+  const shuffled = keys.sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
+// Conteneurs HTML
+const personsContainer = document.getElementById('persons');
+const objectsContainer = document.getElementById('objects');
 const svg = document.getElementById('lines');
+const scoreEl = document.getElementById('score');
+
 let selectedPoint = null;
 let connections = [];
 
-// Réponses correctes (personne -> objet)
-const correctPairs = {
-  Anthea: 'f-anthea',
-  Bullefesse: 'f-bullefesse',
-  Cyril: 'f-cyril',
-  Hippo: 'f-hippo',
-  Hugo: 'f-hugo',
-  Jasmine: 'f-jasmine'
-};
+const selectedPersons = getRandomPersons(personsData, 5);
 
+const correctPairs = {}; // Pour vérifier
+
+// Générer le HTML des personnes et pieds
+function initGame() {
+  personsContainer.innerHTML = '';
+  objectsContainer.innerHTML = '';
+  connections = [];
+  selectedPoint = null;
+  scoreEl.textContent = '';
+
+  // Afficher les personnes en haut (dans l'ordre sélectionné)
+  selectedPersons.forEach(name => {
+    const person = personsData[name];
+
+    const personDiv = document.createElement('div');
+    personDiv.className = 'item';
+    personDiv.innerHTML = `
+      <div class="portrait"><img src="${person.portrait}" alt="${name}"></div>
+      <div class="point" data-id="${name}"></div>
+    `;
+    personsContainer.appendChild(personDiv);
+  });
+
+  // Construire un tableau des pieds avec leur propriétaire
+  const feetItems = selectedPersons.map(name => {
+    const person = personsData[name];
+    const randomFeet = randomChoice(person.feet);
+    return {
+      owner: name,
+      feetSrc: randomFeet
+    };
+  });
+
+  // Mélanger ce tableau de pieds
+  feetItems.sort(() => 0.5 - Math.random());
+
+  // Afficher les pieds dans l’ordre mélangé
+  feetItems.forEach(item => {
+    const feetDiv = document.createElement('div');
+    feetDiv.className = 'item';
+    feetDiv.innerHTML = `
+      <div class="point" data-id="f-${item.owner.toLowerCase()}"></div>
+      <div class="portrait"><img src="${item.feetSrc}" alt="Pieds de ${item.owner}"></div>
+    `;
+    objectsContainer.appendChild(feetDiv);
+
+    // Mise à jour correctPairs si besoin (normalement déjà ok)
+    correctPairs[item.owner] = 'f-' + item.owner.toLowerCase();
+  });
+
+  setupClicks();
+  drawConnections();
+}
+
+
+// Calculer centre d’un élément (pour dessiner la ligne)
 function getPointCenter(el) {
   const rect = el.getBoundingClientRect();
   return {
@@ -141,6 +398,7 @@ function getPointCenter(el) {
   };
 }
 
+// Dessiner les connexions (lignes SVG)
 function drawConnections(checking = false) {
   svg.innerHTML = '';
   svg.setAttribute('width', document.body.scrollWidth);
@@ -150,7 +408,7 @@ function drawConnections(checking = false) {
     const p1 = getPointCenter(conn.from);
     const p2 = getPointCenter(conn.to);
     const dx = (p2.x - p1.x) / 2;
-    const pathData = `M${p1.x},${p1.y} C${p1.x+dx},${p1.y} ${p2.x-dx},${p2.y} ${p2.x},${p2.y}`;
+    const pathData = `M${p1.x},${p1.y} C${p1.x + dx},${p1.y} ${p2.x - dx},${p2.y} ${p2.x},${p2.y}`;
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', pathData);
     path.setAttribute('stroke-width', 3);
@@ -169,53 +427,76 @@ function drawConnections(checking = false) {
 
 let tempPath = null;
 
-// Gestion clics (avec courbe qui suit la souris)
-document.querySelectorAll('.point').forEach(point => {
-  point.addEventListener('click', () => {
-    if (!selectedPoint) {
-      // Premier point sélectionné
-      selectedPoint = point;
-      point.style.outline = '3px solid green';
-
-      // Crée une courbe temporaire
-      const start = getPointCenter(selectedPoint);
-      tempPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      tempPath.setAttribute('stroke', 'blue');
-      tempPath.setAttribute('stroke-width', 3);
-      tempPath.setAttribute('fill', 'none');
-      svg.appendChild(tempPath);
-
-      // Suit la souris
-      window.addEventListener('mousemove', followMouse);
-    } else {
-      // On doit relier un point du haut avec un du bas
-      if (selectedPoint.closest('#persons') !== point.closest('#persons')) {
-        connections.push({ from: selectedPoint, to: point });
-        selectedPoint.style.outline = 'none';
-        selectedPoint = null;
-        drawConnections();
-      }
-
-      // Supprime le path temporaire
-      if (tempPath) {
-        svg.removeChild(tempPath);
-        tempPath = null;
-      }
-      window.removeEventListener('mousemove', followMouse);
-    }
+function setupClicks() {
+  // Supprimer anciens handlers si besoin
+  document.querySelectorAll('.point').forEach(point => {
+    point.style.outline = 'none';
+    point.onclick = null;
   });
-});
+
+  document.querySelectorAll('.point').forEach(point => {
+    point.addEventListener('click', () => {
+      if (!selectedPoint) {
+        selectedPoint = point;
+        point.style.outline = '3px solid green';
+
+        // Créer path temporaire
+        const start = getPointCenter(selectedPoint);
+        tempPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        tempPath.setAttribute('stroke', 'blue');
+        tempPath.setAttribute('stroke-width', 3);
+        tempPath.setAttribute('fill', 'none');
+        svg.appendChild(tempPath);
+
+        window.addEventListener('mousemove', followMouse);
+      } else {
+        // On ne relie que point du haut avec point du bas
+        if (selectedPoint.closest('#persons') !== point.closest('#persons') && selectedPoint !== point) {
+          // Vérifier qu’on ne relie pas 2 fois un même point (optional)
+          const alreadyFrom = connections.some(c => c.from === selectedPoint);
+          const alreadyTo = connections.some(c => c.to === point);
+
+          if (!alreadyFrom && !alreadyTo) {
+            connections.push({ from: selectedPoint, to: point });
+          } else {
+            // Si déjà relié, on peut prévenir ou juste remplacer la connexion (optionnel)
+          }
+          selectedPoint.style.outline = 'none';
+          selectedPoint = null;
+          drawConnections();
+        } else {
+          // Cliqué sur même type point => reset sélection
+          selectedPoint.style.outline = 'none';
+          selectedPoint = null;
+          if (tempPath) {
+            svg.removeChild(tempPath);
+            tempPath = null;
+          }
+          window.removeEventListener('mousemove', followMouse);
+          return;
+        }
+
+        // Supprimer path temporaire
+        if (tempPath) {
+          svg.removeChild(tempPath);
+          tempPath = null;
+        }
+        window.removeEventListener('mousemove', followMouse);
+      }
+    });
+  });
+}
 
 function followMouse(e) {
   if (!tempPath || !selectedPoint) return;
   const p1 = getPointCenter(selectedPoint);
   const p2 = { x: e.pageX, y: e.pageY };
   const dx = (p2.x - p1.x) / 2;
-  const pathData = `M${p1.x},${p1.y} C${p1.x+dx},${p1.y} ${p2.x-dx},${p2.y} ${p2.x},${p2.y}`;
+  const pathData = `M${p1.x},${p1.y} C${p1.x + dx},${p1.y} ${p2.x - dx},${p2.y} ${p2.x},${p2.y}`;
   tempPath.setAttribute('d', pathData);
 }
 
-// Bouton "Vérifier"
+// Vérification du score
 document.getElementById('check').addEventListener('click', () => {
   let score = 0;
   connections.forEach(conn => {
@@ -226,15 +507,42 @@ document.getElementById('check').addEventListener('click', () => {
     }
   });
   drawConnections(true);
-  document.getElementById('score').textContent = `Score : ${score} / ${Object.keys(correctPairs).length}`;
+  scoreEl.textContent = `Score : ${score} / ${selectedPersons.length}`;
+  const failSound = document.getElementById('failSound');
+
+document.getElementById('check').addEventListener('click', () => {
+  let score = 0;
+  connections.forEach(conn => {
+    const fromId = conn.from.dataset.id;
+    const toId = conn.to.dataset.id;
+    if (correctPairs[fromId] === toId) {
+      score++;
+    }
+  });
+  drawConnections(true);
+  scoreEl.textContent = `Score : ${score} / ${selectedPersons.length}`;
+
+  if (score < selectedPersons.length) {
+    failSound.play();
+  }
 });
 
-// Ajuster les lignes au scroll/resize
+});
+document.getElementById('check').addEventListener('click', () => {
+  failSound.currentTime = 0;
+  failSound.play().catch(err => {
+    console.error('Erreur lecture son :', err);
+  });
+});
+
+
+// Recalculer lignes au scroll / resize
 window.addEventListener('scroll', () => drawConnections());
 window.addEventListener('resize', () => drawConnections());
-</script>
- 
 
+// Lancer le jeu
+initGame();
+</script>
 
 </body>
 </html>
