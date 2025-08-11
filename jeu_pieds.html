@@ -12,7 +12,14 @@
     margin: 0;
     padding: 20px;
     position: relative;
+    background-image: url(images/pieds_crop/pied_petit.png);
     
+  }
+
+  .cont-portraits-pieds {
+    background-color: #f2d0f2;
+    margin-left: 5em;
+    margin-right: 5em;
   }
 
   .container-haut, .container-bas {
@@ -65,13 +72,17 @@
 }
 
   .button-text {
-    background-color: blue;
+    background-color: rgb(93, 0, 255);
     color: white;
     padding: 8px 15px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
     font-size: 16px;
+  }
+
+  .button-text:hover {
+    color:rgb(170, 148, 206);
   }
 
   h1 {
@@ -85,11 +96,12 @@
   object-fit: contain; /* Pour que l'image garde ses proportions */
 }
 #objects .portrait img:hover {
-  transform: scale(1.2);
-  transition: transform 0.3s ease;
+  transform: scale(1.8);
+  transition: transform 0.3s ease-in;
   z-index: 10;
   position: relative;
   border-radius: 0 !important;
+  cursor: url(images/mag-glass.cur), pointer;
 }
 
 @keyframes popfail {
@@ -130,29 +142,32 @@
 <body>
   <div id="menu-container"></div>
 
-<!-- animation si fail -->
-<audio id="failSound" src="sounds/fart.mp3" preload="auto"></audio>
-<img id="failImage" src="images/pieds_crop/smiley_pied_qui_pue.jpeg" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(2); z-index:999; max-width:400px;">
+  <!-- animation si fail -->
+  <audio id="failSound" src="sounds/fart.mp3" preload="auto"></audio>
+  <img id="failImage" src="images/pieds_crop/smiley_pied_qui_pue.jpeg" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(2); z-index:999; max-width:400px;">
 
-<!-- animation si win -->
-<audio id="winSound" src="sounds/fanfare.mp3" preload="auto"></audio>
-<img id="winImage" src="images/pieds_crop/emoji-feet-3480078374.gif" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(3); z-index:999; max-width:500px;">
+  <!-- animation si win -->
+  <audio id="winSound" src="sounds/fanfare.mp3" preload="auto"></audio>
+  <img id="winImage" src="images/pieds_crop/emoji-feet-3480078374.gif" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(3); z-index:999; max-width:500px;">
 
-<h1>Relie les pieds à leur propriétaire</h1>
+  <h1>Relie les pieds à leur propriétaire</h1>
 
-<div class="container-haut" id="persons"></div>
+  <div class="cont-portraits-pieds"> 
+    <div class="container-haut" id="persons"></div>
 
-<!-- SVG pour tracer les lignes -->
-<svg id="lines" style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
+    <!-- SVG pour tracer les lignes -->
+    <svg id="lines" style="position:absolute; top:0; left:0; pointer-events:none;"></svg>
 
-<div class="container-bas" id="objects"></div>
+    <div class="container-bas" id="objects"></div>
+  </div> 
 
-<h3 id="score"></h3>
+  <h3 id="score"></h3>
 
-<div style="margin: 20px;">
-  <button id="check" class="button-text">Vérifier</button>
-  <button onclick="location.reload()" class="button-text">Recommencer</button>
-</div>
+  <div style="margin: 20px;">
+    <button id="check" class="button-text">Vérifier</button>
+    <button onclick="location.reload()" class="button-text">Recommencer</button>
+  </div>
+
 
 <script>
 // Données : portraits + plusieurs images pieds par personne
@@ -632,6 +647,7 @@ window.addEventListener('resize', () => drawConnections());
 // Lancer le jeu
 initGame();
 </script>
+<script src="menu.js"></script>
 
 </body>
 </html>
