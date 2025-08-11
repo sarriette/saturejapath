@@ -24,6 +24,7 @@ fetch('menu.html')
         'titouan-s-room.html',
         'tulba.html',
         'oekoumene.html',
+        'jeu_pieds.htmls'
       ];
       const randomIndex = Math.floor(Math.random() * projectPages.length);
       window.location.href = projectPages[randomIndex];
