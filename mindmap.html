@@ -45,13 +45,13 @@
   <div class="node mono" id="fun" style="top: 76%; left: 30%; font-size: 18pt; font-weight: bold;">Fun/wtf/other</div>
   <div class="node mono" id="flowers" style="top: 80%; left: 60%; font-size: 18pt; font-weight: bold;">Flowers</div>
 
-  <div class="node" style="top: 65%; left: 75%;"><a href="all-projects.html" class="mono" style="color:blue;">All projects (chronological)</a></div>
+  <div class="node" style="top: 85%; left: 5%;"><a href="all-projects.html" class="mono" style="color:blue;">All projects (chronological)</a></div>
 
   <!-- Projets (avec lien) -->
   <div class="node" id="cats" style="top: 23%; left: 20%;"><a href="cats2.html" class="mono">Cats</a></div>
   <div class="node" id="charlouse" style="top: 13%; left: 10%;"><a href="charlouse.html" class="mono cat-subdivision">Charlouse</a></div>
   <div class="node" id="ciboulette" style="top: 33%; left: 10%;"><a href="ciboulette.html" class="mono cat-subdivision">Ciboulette</a></div>
-  <div class="node" id="coco" style="top: 53%; left: 75%;"><a href="coco-elements.html" class="mono">Coco house elements</a></div>
+  <div class="node" id="coco" style="top: 68%; left: 75%;"><a href="coco-elements.html" class="mono">Coco house elements</a></div>
   <div class="node" id="echalote" style="top: 20%; left: 5%;"><a href="echalote.html" class="mono cat-subdivision">Echalote</a></div>
   <div class="node" id="family" style="top: 15%; left: 5%;"><a href="family-pictures.html" class="mono cat-subdivision">family pictures</a></div>
   <div class="node" id="harvey" style="top: 24%; left: 5%;"><a href="harvey.html" class="mono cat-subdivision">Harvey</a></div>
@@ -66,6 +66,7 @@
   <div class="node" id="titou" style="top: 55%; left: 12%;"><a href="titouan-s-room.html" class="mono">Titouan's room</a></div>
   <div class="node" id="tulba" style="top: 21%; left: 30%;"><a href="tulba.html" class="mono cat-subdivision">Tulba</a></div>
   <div class="node" id="œkoumène" style="top: 44%; left: 78%;"><a href="oekoumene.html" class="mono">Œkoumène</a></div>
+  <div class="node" id="devinepieds" style="top: 60%; left: 77%;"><a href="jeu_pieds.html" class="mono">Devine pieds</a></div>
 
   <script src="menu.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/leader-line"></script>
@@ -126,11 +127,13 @@
     connect('photography', 'portraits'); 
     connect('photography', 'cats'); 
     connect('interactive', 'coco'); 
-    connect('interactive', 'kakis'); 
+    connect('interactive', 'kakis');
+    connect('interactive', 'devinepieds');
     connect('interactive', 'œkoumène');
     connect('fun', 'cats'); 
     connect('fun', 'coco'); 
     connect('fun', 'portraits'); 
+    connect('fun', 'devinepieds'); 
 
     //cat connexions
     connect('cats', 'charlouse'); 
