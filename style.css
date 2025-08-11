@@ -1488,6 +1488,33 @@ p.jacquarda,
     cursor: url(images/cursors/CatPaw_alternative.cur), pointer;
 }
 
+/* bouton jeu des pieds */
+.cont-bouton-jeu-pieds {
+  text-align: center;
+  margin: 30px;
+}
+
+
+.bouton-jeu-pieds {
+    background-color: #b05bcc;
+    background-image: url(images/pieds_crop/pied_petit.png);
+    color: black;
+    padding: 13px 25px;
+    border-radius: 20px;
+    border: solid;
+    border: #b05bcc;
+    border-width: 10px;
+    cursor: pointer;
+    font-size: 60px;
+    justify-content: center;
+}
+
+.bouton-jeu-pieds:hover {
+    /*color:#ccc;*/
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
 /* pages individuelles des chats */
 
 /* charlouse */
@@ -1767,4 +1794,9 @@ p.minecraft {
     left: 0;
     width: 100%;
     height: 800px;
+}
+
+/* cursors */
+.cursor-foot {
+    cursor: url('images/Mireska\'s\ Faerie\ Foot.cur'), pointer;
 }
