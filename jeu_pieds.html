@@ -42,7 +42,7 @@
     width: 20px;
     height: 20px;
     border: 2px solid #ccc;
-    border-radius: 0%;
+    border-radius: 30%;
     background-color: white;
     cursor: pointer;
     transform: translateX(-50%);
@@ -68,7 +68,7 @@
     background-color: blue;
     color: white;
     padding: 8px 15px;
-    border-radius: 0px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -92,6 +92,29 @@
   border-radius: 0 !important;
 }
 
+@keyframes popfail {
+  0% { transform: translate(-50%, -50%) scale(0.5); }
+  20% { transform: translate(-50%, -50%) scale(2.5); }
+  50% { transform: translate(-50%, -50%) scale(1.6); }
+  70% { transform: translate(-50%, -50%) scale(2.1); }
+  100% { transform: translate(-50%, -50%) scale(2); } /* reste à ×2 */
+}
+
+@keyframes popwin {
+  0% { transform: translate(-50%, -50%) scale(1.5); }
+  20% { transform: translate(-50%, -50%) scale(3.5); }
+  50% { transform: translate(-50%, -50%) scale(2.6); }
+  70% { transform: translate(-50%, -50%) scale(3.1); }
+  100% { transform: translate(-50%, -50%) scale(3); } /* reste à ×3 */
+}
+
+.showPopfail {
+  animation: popfail 0.8s ease-in-out forwards;
+}
+
+.showPopwin {
+  animation: popwin 0.8s ease-in-out forwards;
+}
 
 
 
@@ -105,7 +128,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Jacquarda+Bastarda+9&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+<!-- animation si fail -->
 <audio id="failSound" src="sounds/fart.mp3" preload="auto"></audio>
+<img id="failImage" src="images/pieds_crop/smiley_pied_qui_pue.jpeg" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(2); z-index:999; max-width:400px;">
+
+<!-- animation si win -->
+<audio id="winSound" src="sounds/fanfare.mp3" preload="auto"></audio>
+<img id="winImage" src="images/pieds_crop/emoji-feet-3480078374.gif" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(3); z-index:999; max-width:500px;">
+
 <h1>Relie les pieds à leur propriétaire</h1>
 
 <div class="container-haut" id="persons"></div>
@@ -415,12 +446,25 @@ function drawConnections(checking = false) {
     path.setAttribute('fill', 'none');
 
     if (checking) {
-      const fromId = conn.from.dataset.id;
-      const toId = conn.to.dataset.id;
-      path.setAttribute('stroke', correctPairs[fromId] === toId ? 'green' : 'red');
-    } else {
-      path.setAttribute('stroke', 'blue');
-    }
+  const fromId = conn.from.dataset.id;
+  const toId = conn.to.dataset.id;
+
+  // Normaliser pour que l’ordre n’impacte pas la validation
+  let personId, footId;
+
+  if (fromId.startsWith('f-')) {
+    footId = fromId;
+    personId = toId;
+  } else {
+    personId = fromId;
+    footId = toId;
+  }
+
+  path.setAttribute('stroke', correctPairs[personId] === footId ? 'green' : 'red');
+} else {
+  path.setAttribute('stroke', 'blue');
+}
+
     svg.appendChild(path);
   });
 }
@@ -496,43 +540,87 @@ function followMouse(e) {
   tempPath.setAttribute('d', pathData);
 }
 
-// Vérification du score
+// Vérification du score et animations en conséquence
 document.getElementById('check').addEventListener('click', () => {
   let score = 0;
-  connections.forEach(conn => {
-    const fromId = conn.from.dataset.id;
-    const toId = conn.to.dataset.id;
-    if (correctPairs[fromId] === toId) {
-      score++;
-    }
-  });
-  drawConnections(true);
-  scoreEl.textContent = `Score : ${score} / ${selectedPersons.length}`;
   const failSound = document.getElementById('failSound');
+  const failImage = document.getElementById('failImage');
 
-document.getElementById('check').addEventListener('click', () => {
-  let score = 0;
   connections.forEach(conn => {
-    const fromId = conn.from.dataset.id;
-    const toId = conn.to.dataset.id;
-    if (correctPairs[fromId] === toId) {
-      score++;
-    }
+    let fromId = conn.from.dataset.id;
+    let toId = conn.to.dataset.id;
+    if (fromId.startsWith('f-')) [fromId, toId] = [toId, fromId];
+    if (correctPairs[fromId] === toId) score++;
   });
+
   drawConnections(true);
-  scoreEl.textContent = `Score : ${score} / ${selectedPersons.length}`;
+  scoreEl.textContent = `Score : ${score} / ${Object.keys(correctPairs).length}`;
 
-  if (score < selectedPersons.length) {
+  // OUPS RATE
+  if (score < 5) {
+    // Joue le son
+    failSound.currentTime = 0;
     failSound.play();
-  }
-});
 
-});
-document.getElementById('check').addEventListener('click', () => {
-  failSound.currentTime = 0;
-  failSound.play().catch(err => {
-    console.error('Erreur lecture son :', err);
-  });
+    // DELAI DE L'IMAGE POUR ETRE SYNCRHO AVEC LE PROUT
+    setTimeout(() => {
+      failImage.style.display = 'block';
+      failImage.classList.add('showPopfail');
+    
+      // Retire l’animation pour la rejouer plus tard
+      setTimeout(() => failImage.classList.remove('showPopfail'), 800);
+    
+      // Cache l'image après 3 secondes
+      setTimeout(() => {
+        failImage.style.display = 'none';
+      }, 3000);
+    }, 1000); // <-- délai avant l'image
+
+    // Affiche l'image SANS DELAI DONC PAS SYNCHRO AVEC LE PROUT
+    //failImage.style.display = 'block';
+    //failImage.classList.add('showPopfail');
+
+    // Retire l’animation pour la rejouer plus tard
+    //setTimeout(() => failImage.classList.remove('showPopfail'), 800);
+
+    // Cache l'image après 3 secondes
+    //setTimeout(() => {
+    //  failImage.style.display = 'none';
+    //}, 3000);
+  }
+
+  //BIEN JOUÉ!!
+  if (score === 5) {
+    // Joue le son
+    winSound.currentTime = 0;
+    winSound.play();
+
+    // DELAI DE L'IMAGE POUR ETRE SYNCRHO
+    setTimeout(() => {
+      winImage.style.display = 'block';
+      winImage.classList.add('showPopwin');
+    
+      // Retire l’animation pour la rejouer plus tard
+      setTimeout(() => winImage.classList.remove('showPopwin'), 800);
+    
+      // Cache l'image après 3 secondes
+      setTimeout(() => {
+        winImage.style.display = 'none';
+      }, 3600);
+    }, 1000); // <-- délai avant l'image
+
+    // Affiche l'image SANS DELAI DONC PAS SYNCHRO
+    //winImage.style.display = 'block';
+    //winImage.classList.add('showPopwin');
+
+    // Retire l’animation pour la rejouer plus tard
+    //setTimeout(() => winImage.classList.remove('showPopwin'), 800);
+
+    // Cache l'image après 3 secondes
+    //setTimeout(() => {
+    //  winImage.style.display = 'none';
+    //}, 3000);
+  }
 });
 
 
