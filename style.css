@@ -1799,3 +1799,71 @@ p.minecraft {
 .cursor-foot {
     cursor: url('images/Mireska\'s\ Faerie\ Foot.cur'), pointer;
 }
+
+/* portraits avec quasi pas de css */
+/* .body-quasi-pas-css {
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+} */
+
+.footer-portrait {
+  display: flex;
+  align-items: center;   /* centre verticalement les wrappers */
+  gap: 20px;             /* espacement entre icônes (préférable à margin sur img) */
+  margin: 5em;
+}
+
+/* wrapper commun pour toutes les icônes */
+.icon-wrapper {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* overflow: visible;  <-- par défaut, visible => permet à door-open de déborder sans pousser la mise en page */
+}
+
+/* on centre absolument chaque image à l'intérieur du wrapper */
+.icon-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* pointer-events: none;  <-- optionnel : empêche l'image d'intercepter la souris (utile si tu veux que le wrapper capte le hover) */
+}
+
+/* comportement spécifique pour les portes */
+.icon-wrapper.door .door-open { display: none; }
+
+.icon-wrapper.door:hover .door-open { display: block; }
+.icon-wrapper.door:hover .door-closed { display: none; }
+
+
+/* les pages portraits cyril emma hippo etc */
+.cont-portrait-pix {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 45%;
+}
+
+.cont-portrait-pix img {
+    max-width: 100%;
+}
+
+.portrait-pix {
+    margin: 1em;
+}
+
