@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Salon - Satureja path</title> 
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Fontdiner+Swanky&family=Jacquarda+Bastarda+9&family=Reenie+Beanie&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=The+Girl+Next+Door&display=swap" rel="stylesheet">
+<style>
+        :root {
+      --w: 1195px;   /* largeur fixe de la scène */
+      --h: 672px;    /* hauteur fixe de la scène */
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #ffffff;
+      background-image: url(images/backgrounds/tapisserie2.webp);
+      background-size: cover;
+      color: #000000;
+      display: grid;
+      place-items: center;
+      cursor: url(images/cursors/mouche.cur), pointer;
+    }
+
+    /* --- Scène fixe --- */
+    .scene {
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      /* Ne PAS rendre responsive : on fige la taille et on centre */
+      background: #111 center/100% 100% no-repeat;
+      overflow: hidden; /* masque les débordements */
+      /*box-shadow: 0 10px 40px rgba(0,0,0,.5);*/
+      image-rendering: auto;
+    }
+
+    /* Remplacez l'URL ci-dessous par le PNG (ou JPG) de la pièce complète */
+    .scene::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url('images/maison/salon/salon_without_objects.jpg') center/100% 100% no-repeat;
+      z-index: 1;
+    }
+
+    /* --- Objets superposés (webp transparents) --- */
+    .objet {
+      position: absolute;
+      z-index: 2;
+      pointer-events: auto;
+      transition: filter .01s ease;
+    }
+
+    .lampe {
+      position: absolute;
+      z-index: 3;
+      pointer-events: auto;
+    }
+
+    .objet:hover {
+      /* Glow qui suit la transparence de l'image */
+      filter: drop-shadow(0 0 15px rgba(255, 255, 150, 1)); /* rgba(226, 241, 131, 0.95) */
+      cursor: url(images/mag-glass.cur), pointer;
+    }
+
+    /* Exemple de placement */
+    .cles {
+      left: 310px;
+      top: 565px;
+      width: 50px;
+    }
+
+    .caption-cles {
+      position: absolute;
+      left: 310px;   /* placer à peu près sous les clés */
+      top: 500px;
+      background: rgba(0,0,0,0.75);
+      background-image: url(images/banner-1571861_1280.jpg);
+      color: rgb(0, 0, 0);
+      padding: 3px 10px;
+      border-radius: 0px;
+      font-family: "Reenie Beanie";
+      font-size: 34px;
+      z-index: 3;
+    }
+
+    .tableau {
+        left: 108px;
+        top: 12px;
+        width: 415px;
+        height: auto;
+    }
+
+    .lampe {
+        left: 296px;
+        top: 246px;
+        width: 90px;
+    }
+
+    .books {
+        left: 819px;
+        top: 163px;
+        width: 124px;
+        height: auto;
+    }
+
+    .gramophone {
+        left: 419px;
+        top: 175px;
+        width: 200px;
+        height: auto;
+    }
+
+    .potions {
+        left: 710px;
+        top: 170px;
+        width: 100px;
+        height: auto;
+    }
+
+    .television {
+        left: 955px;
+        top: 375px;
+        width: 100px;
+        height: auto;
+    }
+
+</style>
+
+<body>
+    <!-- <div id="menu-container"></div> -->
+
+    <main>
+        <div class="scene">
+            <img class="objet cles" src="images/maison/salon/clés.webp" alt="Clés" onclick="toggleCaption('caption-cles')"/>
+            <div id="caption-cles" class="caption-cles mono" hidden>
+              7641
+            </div>
+            
+            <a href="kakis.html">
+              <img class="objet tableau" src="images/kakis/les-bonnes/ouvre1.jpg" alt="Tableau" />
+            </a>
+            <img class="objet books" src="images/maison/salon/books.webp" alt="books" />
+            <img class="objet gramophone" src="images/maison/salon/gramophone.webp" alt="gramophone" />
+            <img class="lampe" src="images/maison/salon/lampe.webp" alt="lampe" />
+            <img class="objet potions" src="images/maison/salon/potions.webp" alt="potions" />
+            <img class="objet television" src="images/maison/salon/television.webp" alt="télévision" />
+        </div>
+        
+    
+    </main>
+    <script>
+  function toggleCaption(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // Si la caption est déjà visible → on la cache
+    if (!el.hidden) {
+      el.hidden = true;
+      return;
+    }
+
+    // On montre la caption
+    el.hidden = false;
+
+    // Ajout d'un écouteur pour fermer si clic ailleurs
+    const onClickOutside = (e) => {
+      const img = document.querySelector('.cles'); // l'image des clés
+      if (el.contains(e.target) || img.contains(e.target)) {
+        // si on reclique sur les clés, on laisse toggle gérer
+        return;
+      }
+      el.hidden = true;
+      document.removeEventListener('click', onClickOutside);
+    };
+
+    document.addEventListener('click', onClickOutside);
+  }
+</script>
+
+
+    <!-- <script src="menu.js"></script> -->
+</body>
+
+</head>
+</html>
