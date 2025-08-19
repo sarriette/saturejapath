@@ -2,25 +2,16 @@ name: Deploy to Neocities
 
 on:
   push:
-    branches:
-      - main  # ou la branche que tu utilises
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Deploy to Neocities
+      - name: Run Neocities deploy
+        run: node deploy.js
         env:
           NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
-        run: node deploy.js
