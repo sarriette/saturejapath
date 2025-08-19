@@ -11,7 +11,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install # si tu as d'autres dépendances, sinon cette étape peut être ignorée
+
       - name: Run Neocities deploy
         run: node deploy.js
         env:
           NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
+
+      - name: Deployment Summary
+        run: |
+          echo "------ Deployment Summary ------"
+          total_files=$(find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | wc -l)
+          echo "Total files processed: $total_files"
+          echo "Check your Neocities site to confirm changes."
+
