@@ -3,33 +3,35 @@ name: Deploy to Neocities
 on:
   push:
     branches:
-      - main
+      - main  # ou la branche que tu utilises
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
-          api-key: ${{ secrets.NEOCITIES_API_KEY }}
-          # Upload fichier par fichier
-          files: |
-            $(find . -type f -not -path "./.git/*" -not -path "./node_modules/*")
-          # Ignore certains fichiers si besoin
-          exclude: |
-            .gitignore
-            .github/**
-        continue-on-error: true
+          api_token: ${{ secrets.NEOCITIES_API_KEY }}
+          dist_dir: .
+          cleanup: true  # supprime les fichiers sur Neocities qui ne sont plus dans le repo
 
-      - name: Deployment summary
+      - name: Deployment Summary
         run: |
           echo "------ Deployment Summary ------"
-          echo "Total files in repo (excluding .git & node_modules):"
-          TOTAL=$(find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | wc -l)
-          echo "$TOTAL"
-          echo "Deployment finished (check Neocities site to confirm)."
-
+          FILE_COUNT=$(find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | wc -l)
+          TOTAL_SIZE=$(du -sh . | cut -f1)
+          echo "Total files deployed: $FILE_COUNT"
+          echo "Total size: $TOTAL_SIZE"
+          echo "Files (top 20):"
+          find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | head -n 20
+          echo "-------------------------------"
