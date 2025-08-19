@@ -1,7 +1,6 @@
 // deploy.js
 import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
 
 const API_TOKEN = process.env.NEOCITIES_API_TOKEN;
 if (!API_TOKEN) {
@@ -35,18 +34,14 @@ async function uploadFile(filePath) {
   const relativePath = path.relative(process.cwd(), filePath);
 
   try {
-    const form = new URLSearchParams();
-    form.append('api_key', API_TOKEN);
-    form.append('filename', relativePath);
-    form.append('file', content.toString('base64'));
+    const formData = new FormData();
+    formData.append('api_key', API_TOKEN);
+    formData.append('filename', relativePath);
+    formData.append('file', new Blob([content]));
 
-    const res = await fetch(BASE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: form,
-    });
-
+    const res = await fetch(BASE_URL, { method: 'POST', body: formData });
     const data = await res.json();
+
     if (data.result === 'success') {
       console.log('Uploaded:', relativePath);
     } else {
