@@ -3,7 +3,7 @@ name: Deploy to Neocities
 on:
   push:
     branches:
-      - main  # ou ta branche principale
+      - main  # ou ta branche par défaut
 
 jobs:
   deploy:
@@ -18,18 +18,27 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install neocities uploader
-        run: npm install neocities
+      - name: Install Neocities deploy tool
+        run: npm install -g @bcomnes/deploy-to-neocities
 
-      - name: Upload files to Neocities individually
+      - name: Deploy files to Neocities
         env:
           NEOCITIES_API_KEY: ${{ secrets.NEOCITIES_API_KEY }}
         run: |
-          find . -type f -not -path "./.git/*" | while read file; do
+          SUCCESS=0
+          FAIL=0
+          while read file; do
             echo "Uploading $file..."
-            npx neocities push "$file" --key $NEOCITIES_API_KEY || echo "Failed: $file"
-          done
+            if neocities deploy "$file"; then
+              SUCCESS=$((SUCCESS+1))
+            else
+              echo "Failed: $file"
+              FAIL=$((FAIL+1))
+            fi
+          done < <(find SP -type f -not -path "*/.git/*" -not -path "*/node_modules/*")
 
-
-
-
+          echo "---------------------------------"
+          echo "Deployment finished!"
+          echo "Files uploaded successfully: $SUCCESS"
+          echo "Files failed to upload: $FAIL"
+          echo "---------------------------------"
