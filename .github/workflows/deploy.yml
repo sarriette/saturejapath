@@ -29,4 +29,7 @@ jobs:
         run: |
           echo "------ Deployment Summary ------"
           echo "Total files in repo (excluding .git & node_modules):"
-          find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | w*_*
+          TOTAL=$(find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | wc -l)
+          echo "$TOTAL"
+          echo "Deployment finished (check Neocities site to confirm)."
+
