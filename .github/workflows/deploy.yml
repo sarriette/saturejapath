@@ -2,19 +2,34 @@ name: Deploy to Neocities
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # ou ta branche principale
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to Neocities
-        uses: bcomnes/deploy-to-neocities@v1
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
-          cleanup: false
-          dist_dir: "."
-          # remove 'exclude'
+          node-version: '18'
+
+      - name: Install neocities uploader
+        run: npm install neocities
+
+      - name: Upload files to Neocities individually
+        env:
+          NEOCITIES_API_KEY: ${{ secrets.NEOCITIES_API_KEY }}
+        run: |
+          find . -type f -not -path "./.git/*" | while read file; do
+            echo "Uploading $file..."
+            npx neocities push "$file" --key $NEOCITIES_API_KEY || echo "Failed: $file"
+          done
+
+
 
 
