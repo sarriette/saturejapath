@@ -11,41 +11,41 @@ if (!API_TOKEN) {
 
 const BASE_URL = 'https://neocities.org/api/upload';
 
-// fonction pour lister tous les fichiers du dossier en excluant .git et node_modules
+// Lister tous les fichiers à uploader
 function listFiles(dir) {
   let results = [];
   const files = fs.readdirSync(dir);
   for (const file of files) {
+    if (file === '.git' || file === 'node_modules') continue;
+
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat.isFile()) {
       results.push(fullPath);
-    } else if (stat.isDirectory() && file !== '.git' && file !== 'node_modules') {
+    } else if (stat.isDirectory()) {
       results = results.concat(listFiles(fullPath));
     }
   }
   return results;
 }
 
-// fonction pour uploader un fichier
+// Uploader un fichier
 async function uploadFile(filePath) {
   const content = fs.readFileSync(filePath);
-  const form = new URLSearchParams();
-  form.append('api_key', API_TOKEN);
-  form.append('file', content.toString('base64')); // encode en base64
-
   const relativePath = path.relative(process.cwd(), filePath);
 
   try {
+    const form = new URLSearchParams();
+    form.append('api_key', API_TOKEN);
+    form.append('filename', relativePath);
+    form.append('file', content.toString('base64'));
+
     const res = await fetch(BASE_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        api_key: API_TOKEN,
-        filename: relativePath,
-        file: content.toString('base64'),
-      }),
+      body: form,
     });
+
     const data = await res.json();
     if (data.result === 'success') {
       console.log('Uploaded:', relativePath);
@@ -57,7 +57,7 @@ async function uploadFile(filePath) {
   }
 }
 
-// fonction principale
+// Déploiement complet
 async function deploy() {
   const files = listFiles('.');
   console.log(`Found ${files.length} files.`);
