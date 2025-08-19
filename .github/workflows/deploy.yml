@@ -3,42 +3,30 @@ name: Deploy to Neocities
 on:
   push:
     branches:
-      - main  # ou ta branche par défaut
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Deploy to Neocities
+        uses: bcomnes/deploy-to-neocities@v1
         with:
-          node-version: '18'
+          api-key: ${{ secrets.NEOCITIES_API_KEY }}
+          # Upload fichier par fichier
+          files: |
+            $(find . -type f -not -path "./.git/*" -not -path "./node_modules/*")
+          # Ignore certains fichiers si besoin
+          exclude: |
+            .gitignore
+            .github/**
+        continue-on-error: true
 
-      - name: Install Neocities deploy tool
-        run: npm install -g @bcomnes/deploy-to-neocities
-
-      - name: Deploy files to Neocities
-        env:
-          NEOCITIES_API_KEY: ${{ secrets.NEOCITIES_API_KEY }}
+      - name: Deployment summary
         run: |
-          SUCCESS=0
-          FAIL=0
-          while read file; do
-            echo "Uploading $file..."
-            if neocities deploy "$file"; then
-              SUCCESS=$((SUCCESS+1))
-            else
-              echo "Failed: $file"
-              FAIL=$((FAIL+1))
-            fi
-          done < <(find SP -type f -not -path "*/.git/*" -not -path "*/node_modules/*")
-
-          echo "---------------------------------"
-          echo "Deployment finished!"
-          echo "Files uploaded successfully: $SUCCESS"
-          echo "Files failed to upload: $FAIL"
-          echo "---------------------------------"
+          echo "------ Deployment Summary ------"
+          echo "Total files in repo (excluding .git & node_modules):"
+          find . -type f -not -path "./.git/*" -not -path "./node_modules/*" | w*_*
