@@ -21,7 +21,7 @@ jobs:
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
-          api_token: ${{ secrets.NEOCITIES_API_KEY }}
+          apiKey: ${{ secrets.NEOCITIES_API_KEY }}
           dist_dir: .
           cleanup: true  # supprime les fichiers sur Neocities qui ne sont plus dans le repo
 
