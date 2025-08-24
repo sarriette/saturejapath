@@ -1867,3 +1867,16 @@ p.minecraft {
     margin: 1em;
 }
 
+.cont-portrait-pix2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.cont-portrait-pix2 img {
+    max-width: 100%;
+}
+
