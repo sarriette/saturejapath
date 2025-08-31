@@ -15,7 +15,7 @@ const client = new Neocities(USERNAME, PASSWORD);
 
 // Extensions autorisées pour comptes gratuits
 const ALLOWED_EXTENSIONS = [
-  '.html', '.css', '.js',
+  '.html', '.css', '.js', '.webp',
   '.png', '.jpg', '.jpeg', '.gif', '.svg',
   '.ttf', '.woff', '.woff2'
 ];
