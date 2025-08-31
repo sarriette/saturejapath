@@ -15,27 +15,28 @@ const client = new Neocities(USERNAME, PASSWORD);
 
 // Extensions autorisées pour comptes gratuits
 const ALLOWED_EXTENSIONS = [
-  '.html', '.css', '.js', '.webp',
-  '.png', '.jpg', '.jpeg', '.gif', '.svg',
+  '.html', '.css', '.js',
+  '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp',
   '.ttf', '.woff', '.woff2'
 ];
 
-// Fonction pour lister récursivement tous les fichiers autorisés
+// Fonction pour lister récursivement tous les fichiers du dossier courant
 function listFiles(dir) {
   let results = [];
   const files = fs.readdirSync(dir);
   for (const file of files) {
-    if (file === '.git' || file === 'node_modules') continue;
+    if (file === '.git' || file === 'node_modules') continue; // Ignorer certains dossiers
 
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
 
     if (stat.isFile()) {
-      if (!ALLOWED_EXTENSIONS.includes(path.extname(file).toLowerCase())) {
+      const ext = path.extname(file).toLowerCase();
+      if (ALLOWED_EXTENSIONS.includes(ext)) {
+        results.push(fullPath);
+      } else {
         console.log('Skipping unsupported file:', fullPath);
-        continue;
       }
-      results.push(fullPath);
     } else if (stat.isDirectory()) {
       results = results.concat(listFiles(fullPath));
     }
@@ -43,31 +44,34 @@ function listFiles(dir) {
   return results;
 }
 
-// Upload par batches
+// Upload par batch
 async function uploadInBatches(files, batchSize = 50) {
   let successCount = 0;
   let failCount = 0;
 
   for (let i = 0; i < files.length; i += batchSize) {
-    const batchFiles = files.slice(i, i + batchSize).map(f => ({
-      path: f,
-      name: path.relative(process.cwd(), f)
-    }));
+    const batchFiles = files.slice(i, i + batchSize)
+      .map(f => ({ path: f, name: path.relative(process.cwd(), f) })); // nom relatif pour écraser
 
     if (batchFiles.length === 0) continue;
 
-    await new Promise(resolve => {
-      client.upload(batchFiles, resp => {
-        if (resp.result === 'success') {
-          successCount += batchFiles.length;
-          console.log(`Uploaded batch ${i / batchSize + 1}: ${batchFiles.length} files`);
-        } else {
-          failCount += batchFiles.length;
-          console.error('Batch failed:', resp);
-        }
-        resolve();
+    try {
+      await new Promise((resolve, reject) => {
+        client.upload(batchFiles, resp => {
+          if (resp.result === 'success') {
+            successCount += batchFiles.length;
+            console.log(`Uploaded batch ${i / batchSize + 1}: ${batchFiles.length} files`);
+          } else {
+            failCount += batchFiles.length;
+            console.error('Batch failed:', resp);
+          }
+          resolve();
+        });
       });
-    });
+    } catch (err) {
+      failCount += batchFiles.length;
+      console.error('Error uploading batch:', err.message);
+    }
   }
 
   console.log('------ Deployment Summary ------');
@@ -76,7 +80,7 @@ async function uploadInBatches(files, batchSize = 50) {
   console.log(`Failed: ${failCount}`);
 }
 
-// Déploiement principal
+// Fonction principale
 async function deploy() {
   const files = listFiles('.');
   console.log(`Found ${files.length} files to upload.`);
