@@ -1,9 +1,8 @@
 // deploy.js
 import fs from 'fs';
 import path from 'path';
-import Neocities from 'neocities'; // le module officiel Neocities
+import Neocities from 'neocities';
 
-// Nom d'utilisateur et mot de passe
 const USERNAME = process.env.NEOCITIES_USERNAME;
 const PASSWORD = process.env.NEOCITIES_PASSWORD;
 
@@ -14,17 +13,16 @@ if (!USERNAME || !PASSWORD) {
 
 const client = new Neocities(USERNAME, PASSWORD);
 
-// Fonction pour lister récursivement tous les fichiers, en ignorant certains dossiers
+// Fonction pour lister récursivement les fichiers à uploader
 function listFiles(dir) {
   let results = [];
   const files = fs.readdirSync(dir);
   for (const file of files) {
-    if (file === '.git' || file === 'node_modules' || file.startsWith('.')) continue; // ignore dossiers et fichiers cachés
-
+    if (['.git', 'node_modules', '.github'].includes(file)) continue; // Ignorer ces dossiers
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
     if (stat.isFile()) {
-      results.push(fullPath);
+      results.push({ name: path.relative(process.cwd(), fullPath), path: fullPath });
     } else if (stat.isDirectory()) {
       results = results.concat(listFiles(fullPath));
     }
@@ -32,23 +30,43 @@ function listFiles(dir) {
   return results;
 }
 
-// Fonction pour uploader tous les fichiers
+// Upload par lots pour éviter les erreurs
+async function uploadInBatches(files, batchSize = 50) {
+  let successCount = 0;
+  let failCount = 0;
+
+  for (let i = 0; i < files.length; i += batchSize) {
+    const batch = files.slice(i, i + batchSize);
+    try {
+      await new Promise((resolve, reject) => {
+        client.upload(batch, resp => {
+          if (resp.result === 'success') {
+            successCount += batch.length;
+            console.log(`Uploaded batch ${i / batchSize + 1}: ${batch.length} files`);
+            resolve();
+          } else {
+            failCount += batch.length;
+            console.error('Batch failed:', resp);
+            resolve(); // On continue quand même
+          }
+        });
+      });
+    } catch (err) {
+      failCount += batch.length;
+      console.error('Error uploading batch:', err);
+    }
+  }
+
+  console.log('------ Deployment Summary ------');
+  console.log(`Total files attempted: ${files.length}`);
+  console.log(`Successfully uploaded: ${successCount}`);
+  console.log(`Failed: ${failCount}`);
+}
+
 async function deploy() {
   const files = listFiles('.');
-  console.log(`Found ${files.length} files.`);
-
-  const uploadList = files.map(file => ({
-    name: path.relative(process.cwd(), file),
-    path: file
-  }));
-
-  client.upload(uploadList, function(resp) {
-    if (resp.result === 'success') {
-      console.log('All files uploaded successfully!');
-    } else {
-      console.error('Upload failed:', resp);
-    }
-  });
+  console.log(`Found ${files.length} files to upload.`);
+  await uploadInBatches(files, 50);
 }
 
 deploy();
