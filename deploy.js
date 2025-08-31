@@ -13,22 +13,32 @@ if (!USERNAME || !PASSWORD) {
 
 const client = new Neocities(USERNAME, PASSWORD);
 
-// Fonction pour lister récursivement les fichiers à uploader
+// Fonction pour lister récursivement tous les fichiers du dossier courant
 function listFiles(dir) {
   let results = [];
   const files = fs.readdirSync(dir);
   for (const file of files) {
-    if (['.git', 'node_modules', '.github'].includes(file)) continue; // Ignorer ces dossiers
+    if (file === '.git' || file === 'node_modules') continue; // Ignore certains dossiers
+
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
+
     if (stat.isFile()) {
-      results.push({ name: path.relative(process.cwd(), fullPath), path: fullPath });
+      // Bloquer certaines extensions pour comptes gratuits
+      const BLOCKED_EXTENSIONS = ['.cur', '.webm', '.mp3'];
+      if (BLOCKED_EXTENSIONS.includes(path.extname(file).toLowerCase())) {
+        console.log('Skipping unsupported file:', fullPath);
+        continue;
+      }
+
+      results.push(fullPath);
     } else if (stat.isDirectory()) {
       results = results.concat(listFiles(fullPath));
     }
   }
   return results;
 }
+
 
 // Upload par lots pour éviter les erreurs
 async function uploadInBatches(files, batchSize = 50) {
