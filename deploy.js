@@ -1,25 +1,25 @@
 // deploy.js
 import fs from 'fs';
 import path from 'path';
-import FormData from 'form-data';
-import fetch from 'node-fetch';
+import Neocities from 'neocities'; // le module officiel Neocities
 
-const API_TOKEN = process.env.NEOCITIES_API_TOKEN;
-console.log("API Token (masked):", API_TOKEN ? API_TOKEN.slice(0, 4) + '...' : 'Not set'); // Affiche un aperçu court
+// Nom d'utilisateur et mot de passe
+const USERNAME = process.env.NEOCITIES_USERNAME;
+const PASSWORD = process.env.NEOCITIES_PASSWORD;
 
-if (!API_TOKEN) {
-  console.error("Error: NEOCITIES_API_TOKEN is not set");
+if (!USERNAME || !PASSWORD) {
+  console.error("Error: NEOCITIES_USERNAME or NEOCITIES_PASSWORD not set");
   process.exit(1);
 }
 
-const BASE_URL = 'https://neocities.org/api/upload';
+const client = new Neocities(USERNAME, PASSWORD);
 
-// Fonction pour lister récursivement tous les fichiers du dossier courant
+// Fonction pour lister récursivement tous les fichiers, en ignorant certains dossiers
 function listFiles(dir) {
   let results = [];
   const files = fs.readdirSync(dir);
   for (const file of files) {
-    if (file === '.git' || file === 'node_modules') continue; // Ignore certains dossiers
+    if (file === '.git' || file === 'node_modules' || file.startsWith('.')) continue; // ignore dossiers et fichiers cachés
 
     const fullPath = path.join(dir, file);
     const stat = fs.statSync(fullPath);
@@ -32,39 +32,23 @@ function listFiles(dir) {
   return results;
 }
 
-// Upload d’un fichier vers Neocities
-async function uploadFile(filePath) {
-  const relativePath = path.relative(process.cwd(), filePath);
-
-  const form = new FormData();
-  form.append('api_key', API_TOKEN);
-  form.append('filename', relativePath);
-  form.append('file', fs.createReadStream(filePath));
-
-  try {
-    const res = await fetch(BASE_URL, { method: 'POST', body: form, headers: form.getHeaders() });
-    const data = await res.json();
-    if (data.result === 'success') {
-      console.log('Uploaded:', relativePath);
-    } else {
-      console.error('Failed:', relativePath, data);
-    }
-  } catch (err) {
-    console.error('Error uploading:', relativePath, err.message);
-  }
-}
-
-// Fonction principale de déploiement
+// Fonction pour uploader tous les fichiers
 async function deploy() {
   const files = listFiles('.');
   console.log(`Found ${files.length} files.`);
 
-  for (const file of files) {
-    await uploadFile(file);
-  }
+  const uploadList = files.map(file => ({
+    name: path.relative(process.cwd(), file),
+    path: file
+  }));
 
-  console.log('------ Deployment Summary ------');
-  console.log(`Total files attempted: ${files.length}`);
+  client.upload(uploadList, function(resp) {
+    if (resp.result === 'success') {
+      console.log('All files uploaded successfully!');
+    } else {
+      console.error('Upload failed:', resp);
+    }
+  });
 }
 
 deploy();

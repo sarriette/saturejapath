@@ -17,9 +17,10 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install neocities
 
       - name: Deploy to Neocities
         run: node deploy.js
         env:
-          NEOCITIES_API_TOKEN: ${{ secrets.NEOCITIES_API_TOKEN }}
+          NEOCITIES_USERNAME: ${{ secrets.NEOCITIES_USERNAME }}
+          NEOCITIES_PASSWORD: ${{ secrets.NEOCITIES_PASSWORD }}
