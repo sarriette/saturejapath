@@ -5,7 +5,7 @@ import FormData from 'form-data';
 import fetch from 'node-fetch';
 
 const API_TOKEN = process.env.NEOCITIES_API_TOKEN;
-console.log("API Token (masked):", API_TOKEN ? API_TOKEN.slice(0, 4) + '...' : 'Not set'); // Affiche un aperçu court blablatest
+console.log("API Token (masked):", API_TOKEN ? API_TOKEN.slice(0, 4) + '...' : 'Not set'); // Affiche un aperçu court
 
 if (!API_TOKEN) {
   console.error("Error: NEOCITIES_API_TOKEN is not set");
