@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Entrée - Satureja path</title> 
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Fontdiner+Swanky&family=Jacquarda+Bastarda+9&family=Reenie+Beanie&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=The+Girl+Next+Door&display=swap" rel="stylesheet">
+
+<style>
+  /* horloge */
+  /* Set height, width, top position, and left position in the .js file */
+
+#sc_hcw_clockContainer {
+	box-sizing: border-box;
+	position: relative;
+	border-radius: 50%;
+	background-color: transparent;
+	cursor: grab;
+}
+
+.sc_hcw_clockContainerGrabbed {
+	cursor: grabbing !important;
+}
+
+/* -------------------------------------------------------------------------------- */
+/* Clock display CSS */
+
+#sc_hcw_clock {
+	box-sizing: border-box;
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	border: 5px solid black;
+	border-style: outset;
+	width: 100px;
+	height: 100px;
+	background-color: white;
+	background-position: center;
+	background-size: cover;
+	box-shadow: 5px 5px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+	.sc_hcw_clockHand {
+		top: 1px;
+		left: calc(50% - 1px);
+		position: absolute;
+		transform-origin: 50% calc(100% - 1px);
+		width: 2px;
+		height: calc(1px + 50%);
+		background-color: black;
+	}
+
+		#sc_hcw_clockHandHour {
+		  top: 22px;
+		  height: calc(50% - 20px);
+		}
+
+		#sc_hcw_clockHandMinute {
+		  top: 12px;
+		  height: calc(50% - 10px);
+		}
+
+		#sc_hcw_clockHandSecond {
+		left: calc(50% - 0.5px);
+      width: 1px;
+		}
+
+		.sc_hcw_clockFaceNumber {
+			position: absolute;
+			transform: translate(-50%, -50%);
+			font-size: 0.75em;
+		}
+      #sc_hcw_clockFaceNumber_one {top:14%; left: calc(80% - 10px);}
+      #sc_hcw_clockFaceNumber_one::before {content:"1";}
+      #sc_hcw_clockFaceNumber_two {top:28%; left: calc(95% - 10px);}
+      #sc_hcw_clockFaceNumber_two::before {content:"2";}
+      #sc_hcw_clockFaceNumber_three {top:50%; left: calc(100% - 8px);}
+      #sc_hcw_clockFaceNumber_three::before {content:"3";}
+      #sc_hcw_clockFaceNumber_four {top:72%; left: calc(95% - 10px);}
+      #sc_hcw_clockFaceNumber_four::before {content:"4";}
+      #sc_hcw_clockFaceNumber_five {top:86%; left: calc(80% - 10px);}
+      #sc_hcw_clockFaceNumber_five::before {content:"5";}
+      #sc_hcw_clockFaceNumber_six {top:calc(100% - 8px); left: 50%;}
+      #sc_hcw_clockFaceNumber_six::before {content:"6";}
+      #sc_hcw_clockFaceNumber_seven {top:86%; left: calc(20% + 10px);}
+      #sc_hcw_clockFaceNumber_seven::before {content:"7";}
+      #sc_hcw_clockFaceNumber_eight {top:72%; left: calc(5% + 10px);}
+      #sc_hcw_clockFaceNumber_eight::before {content:"8";}
+      #sc_hcw_clockFaceNumber_nine {top:50%; left: 8px;}
+      #sc_hcw_clockFaceNumber_nine::before {content:"9";}
+      #sc_hcw_clockFaceNumber_ten {top:28%; left: calc(5% + 10px);}
+      #sc_hcw_clockFaceNumber_ten::before {content:"10";}
+      #sc_hcw_clockFaceNumber_eleven {top:14%; left: calc(20% + 10px);}
+      #sc_hcw_clockFaceNumber_eleven::before {content:"11";}
+      #sc_hcw_clockFaceNumber_twelve {top:8px; left: 50%;}
+      #sc_hcw_clockFaceNumber_twelve::before {content:"12";}
+
+    /* fin horloge */
+
+    #menu-container {
+      position: fixed; /* reste collé à gauche même si la scène est centrée */
+      top: 1px;
+      left: 1px;
+      z-index: 999;
+    }
+
+        :root {
+      --w: 1195px;   /* largeur fixe de la scène */
+      --h: 672px;    /* hauteur fixe de la scène */
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #ffffff; 
+      background-size: cover;
+      color: #000000;
+      display: grid;
+      place-items: center;
+      cursor: url(images/cursors/dragonfly.cur), pointer;
+    }
+
+    /* --- Scène fixe --- */
+    .scene {
+      position: relative;
+      width: var(--w);
+      height: var(--h);
+      /* Ne PAS rendre responsive : on fige la taille et on centre */
+      background: #111 center/100% 100% no-repeat;
+      overflow: hidden; /* masque les débordements */
+      /*box-shadow: 0 10px 40px rgba(0,0,0,.5);*/
+      image-rendering: auto;
+    }
+
+    /* Remplacez l'URL ci-dessous par le PNG (ou JPG) de la pièce complète */
+    .scene::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url('images/maison/pieces/scene\ piece\ vide\ 2.jpg') center/100% 100% no-repeat;
+      z-index: 1;
+    }
+
+    /* --- Objets superposés (webp transparents) --- */
+    .objet {
+      position: absolute;
+      z-index: 3;
+      pointer-events: auto;
+      transition: filter .01s ease;
+    }
+
+    .objet:hover {
+      /* Glow qui suit la transparence de l'image */
+      filter: drop-shadow(0 0 15px rgb(225, 0, 255)); /* rgba(226, 241, 131, 0.95) */
+      cursor: url(images/cursors/Hand.cur), pointer;
+    }
+
+    /* Exemple de placement */
+    .porte-gauche {
+      position: absolute;
+      left: 210px;
+      top: 220px;
+      z-index: 2;
+    }
+
+    .porte-milieu {
+      position: absolute;
+      left: 530px;
+      top: 130px;
+      z-index: 2;
+    }
+
+    .porte-droite {
+      position: absolute;
+      left: 810px;
+      top: 200px;
+      z-index: 2;
+    }
+
+    a.pink {
+        color:blue;
+    }
+
+    a.pink:hover {
+        color:magenta;
+    }
+
+</style>
+
+<body>
+    <!-- <div id="menu-container"></div> -->
+
+    <main>
+        <div class="scene">
+          <!-- horloge -->
+          <div id="sc_hcw_clockContainer" style="position:relative;"></div> 
+          <!-- objets -->
+            <img class="porte-gauche objet" src="images/maison/pieces/entree_porte_gauche.webp" alt="porte gauche"/>
+            <img class="porte-milieu objet" src="images/maison/pieces/entree_porte_milieu.webp" alt="porte milieu"/>
+            <a href="salon.html">
+              <img class="porte-droite objet" src="images/maison/pieces/entree_porte_droite.webp" alt="porte droite"/>
+            </a>  
+        </div>
+        <div class="mono center"><a href="jardin.html" class="mono pink">
+            retourner au jardin
+        </a></div>
+    </main>
+    <script src="scWidget_HoverClock.js"></script>
+    <!-- <script src="menu.js"></script> -->
+</body>
+
+</head>
+</html>
