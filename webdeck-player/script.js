@@ -23,9 +23,9 @@
  * You can also delete the lists that you don't want.
 */
 var myPlaylists = {
-    "90s HITS": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
-    "00s HITS": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
-    "VAPORWAVE": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
+    "GROOVY FUNK WTF": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
+    "ZIK DES MARÉCAGES": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
+    "CHILL": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
     //"ANOTHER PLAYLIST": 'PLZyqOyXxaVETqpHhT_c5GPmAPzhJpJ5K7',
 };
 
@@ -47,11 +47,9 @@ var currentPlaylist = "90s HITS";
  * You can also delete the themes that you don't want.
 */
 var myThemes = {
-    "DEFAULT": 'default',
-    "SILVER": 'silver',
     "VIOLET": "violet",
     "MINIMAL": "minimal",
-    "RED GRUNGE": "red-grunge",
+    "SATUREJA": "satureja",
     //"ANOTHER THEME": 'another-theme',
 };
 
@@ -60,7 +58,7 @@ var myThemes = {
  * [4. CURRENT THEME]
  * Set the theme of your player writing its name below.
  */
-var currentTheme = "VIOLET";
+var currentTheme = "SATUREJA";
 
 
 // ===== END OF CONFIGURATION =====

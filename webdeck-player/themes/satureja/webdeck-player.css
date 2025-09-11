@@ -1,5 +1,5 @@
 /* Font import */
-@font-face {font-family: Silkscreen; src: url(./fonts/slkscr.ttf);}
+@font-face {font-family: 'Space Mono'; src: url(./fonts/SpaceMono-Regular.ttf);}
 
 *{
     margin: 0;
@@ -9,9 +9,11 @@
 body{
     width: 600px;
     height: 250px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Space Mono', monospace;
     color: black;
-    background: black;
+    /*background: #f8f8ff;*/
+    background-image: url(./images/banner-50.png);
+    /*background: linear-gradient(180deg, #c871c6 0%, #c88fc7 10%, #ecb4eb 90%);*/
 }
 
 select{
@@ -20,21 +22,19 @@ select{
 
 button{
     padding: 2px;
-    margin-right: 1px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-transform: lowercase;
-    font-weight: bold;
-    color: white;
+    margin-right: 4px;
+    font-family: 'Space Mono', monospace;
 
-    background: #202020;
-    border: outset 2px #a42c2c;
-    border-radius: 2px;
+    background: #a3c0de;
+    border: 2px blue;
+    border-radius: 8px;
+    /*box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);*/
 }
 
 button:active{
-    background: #000000;
-    border: outset 2px #6e1c1c;
-    border-radius: 2px;
+    background: #c49ac3;
+    border: 2px blue;
+    border-radius: 8px;
     box-shadow: none;
 }
 
@@ -50,25 +50,18 @@ button:active{
 
 
 select{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-transform: lowercase;
-    font-weight: bold;
-    color: white;
-    padding: 0 2px;
+    font-family: 'Space Mono', monospace;
 
-    background: #202020;
-    border: outset 2px #a42c2c;
-    border-radius: 2px;
-}
-
-select option{
-    background: black;
+    background: #a3c0de;
+    border: 2px blue;
+    border-radius: 8px;
+    /*box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);*/
 }
 
 select:active{
-    background: #000000;
-    border: outset 2px #6e1c1c;
-    border-radius: 2px;
+    background: #c49ac3;
+    border: 2px blue;
+    border-radius: 8px;
     box-shadow: none;
 }
 
@@ -107,49 +100,48 @@ select:active{
 input[type="range"] {
     appearance: none;
     background: none;
-    border: inset 2px #2c2c2c;
-
-    height: 5px;
-    margin-top: 7px;
-    margin-bottom: 7px;
+    border: 2px black;
+    border-radius: 8px;
 }
 
 /* slider track */
 input[type="range"]::-webkit-slider-runnable-track /* For Chrome */ {
-    background-color: rgb(30, 30, 30);
+    /*background-color: rgb(30, 30, 30);*/
+    background-image: url(./images/carreaux.jpg);
     height: 100%;
+    border-radius: 8px;
 }
 
 input[type="range"]::-moz-range-track /* For Firefox */ {
-    background-color: rgb(30, 30, 30);
+    /*background-color: rgb(30, 30, 30);*/
+    background-image: url(./images/carreaux.jpg);
     height: 100%;
+    border-radius: 8px;
 }
 
 /* slider thumb */
 input[type="range"]::-webkit-slider-thumb /* For Chrome */ {
     appearance: none;
 
-    background: url(./images/slider.gif), linear-gradient(to bottom, #4c4c4c 0%, #2c2c2c 100%);;
+    background: url(./images/slider.gif), #a3c0de;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: outset 2px #2c2c2c;
+    border: outset 2px #eaeaea;
     
     border-radius: 2px;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);
 
-    height: 20pt;
-    width: 12pt;
-    position: relative;
-    top: -10px;
+    height: 1rem;
+    width: 2.5rem;
 }
 
 input[type="range"]::-webkit-slider-thumb:active /* For Chrome */ {
-    background: url(./images/slider.gif), linear-gradient(to top, #4c4c4c 0%, #2c2c2c 100%);;
+    background: url(./images/slider.gif), #c49ac3;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: inset 2px #2c2c2c;
+    border: 2px #000000;
     border-radius: 2px;
     box-shadow: none;
 }
@@ -157,27 +149,29 @@ input[type="range"]::-webkit-slider-thumb:active /* For Chrome */ {
 
 
 input[type="range"]::-moz-range-thumb /* For Firefox */ {
-    background: url(./images/slider.gif), linear-gradient(to bottom, #4c4c4c 0%, #2c2c2c 100%);;
+    background: url(./images/slider.gif), #a3c0de;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: outset 2px #2c2c2c;
+    border-style: solid;
+    border: 2px #000000;
     
-    border-radius: 2px;
+    border-radius: 8px;
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);
 
-    height: 1.5rem;
-    width: 0.8rem;
+    height: 1rem;
+    width: 2.5rem;
 }
 
 input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
-    background: url(./images/slider.gif), linear-gradient(to top, #4c4c4c 0%, #2c2c2c 100%);;
+    background: url(./images/slider.gif), #c49ac3;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    border: inset 2px #2c2c2c;
-    border-radius: 2px;
-    box-shadow: none;
+    border-style: solid;
+    border: 2px #000000;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.75);;
 }
 
 
@@ -191,10 +185,7 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
 /* Player title bar */
 #player-title-bar{
     display: flex;
-    margin-bottom: 2px;
-    color: #a42c2c;
-    text-transform: lowercase;
-    font-weight: bold;
+    color: rgb(0, 0, 0);
 }
 
 #player-title-bar:before,
@@ -203,18 +194,14 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
     flex: 1;
     margin: auto 1em;
     height: 2px;
-    border-top: ridge #a42c2c 2px;
-    border-bottom: ridge #a42c2c 2px;
 }
 
 /* Player body */
 #player-body{
+    /*background: #f8f8ff;*/
+    background-image: url(./images/banner-50.png);
     padding: 5px;
-    border: groove 2px #282828;
-    background: url(./images/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    border: dashed 2px rgb(0, 0, 0);
 }
 
 /* Player main section */
@@ -227,26 +214,28 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
 #player-display{
     width: 250px;
     height: 140px;
-    background: black;
-    border: inset 2px #282828;
+    background-image: url(./images/grenouille.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    /*background: #f8f8ff;*/
+    /*border: 2px #000000;*/
 }
 
 
 /* Player info */
 #info-screen{
-    background: black;
-    font-family: Silkscreen, monospace;
-    color: white;
-    border: inset 2px #282828;
+    background: rgba(196, 154, 195, 0.3); /* rgba(196, 154, 195, 0.3) */ 
+    color: #7395b8; 
+    border: dashed 2px #000000;
     margin-bottom: 5px;
 }
 
 #songLabel{
-    text-shadow: 0 0 10px #c84040, 0 0 20px #fc6b6b, 2px 2px 2px rgba(206,89,55,0);
+    /*text-shadow: 0 0 10px #a3c0de, 0 0 20px #a3c0de, 2px 2px 2px rgba(206,89,55,0);*/
 }
 
 #statusLabel{
-    text-shadow: 0 0 10px #c84040, 0 0 20px #fc6b6b, 2px 2px 2px rgba(206,89,55,0);
+    /*text-shadow: 0 0 10px #49ff18, 0 0 20px #49FF18, 2px 2px 2px rgba(206,89,55,0);*/
 }
 
 .player-row{
@@ -296,7 +285,7 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
 
 #seekBar{
     width: 99%;
-    margin-bottom: 12px;
+    margin-bottom: 5px;
 }
 
 .playing-controls{
@@ -304,7 +293,8 @@ input[type="range"]::-moz-range-thumb:active /* For Firefox */ {
     margin-right: 5px;
     display: inline-block;
     width: fit-content;
-    background: black;
+    /*background: #f8f8ff;*/
+    /*border: dashed 2px #a3c0de; /*markepaj*/
     vertical-align: middle;
 }
 

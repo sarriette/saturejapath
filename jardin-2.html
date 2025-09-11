@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Maison - Satureja path</title> 
+        <title>Jardin - Satureja path</title> 
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,7 @@
 var colours=new Array("#f700ff", "#ffaa00", "#c300ff", "#65950b", "#d2f200"); // what colour are the blobs ("#93f", "#3f9", "#f39", "#39f", "#9f3")
 var speed=40; // speed of animation, lower is faster
 var blobs=10; // how many blobs are in the jar
-var size=100; // maximum blob size
+var size=30; // maximum blob size
 
 /***************************\
 *   Blobs in a Jar Effect   *
@@ -237,7 +237,7 @@ function set_width() {
       width: var(--w);
       height: var(--h);
       /* Ne PAS rendre responsive : on fige la taille et on centre */
-      background: #111 center/100% 100% no-repeat;
+      background: #ffffff center/100% 100% no-repeat;
       overflow: hidden; /* masque les débordements */
       /*box-shadow: 0 10px 40px rgba(0,0,0,.5);*/
       image-rendering: auto;
@@ -247,7 +247,7 @@ function set_width() {
     .scene::before {
       content: "";
       position: absolute; inset: 0;
-      background: url('images/maison/pieces/scene\ jardin\ citrouille.jpg') center/100% 100% no-repeat;
+      background: url('images/maison/pieces/') center/100% 100% no-repeat;
       z-index: 1;
     }
 
@@ -274,102 +274,30 @@ function set_width() {
       z-index: 2;
     }
 
-    .bottes {
-      position: absolute;
-      left: 620px;
-      top: 280px;
-      width: 70px;
-      z-index: 2;
+    a.pink {
+        color:blue;
     }
 
-    .potiron {
-      position: absolute;
-      left: 450px;
-      top: 280px;
-      width: 100px;
-      z-index: 2;
+    a.pink:hover {
+        color:magenta;
     }
-
-    .grenouille {
-      position: absolute;
-      left: 100px;
-      top: 350px;
-      width: 80px;
-      z-index: 2;
-    }
-
-    .nain {
-      position: absolute;
-      left: 1100px;
-      top: 200px;
-      width: 65px;
-      z-index: 2;
-    }
-
-    .escargog {
-      position: absolute;
-      left: 150px;
-      top: 150px;
-      width: 50px;
-      z-index: 2;
-    }
-
-    .champi {
-      position: absolute;
-      left: 270px;
-      top: 550px;
-      width: 60px;
-      z-index: 2;
-    }
-
-    .arrosoir {
-      position: absolute;
-      left: 400px;
-      top: 320px;
-      width: 80px;
-      z-index: 2;
-    }
-
-    .jardin {
-      position: absolute;
-      left: 870px;
-      top: 340px;
-      width: 150px;
-      z-index: 2;
-    }
-
-    .citrouille {
-      position: absolute;
-      left: 425px;
-      top: 28px;
-      width: 344px;
-      z-index: 1;
-    }
-
 </style>
 
 <body>
-    <div id="menu-container"></div>
 
     <main>
+        <!-- moon widget -->
+        
         <div class="scene">
-            <img class="panneau" src="images/maison/jardin/chemin_de_la_sarriette.webp" alt="panneau welcome"/>
-            <img class="bottes" src="images/maison/jardin/bottes.webp" alt="bottes"/>
-            <img class="potiron" src="images/maison/jardin/potinron.webp" alt="potiron"/>
-            <img class="grenouille" src="images/maison/jardin/grenouyalenvers.webp" alt="grenouille à l'envers"/>
-            <img class="nain" src="images/maison/jardin/nain.webp" alt="nain de jardin"/>
-            <img class="escargog" src="images/maison/jardin/escargog.webp" alt="sculpture escargot kitsch"/>
-            <img class="champi" src="images/maison/jardin/champi.webp" alt="champignons"/>
-            <img class="arrosoir" src="images/maison/jardin/arrosoir.webp" alt="arrosoir"/>
-            <a href="jardin-2.html">
-              <img class="objet jardin" src="images/maison/pieces/nom_jardin.webp" alt="jardin"/>
-            </a>
-            <a href="entree.html">
-              <img class="objet citrouille" src="images/maison/pieces/maison_citrouille_final_trim.webp" alt="jardin"/>
-            </a>  
+            <iframe width="180" height="180" style="border:none" src="https://dimden.dev/moon?custom=1" name="dimdenmoonwidget"></iframe>
+            <!-- <img class="panneau" src="images/maison/jardin/chemin_de_la_sarriette.webp" alt="panneau welcome"/> -->
         </div>
+
+        <div class="mono center"><a href="jardin.html" class="mono pink">
+            retourner au jardin citrouille
+        </a></div>
     </main>
-    <script src="menu.js"></script>
+
 </body>
 
 </head>
