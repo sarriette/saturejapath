@@ -23,7 +23,7 @@
  * You can also delete the lists that you don't want.
 */
 var myPlaylists = {
-    "GROOVY FUNK WTF": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
+    "GROOVY FUNK WTF": 'PL2OWI0eX2KC8gdJ6Kf6bJ8I9j7oIe91Ec',
     "ZIK DES MARÉCAGES": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
     "CHILL": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
     //"ANOTHER PLAYLIST": 'PLZyqOyXxaVETqpHhT_c5GPmAPzhJpJ5K7',
