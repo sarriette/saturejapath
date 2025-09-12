@@ -127,18 +127,19 @@ themeSelector.value = currentTheme;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('youtube-player', {
-    height: '100%',
-    width: '100%',
-    playerVars: {
-        'controls': 0,
-        'autoplay': 0,
-        'playsinline': 1,
-        'loop': 1
-    },
-    events: {
-        'onReady': onPlayerReady,
-        'onStateChange': onPlayerStateChange
-    }
+        height: '100%',
+        width: '100%',
+        playerVars: {
+            controls: 0,
+            autoplay: 0,
+            playsinline: 1,
+            loop: 1,
+            origin: window.location.origin // important pour GitHub Pages
+        },
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
     });
 }
 
@@ -330,17 +331,19 @@ themeSelector.addEventListener("change", function() {
 
 
 function onPlayerReady(event) {
+    // Forcer le load de la playlist initiale pour éviter l'erreur sur la première lecture
     setTimeout(() => {
         player.loadPlaylist({
             list: myPlaylists[currentPlaylist], // ID de la playlist
-            listType: 'playlist',               // indique bien que c’est une playlist
+            listType: 'playlist',               // indique bien que c'est une playlist
             index: 0,                            // commence à la première vidéo
             suggestedQuality: 'default'
         });
-    }, 100); // petit délai pour éviter le bug de première lecture sur GitHub Pages
+    }, 100); // petit délai pour l'initialisation correcte de l'iframe
 
+    // Volume initial
     player.setVolume(50);
-    // player.setLoop(true); // inutile avec loadPlaylist correctement configuré
+    // player.setLoop(true); // inutile, loop est géré par loadPlaylist
 }
 
 function onPlayerStateChange(event) {
