@@ -133,8 +133,7 @@ function onYouTubeIframeAPIReady() {
             controls: 0,
             autoplay: 0,
             playsinline: 1,
-            loop: 1,
-            origin: window.location.origin // important pour GitHub Pages
+            origin: window.location.origin
         },
         events: {
             'onReady': onPlayerReady,
@@ -331,19 +330,16 @@ themeSelector.addEventListener("change", function() {
 
 
 function onPlayerReady(event) {
-    // Forcer le load de la playlist initiale pour éviter l'erreur sur la première lecture
+    // Force la première lecture correctement
     setTimeout(() => {
         player.loadPlaylist({
-            list: myPlaylists[currentPlaylist], // ID de la playlist
-            listType: 'playlist',               // indique bien que c'est une playlist
-            index: 0,                            // commence à la première vidéo
+            list: myPlaylists[currentPlaylist],
+            listType: 'playlist',
+            index: 0,
             suggestedQuality: 'default'
         });
-    }, 100); // petit délai pour l'initialisation correcte de l'iframe
-
-    // Volume initial
+    }, 100); // 100ms suffisent
     player.setVolume(50);
-    // player.setLoop(true); // inutile, loop est géré par loadPlaylist
 }
 
 function onPlayerStateChange(event) {
