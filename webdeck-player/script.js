@@ -35,7 +35,7 @@ var myPlaylists = {
  * The first playlist that the player will load on startup. You may change it by
  * writing the name of the new playlist below.
 */
-var currentPlaylist = "GROOVY FUN WTF";
+var currentPlaylist = "GROOVY FUNK WTF";
 
 
 /**
