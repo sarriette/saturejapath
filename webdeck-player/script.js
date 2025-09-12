@@ -330,14 +330,17 @@ themeSelector.addEventListener("change", function() {
 
 
 function onPlayerReady(event) {
-    player.loadPlaylist({
-        list: myPlaylists[currentPlaylist], // ID de la playlist
-        listType: 'playlist',               // indique bien que c’est une playlist
-        index: 0,                            // démarre à la première vidéo
-        suggestedQuality: 'default'
-    });
+    setTimeout(() => {
+        player.loadPlaylist({
+            list: myPlaylists[currentPlaylist], // ID de la playlist
+            listType: 'playlist',               // indique bien que c’est une playlist
+            index: 0,                            // commence à la première vidéo
+            suggestedQuality: 'default'
+        });
+    }, 100); // petit délai pour éviter le bug de première lecture sur GitHub Pages
+
     player.setVolume(50);
-    // player.setLoop(true); // inutile, le loop est géré via loadPlaylist
+    // player.setLoop(true); // inutile avec loadPlaylist correctement configuré
 }
 
 function onPlayerStateChange(event) {
