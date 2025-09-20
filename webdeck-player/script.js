@@ -59,6 +59,7 @@ var myThemes = {
     "VIOLET": "violet",
     "MINIMAL": "minimal",
     "SATUREJA": "satureja",
+    "FRUTIGER AERO": "frutiger-aero",
     //"ANOTHER THEME": 'another-theme',
 };
 
@@ -67,7 +68,7 @@ var myThemes = {
  * [4. CURRENT THEME]
  * Set the theme of your player writing its name below.
  */
-var currentTheme = "SATUREJA";
+var currentTheme = "FRUTIGER AERO";
 
 
 // ===== END OF CONFIGURATION =====
