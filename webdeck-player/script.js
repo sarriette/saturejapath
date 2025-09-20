@@ -23,10 +23,19 @@
  * You can also delete the lists that you don't want.
 */
 var myPlaylists = {
-    "GROOVY FUNK WTF": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
-    "ZIK DES MARÉCAGES": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
-    "CHILL": 'PL2OWI0eX2KC8M9O9ePLQw4g_vRYd8-2bS',
+    "GROOVY FUNK WTF": 'PL2OWI0eX2KC8Ytsby4vM7fZCzq0b82t88',
+    "SUMMER BEACH CHILL": 'PL2OWI0eX2KC-nLVs_x1t3FbzeTPK_hZi8',
+    "CHILL SOUL JAZZ": 'PL2OWI0eX2KC9lkXudfahP_JVwZnh7WHJE',
+    "ROCK METAL FUSION": "PL2OWI0eX2KC_G5Iqh1bh0u3lQGdkAsdpm",
+    "RADIO MARÉCAGE": "PL2OWI0eX2KC8FJkJoxXc7fIBu5eJ8EE7Q",
+    "NIGHT ON THE HILL": "PL2OWI0eX2KC_sshx_Fe4y5Q05_RFNlYuV",
+    "LOVE MUSIC": "PL2OWI0eX2KC_0uPQXM7Pvb-tqWJHek6Qc",
+    "GYPSY STYLE": "PL2OWI0eX2KC83i4yZLJ8fG5iRYHr_tFAp",
+    "ELECTRO": "PL2OWI0eX2KC-3D7GbLz1T4FEYygnnbipy",
+    "BAROQUE COOL": "PL2OWI0eX2KC_WOKNxGrpvrAl01QoX9CrC",
     //"ANOTHER PLAYLIST": 'PLZyqOyXxaVETqpHhT_c5GPmAPzhJpJ5K7',
+    // gypsy style
+    // radio marécage
 };
 
 

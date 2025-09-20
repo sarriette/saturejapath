@@ -2,6 +2,8 @@ let currentImageIndex = 0;
 const images = [
     "images/posters/casse-tete.jpg",
     "images/posters/violence.jpg",
+    "images/posters/malo.jpg",
+    "images/posters/attrape moi si tu peux.jpg"
 ];
 
 function openGallery(index) {
