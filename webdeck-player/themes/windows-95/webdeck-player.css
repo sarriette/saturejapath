@@ -1,0 +1,353 @@
+/* Font import */
+@font-face {font-family: Silkscreen; src: url(./fonts/slkscr.ttf);}
+
+@font-face {
+  font-family: "W95FA";
+  src: url("fonts/W95FA.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 600px;
+    height: 250px;
+    font-family: "W95FA", monospace;
+    color: black;
+    /*background: linear-gradient(180deg, rgb(92, 92, 92) 0%, rgb(49, 49, 49) 10%, rgba(30,30,30,1) 90%);*/
+    background: linear-gradient(to right, #000080 0%, #1084D0 100%);
+}
+
+select{
+    margin-right: 1px;
+}
+
+button {
+  font-family: "W95FA", monospace;
+  border: none;
+  outline: 1px dotted rgb(37, 37, 37);
+  outline-offset: -4px;
+  cursor: pointer;
+  background: hsl(0deg 0% 75%);
+  box-shadow:
+    inset -1px -1px #292929,
+    inset 1px 1px #fff,
+    inset -2px -2px rgb(158, 158, 158),
+    inset 2px 2px #ffffff;
+  font-size: 14px;
+  /*text-transform: uppercase;*/
+  /*letter-spacing: 2px;*/
+  padding: 5px;
+}
+
+button:active {
+  box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #292929,
+    inset -2px -2px #ffffff,
+    inset 2px 2px rgb(158, 158, 158);
+}
+
+.toggle-button[state='off'] > p::before{
+    content: url(./images/green-light-off.gif);
+    margin-right: 3px;
+}
+
+.toggle-button[state='on'] > p::before{
+    content: url(./images/green-light-on.gif);
+    margin-right: 3px;
+}
+
+
+select {
+    font-family: "W95FA", monospace;
+    border: none;
+    outline: 1px dotted rgb(37, 37, 37);
+    outline-offset: -4px;
+    cursor: pointer;
+    background: hsl(0deg 0% 75%);
+    box-shadow:
+      inset -1px -1px #292929,
+      inset 1px 1px #fff,
+      inset -2px -2px rgb(158, 158, 158),
+      inset 2px 2px #ffffff;
+    font-size: 14px;
+    text-transform: lowercase;
+    /*letter-spacing: 2px;*/
+    padding: 5px;
+}
+
+select:active{
+    box-shadow:
+    inset -1px -1px #fff,
+    inset 1px 1px #292929,
+    inset -2px -2px #ffffff,
+    inset 2px 2px rgb(158, 158, 158);
+}
+
+
+
+
+/* Blink class */
+.blink {
+    animation: blinker 2s step-start infinite;
+}
+  
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+/* Columns section */
+.columns{
+    display: flex;
+}
+
+.columns > div:first-child{
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+.columns > div:last-child{
+    flex-grow: 1;
+}
+
+
+
+/* Slider global */
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    height: 12px;               /* hauteur globale */
+    border: inset 2px rgb(212, 212, 212);   /* cadre Win95 */
+    background: #c0c0c0;        /* fond gris clair */
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* Ligne de fond WebKit */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;                /* très fine ligne */
+    background: black;          /* ligne noire (comme dans ton screenshot) */
+    margin: auto 0;             /* centrage vertical */
+}
+
+/* Bouton (thumb) WebKit */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 12px;
+    background: linear-gradient(to bottom, #f0f0f0, #bcbcbc);
+    border: outset 2px #eaeaea;
+    border-radius: 2px;
+    margin-top: -5px; /* centre le thumb sur la ligne */
+}
+
+/* Effet enfoncé quand actif */
+input[type="range"]::-webkit-slider-thumb:active {
+    border: inset 2px #eaeaea;
+    background: linear-gradient(to top, #f0f0f0, #bcbcbc);
+}
+
+/* Ligne de fond Firefox */
+input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: black;
+}
+
+/* Bouton (thumb) Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 12px;
+    background: linear-gradient(to bottom, #f0f0f0, #bcbcbc);
+    border: outset 2px #eaeaea;
+    border-radius: 2px;
+}
+
+/* Effet enfoncé Firefox */
+input[type="range"]::-moz-range-thumb:active {
+    border: inset 2px #eaeaea;
+    background: linear-gradient(to top, #f0f0f0, #bcbcbc);
+}
+
+
+
+/* ---- Web Deck Player ---- */
+#web-deck-player{
+    padding: 0 5px;
+}
+
+
+/* Player title bar */
+#player-title-bar {
+    display: flex;
+    align-items: center;   /* aligne verticalement */
+    color: white;
+    margin-bottom: 2px;
+}
+
+#player-title-bar:before {
+    content: "";   /* si tu veux garder une petite ligne à gauche */
+    width: 0px;    /* ou 0 si tu veux rien du tout */
+    height: 2px;
+    background: white;
+    margin-right: .5em;
+}
+
+#player-title-bar:after {
+    /*content: "";   /* ligne extensible à droite */
+    flex: 1;
+    height: 2px;
+    background: white;
+    margin-left: .5em;
+}
+
+/* Player body */
+#player-body{
+    /*background: linear-gradient(180deg, rgba(238,238,238,1) 0%, rgba(232,232,232,1) 30%, rgba(214,214,214,1) 100%);*/
+    background: hsl(0deg 0% 75%);
+    padding: 5px;
+    border: none;
+    box-shadow:
+    inset -1px -1px #292929,
+    inset 1px 1px #fff,
+    inset -2px -2px rgb(158, 158, 158),
+    inset 2px 2px #ffffff;
+}
+
+/* Player main section */
+#player-main-section{
+    margin-bottom: 5px;
+}
+
+
+/* Player display */
+#player-display{
+    width: 250px;
+    height: 140px;
+    background: black;
+    border: inset 2px #403f67;
+}
+
+
+/* Player info */
+#info-screen{
+    background: hsl(0deg 0% 75%);
+    color: black;
+    border: inset 2px rgb(212, 212, 212);
+    /*box-shadow:
+    inset 1px 1px white,
+    inset 1px 1px hsl(0deg 0% 75%),
+    inset 1px 1px white,
+    inset 2px 2px hsl(0deg 0% 75%);*/
+    margin-bottom: 5px;
+}
+
+#songLabel{
+    /*text-shadow: 0 0 10px #49ff18, 0 0 20px #49FF18, 2px 2px 2px rgba(206,89,55,0);*/
+}
+
+#statusLabel{
+    /*text-shadow: 0 0 10px #49ff18, 0 0 20px #49FF18, 2px 2px 2px rgba(206,89,55,0);*/
+}
+
+.player-row{
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+#volumeButton{
+    height: 25px;
+    width: 25px;
+}
+
+#volumeButton img{
+    height: 100%;
+}
+
+#volumeBar{
+    width: 120px;
+}
+
+#themeSelector{
+    height: 25px;
+    max-width: 150px;
+    text-overflow: ellipsis;
+}
+
+#videoButton{
+    height: 25px;
+}
+
+#playerLogo{
+    text-align: center;
+    height: fit-content;
+}
+
+#playerLogo > img{
+    margin-top: 5px;
+    max-height: 50px;
+}
+
+/* Player control panel */
+#player-control-panel{
+    font-size: 0;
+}
+
+#seekBar{
+    width: 99%;
+    margin-bottom: 5px;
+}
+
+.playing-controls{
+    margin-bottom: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    width: fit-content;
+    /*background: dimgray;*/
+    /*border: inset 2px silver;*/
+    vertical-align: middle;
+}
+
+.playing-controls[rounded]{
+    border-radius: 20px;
+}
+
+.playing-controls[float-right]{
+    float: right;
+}
+
+.playing-controls button{
+    height: 30px;
+    min-width: 50px;
+}
+
+.playing-controls button img{
+    height: 100%;
+}
+
+
+#infoButton{
+    border-radius: 20px;
+    height: 30px;
+    min-width: 30px;
+    font-size: large;
+}
+
+#playlistSelector{
+    height: 30px;
+    max-width: 175px;
+    text-overflow: ellipsis;
+}

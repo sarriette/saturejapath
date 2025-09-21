@@ -56,10 +56,9 @@ var currentPlaylist = "GROOVY FUNK WTF";
  * You can also delete the themes that you don't want.
 */
 var myThemes = {
-    "VIOLET": "violet",
-    "MINIMAL": "minimal",
-    "SATUREJA": "satureja",
     "FRUTIGER AERO": "frutiger-aero",
+    "VIOLET": "violet",
+    "WINDOWS 95" : "windows-95",
     //"ANOTHER THEME": 'another-theme',
 };
 
