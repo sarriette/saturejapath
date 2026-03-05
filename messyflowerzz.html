@@ -162,14 +162,18 @@ function set_width() {
                     <video autoplay loop muted playsinline width="410" height="230" style="object-fit: cover;">
                         <source src="images/messyflowerzz/pissenlit.webm" type="video/webm">
                     </video>
+                    <div class="mono grey"><span style="font-size: 10pt;"><i>Simon brûlant un</i> Taraxacum </span>
+                        <span style="font-size: 8pt;"><i>sous mon impulsion </i></span>
+                        <span style="font-size: 6pt;"><i>pendant une sortie botanique</i></span>
+                        <span style="font-size: 10pt;">, Strasbourg, 2023.</span></div>
                 </div>
                 <div class="mf-1b">
                     <p class="graziela mf-title white">messyflowerzz</p>
                     <p class="mono white">Cette page est la restranscription web de petits trucs qu'on peut retrouver sur mon compte instagram <a 
                         href="https://www.instagram.com/messyflowerzzzz/" class="mono white underline">@messyflowerzz</a> : 
                         <em>experimenting entropy in angiosperms</em>. Vous y retrouverez mes expérimentations autour des fleurs, des plantes
-                        et de la nature en général, réalisées avec des logiciels que j'essaie de comprendre tant bien que mal ou les moyens
-                        du bord.</p> 
+                        et de la nature en général, réalisées avec des logiciels que j'essaie de comprendre tant bien que mal (TOUCHDESIGNER) 
+                        ou les moyens du bord.</p> 
                 </div>
             </div>
 
@@ -201,7 +205,11 @@ function set_width() {
                         <img src="images/messyflowerzz/messyorchid.webp" class="mf-2a-img">
                     
                         <img src="images/messyflowerzz/messypansy3.webp" class="mf-2a-img">
-                    
+                    <div class="mono center"><span style="font-size:9pt; color:rgb(140, 203, 255)"><i>un pétale tout doux au toucher,
+                        une feuille blanche, des toilettes d'un bar, <br>une table dans un musée...
+                        <br>Viola arvensis, Centaurium erythreea, Myosotis scorpioides, Cymbalaria muralis, <br>Stellaria aquatica, 
+                        ..., Anacamptis pyramidalis...
+                    </i></span></div>
                 </div>
 
                 <!-- gif digitale -->
@@ -270,7 +278,9 @@ function set_width() {
 
                 <div class="mf-section7a"></div>
                 <p class="mf-section7b white mono center" style="font-size: 8pt;">made with aRtsy package in R 4.4.1</div>
-                <p class="mf-section7c white mono center">on dirait des traces d'escargot...</div>
+                <p class="mf-section7c white mono center">on dirait des traces d'escargot... <span style="font-size:12pt;">qui auraient mangé un peu trop de <i>pain 
+                    aux amandes</i>...</span>
+                </div>
                 <div class="mf-section7d">
                     <img src="images/messyflowerzz/escargo1.webp">
                     <img src="images/messyflowerzz/escargo2.webp">
@@ -295,13 +305,20 @@ function set_width() {
                     <p class="white mono" style="font-size: 16pt;"><i>bois l'eau de la source magique si tu <br>veux comprendre les escargots...</i></p>
                 </div>
                 <div class="mf-section8b">
-                    <img src="images/maison/jardin/arrosoir.webp">
-                    <p class="white graziela neon-text" style="font-size:45pt">boire</p>
+                    <a href="https://youtu.be/pdH5J-aJf2c?si=f3Dyxkz-jpmpAjIo" target="_blank">
+                        <img src="images/maison/jardin/arrosoir.webp">
+                        <p class="white graziela neon-text" style="font-size:45pt">boire</p>
+                    </a>
                 </div>
                 <div class="mf-section8c">
                     <img src="images/messyflowerzz/eau1.webp">
                     <img src="images/messyflowerzz/eau2.webp">
                 </div>
+            </div>
+
+            <div class="mf-section9">
+                <img src="images/messyflowerzz/lichen1.webp">
+                <img src="images/messyflowerzz/lichen2.webp">
             </div>
 
             
@@ -315,19 +332,33 @@ function set_width() {
         </div>
     </footer> 
     <script>
-        const main = document.getElementById('myMain');
+const main = document.getElementById('myMain');
+let activeImg = null;
 
-        document.querySelectorAll('.hover-bg').forEach(img => {
-          img.addEventListener('mouseenter', () => {
-            const url = img.dataset.bg;
-            main.style.backgroundImage = `url(${url})`;
-          });
-      
-          img.addEventListener('mouseleave', () => {
-            main.style.backgroundImage = '';
-          });
-        });
-        </script>
+document.querySelectorAll('.hover-bg').forEach(img => {
+  img.addEventListener('click', () => {
+    const url = img.dataset.bg;
+
+    // Si on reclique sur la même image → reset
+    if (activeImg === img) {
+      main.style.backgroundImage = '';
+      activeImg = null;
+      img.classList.remove('active');
+    } else {
+      // Nouvelle image
+      main.style.backgroundImage = `url(${url})`;
+
+      // Nettoyage de l'ancienne
+      document.querySelectorAll('.hover-bg.active')
+        .forEach(i => i.classList.remove('active'));
+
+      img.classList.add('active');
+      activeImg = img;
+    }
+  });
+});
+</script>
+
     <script src="menu.js"></script>
 </body>
 </html>
