@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<body>
+
+<video id="bgVideo" autoplay muted loop playsinline>
+  <source src="arriere_plan.mp4" type="video/mp4">
+</video>
+
+<!-- =====================
+     STRUCTURE HTML
+===================== -->
+<div id="game">
+  <h2 id="round"></h2>
+
+  <div id="imageContainer">
+    <img id="citationImage">
+  </div>
+
+  <div id="choices"></div>
+
+  <p id="feedback"></p>
+  <p id="score"></p>
+</div>
+
+<!-- =====================
+     STYLE INLINE (pas de <head>)
+===================== -->
+<style>
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+  }
+
+  #game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 20px;
+    text-align: center;
+  }
+
+  #imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  #citationImage {
+    max-width: 80%;
+    max-height: 50vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+
+  #choices {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  #choices button {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.4rem;
+  padding: 16px 34px;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #2e2e2e;
+
+  border: none;
+  border-radius: 999px; /* 🌿 boutons doux */
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.2);
+  
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+#choices button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+#choices button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+#choices button:disabled {
+  cursor: default;
+  opacity: 0.85;
+} 
+
+  #feedback {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;        /* ✅ derrière tout */
+}
+
+<audio id="bgMusic" loop>
+  <source src="musique.mp3" type="audio/mpeg">
+</audio>
+
+
+/* Assure que le jeu passe DEVANT la vidéo */
+#game {
+  position: relative;
+  z-index: 1;
+}
+
+#game {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+
+</style>
+
+
+<script>
+// ======================
+// CONFIG
+// ======================
+
+const MAX_ROUNDS = 10;
+const citationsFolder = "citations/";
+
+// ⚠️ liste MANUELLE des citations (simple et robuste)
+const citations = [
+  { img: "Alex_01.jpg", author: "Alex" },
+  { img: "Alex_02.jpg", author: "Aloyse" },
+  { img: "Aloyse_01.jpg", author: "Aloyse" },
+  { img: "Aloyse_02.jpg", author: "Aloyse" },
+  { img: "Aloyse_03.jpg", author: "Aloyse" },
+  { img: "Aloyse_04.jpg", author: "Aloyse" },
+  { img: "Alyzee_01.jpg", author: "Alyzee" },
+  { img: "Anthea_01.jpg", author: "Anthea" },
+  { img: "Anthea_02.jpg", author: "Anthea" },
+  { img: "Anthea_03.jpg", author: "Anthea" },
+  { img: "Anthea_04.jpg", author: "Anthea" },
+  { img: "Anthea_05.jpg", author: "Anthea" },
+  { img: "Djibril_01.jpg", author: "Djibril" },
+  { img: "Emma_01.jpg", author: "Emma" },
+  { img: "Emma_02.jpg", author: "Emma" },
+  { img: "Emma_03.jpg", author: "Emma" },
+  { img: "Emma_04.jpg", author: "Emma" },
+  { img: "Hippo_01.jpg", author: "Hippo" },
+  { img: "Hippo_02.jpg", author: "Hippo" },
+  { img: "Hippo_03.jpg", author: "Hippo" },
+  { img: "Hugo_01.jpg", author: "Hugo" },
+  { img: "Hugo_02.jpg", author: "Hugo" },
+  { img: "Hugo_03.jpg", author: "Hugo" },
+  { img: "Hugo_04.jpg", author: "Hugo" },
+  { img: "Hugo_05.jpg", author: "Hugo" },
+  { img: "Hugo_06.jpg", author: "Hugo" },
+  { img: "Hugo_07.jpg", author: "Hugo" },
+  { img: "Hugo_08.jpg", author: "Hugo" },
+  { img: "Hugo_09.jpg", author: "Hugo" },
+  { img: "Hugo_10.jpg", author: "Hugo" },
+  { img: "Hugo_11.jpg", author: "Hugo" },
+  { img: "Hugo_12.jpg", author: "Hugo" },
+  { img: "Hugo_13.jpg", author: "Hugo" },
+  { img: "Hugo_14.jpg", author: "Hugo" },
+  { img: "Kevin_01.jpg", author: "Kevin" },
+  { img: "Kevin_02.jpg", author: "Kevin" },
+  { img: "Kevin_03.jpg", author: "Kevin" },
+  { img: "Kevin_04.jpg", author: "Kevin" },
+  { img: "Kevin_05.jpg", author: "Kevin" },
+  { img: "Kevin_06.jpg", author: "Kevin" },
+  { img: "Kevin_07.jpg", author: "Kevin" },
+  { img: "Kevin_08.jpg", author: "Kevin" },
+  { img: "Kevin_09.jpg", author: "Kevin" },
+  { img: "Kevin_10.jpg", author: "Kevin" },
+  { img: "Kevin_11.jpg", author: "Kevin" },
+  { img: "Kevin_12.jpg", author: "Kevin" },
+  { img: "Laureu_01.jpg", author: "Laureu" },
+  { img: "Laureu_02.jpg", author: "Laureu" },
+  { img: "Laureu_03.jpg", author: "Laureu" },
+  { img: "Laureu_04.jpg", author: "Laureu" },
+  { img: "Laureu_05.jpg", author: "Laureu" },
+  { img: "Laurine_01.jpg", author: "Laurine" },
+  { img: "Laurine_02.jpg", author: "Laurine" },
+  { img: "Laurine_03.jpg", author: "Laurine" },
+  { img: "Lola_01.jpg", author: "Lola" },
+  { img: "Lola_02.jpg", author: "Lola" },
+  { img: "Lola_03.jpg", author: "Lola" },
+  { img: "Louise_01.jpg", author: "Louise" },
+  { img: "Louise_02.jpg", author: "Louise" },
+  { img: "Louise_03.jpg", author: "Louise" },
+  { img: "Malo_01.jpg", author: "Malo" },
+  { img: "Malo_02.jpg", author: "Malo" },
+  { img: "Malo_03.jpg", author: "Malo" },
+  { img: "Malo_04.jpg", author: "Malo" },
+  { img: "Malo_05.jpg", author: "Malo" },
+  { img: "Malo_06.jpg", author: "Malo" },
+  { img: "Malo_07.jpg", author: "Malo" },
+  { img: "Malo_08.jpg", author: "Malo" },
+  { img: "Malo_09.jpg", author: "Malo" },
+  { img: "Malo_10.jpg", author: "Malo" },
+  { img: "Malo_11.jpg", author: "Malo" },
+  { img: "Malo_12.jpg", author: "Malo" },
+  { img: "Malo_13.jpg", author: "Malo" },
+  { img: "Malo_14.jpg", author: "Malo" },
+  { img: "Maxime_01.jpg", author: "Maxime" },
+  { img: "Maxime_02.jpg", author:  "Maxime" },
+  { img: "Maxime_03.jpg", author:  "Maxime" },
+  { img: "Titou_01.jpg", author: "Titou" }
+];
+
+
+// ======================
+// VARIABLES
+// ======================
+
+let round = 0;
+let score = 0;
+let usedCitations = [];
+
+// HTML
+const imageEl = document.getElementById("citationImage");
+const choicesEl = document.getElementById("choices");
+const roundEl = document.getElementById("round");
+const feedbackEl = document.getElementById("feedback");
+const scoreEl = document.getElementById("score");
+
+// ======================
+// UTILS
+// ======================
+
+const bgMusic = document.getElementById("bgMusic");
+let musicStarted = false;
+
+function startMusicOnce() {
+  if (!musicStarted) {
+    bgMusic.volume = 0.3; // 🌿 volume doux (ajuste si besoin)
+    bgMusic.play().catch(() => {});
+    musicStarted = true;
+  }
+}
+
+function shuffle(arr) {
+  return arr.sort(() => 0.5 - Math.random());
+}
+
+function randomItems(arr, count, exclude) {
+  return shuffle(arr.filter(x => x !== exclude)).slice(0, count);
+}
+
+// ======================
+// GAME LOGIC
+// ======================
+
+function nextRound() {
+  feedbackEl.textContent = "";
+  choicesEl.innerHTML = "";
+
+  if (round === MAX_ROUNDS) {
+    imageEl.style.display = "none";
+    roundEl.textContent = "🎉 Fin du jeu";
+    scoreEl.textContent = `Score final : ${score} / ${MAX_ROUNDS}`;
+    return;
+  }
+
+  round++;
+  roundEl.textContent = `Citation ${round} / ${MAX_ROUNDS}`;
+
+  // citation non utilisée
+  const citation = shuffle(
+    citations.filter(c => !usedCitations.includes(c))
+  )[0];
+
+  usedCitations.push(citation);
+
+  // afficher image
+  imageEl.src = citationsFolder + citation.img;
+  imageEl.style.display = "block";
+
+  // choix
+  const allNames = [...new Set(citations.map(c => c.author))];
+  const wrongNames = randomItems(allNames, 2, citation.author);
+  const choices = shuffle([citation.author, ...wrongNames]);
+
+  choices.forEach(name => {
+    const btn = document.createElement("button");
+    btn.textContent = name;
+    btn.onclick = () => checkAnswer(btn, citation.author);
+    choicesEl.appendChild(btn);
+  });
+}
+
+
+function checkAnswer(clickedBtn, correct) {
+  const buttons = document.querySelectorAll("#choices button");
+
+  buttons.forEach(btn => {
+    btn.disabled = true;
+
+    if (btn.textContent === correct) {
+      btn.style.background = "rgba(170, 235, 190, 0.95)"; // vert doux
+    } else {
+      btn.style.background = "rgba(235, 170, 170, 0.95)"; // rouge doux
+    }
+  });
+
+  if (clickedBtn.textContent === correct) {
+    feedbackEl.textContent = "✅ Bien joué !";
+    score++;
+  } else {
+    feedbackEl.textContent = `❌ Faux ! C'était ${correct}`;
+  }
+
+  scoreEl.textContent = `Score : ${score}`;
+  setTimeout(nextRound, 1200);
+}
+
+
+// ======================
+// START
+// ======================
+
+nextRound();
+</script>

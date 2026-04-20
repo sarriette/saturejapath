@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body>
+
+<!-- =====================
+     ÉCRAN DE DÉMARRAGE
+===================== -->
+<div id="startScreen">
+  <h1> Jeu des citations</h1>
+  
+  <p id="startText">
+    Devine qui a prononcé ces sages paroles
+  </p>
+
+  <button id="startBtn">Démarrer</button>
+</div>
+
+<!-- =====================
+     VIDÉO DE FOND
+===================== -->
+<video id="bgVideo" autoplay muted loop playsinline>
+  <source src="arriere_plan.mp4" type="video/mp4">
+</video>
+
+<!-- =====================
+     MUSIQUE
+===================== -->
+<audio id="bgMusic" loop>
+  <source src="musique.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =====================
+     STRUCTURE DU JEU
+===================== -->
+<div id="game">
+  <h2 id="round"></h2>
+
+  <div id="imageContainer">
+    <img id="citationImage">
+  </div>
+
+  <div id="choices"></div>
+
+  <p id="feedback"></p>
+  <p id="score"></p>
+</div>
+
+<!-- =====================
+     STYLE
+===================== -->
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+
+#startText {
+  font-size: 2rem;
+  max-width: 600px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+
+/* Vidéo de fond */
+#bgVideo {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Écran de démarrage */
+#startScreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  color: white;
+}
+
+#startScreen h1 {
+  font-size: 3rem;
+}
+
+#startBtn {
+  font-size: 1.6rem;
+  padding: 18px 40px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Jeu */
+#game {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+#citationImage {
+  max-width: 80%;
+  max-height: 50vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#choices {
+  display: flex;
+  gap: 20px;
+}
+
+#choices button {
+  font-size: 1.4rem;
+  padding: 16px 34px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #2e2e2e;
+
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    letter-spacing 0.2s ease;
+}
+
+/* ✅ AU SURVOL */
+#choices button:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.5px;
+}
+
+/* ✅ AU CLIC */
+#choices button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ✅ DÉSACTIVÉ (après réponse) */
+#choices button:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+#feedback {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+</style>
+
+<!-- =====================
+     SCRIPT
+===================== -->
+<script>
+const MAX_ROUNDS = 10;
+const citationsFolder = "citations/";
+
+const citations = [
+  { img: "Alex_01.jpg", author: "Alex" },
+  { img: "Alex_02.jpg", author: "Aloyse" },
+  { img: "Aloyse_01.jpg", author: "Aloyse" },
+  { img: "Aloyse_02.jpg", author: "Aloyse" },
+  { img: "Aloyse_03.jpg", author: "Aloyse" },
+  { img: "Aloyse_04.jpg", author: "Aloyse" },
+  { img: "Alyzee_01.jpg", author: "Alyzee" },
+  { img: "Anthea_01.jpg", author: "Anthea" },
+  { img: "Anthea_02.jpg", author: "Anthea" },
+  { img: "Anthea_03.jpg", author: "Anthea" },
+  { img: "Anthea_04.jpg", author: "Anthea" },
+  { img: "Anthea_05.jpg", author: "Anthea" },
+  { img: "Djibril_01.jpg", author: "Djibril" },
+  { img: "Emma_01.jpg", author: "Emma" },
+  { img: "Emma_02.jpg", author: "Emma" },
+  { img: "Emma_03.jpg", author: "Emma" },
+  { img: "Emma_04.jpg", author: "Emma" },
+  { img: "Hippo_01.jpg", author: "Hippo" },
+  { img: "Hippo_02.jpg", author: "Hippo" },
+  { img: "Hippo_03.jpg", author: "Hippo" },
+  { img: "Hugo_01.jpg", author: "Hugo" },
+  { img: "Hugo_02.jpg", author: "Hugo" },
+  { img: "Hugo_03.jpg", author: "Hugo" },
+  { img: "Hugo_04.jpg", author: "Hugo" },
+  { img: "Hugo_05.jpg", author: "Hugo" },
+  { img: "Hugo_06.jpg", author: "Hugo" },
+  { img: "Hugo_07.jpg", author: "Hugo" },
+  { img: "Hugo_08.jpg", author: "Hugo" },
+  { img: "Hugo_09.jpg", author: "Hugo" },
+  { img: "Hugo_10.jpg", author: "Hugo" },
+  { img: "Hugo_11.jpg", author: "Hugo" },
+  { img: "Hugo_12.jpg", author: "Hugo" },
+  { img: "Hugo_13.jpg", author: "Hugo" },
+  { img: "Hugo_14.jpg", author: "Hugo" },
+  { img: "Kevin_01.jpg", author: "Kevin" },
+  { img: "Kevin_02.jpg", author: "Kevin" },
+  { img: "Kevin_03.jpg", author: "Kevin" },
+  { img: "Kevin_04.jpg", author: "Kevin" },
+  { img: "Kevin_05.jpg", author: "Kevin" },
+  { img: "Kevin_06.jpg", author: "Kevin" },
+  { img: "Kevin_07.jpg", author: "Kevin" },
+  { img: "Kevin_08.jpg", author: "Kevin" },
+  { img: "Kevin_09.jpg", author: "Kevin" },
+  { img: "Kevin_10.jpg", author: "Kevin" },
+  { img: "Kevin_11.jpg", author: "Kevin" },
+  { img: "Kevin_12.jpg", author: "Kevin" },
+  { img: "Laureu_01.jpg", author: "Laureu" },
+  { img: "Laureu_02.jpg", author: "Laureu" },
+  { img: "Laureu_03.jpg", author: "Laureu" },
+  { img: "Laureu_04.jpg", author: "Laureu" },
+  { img: "Laureu_05.jpg", author: "Laureu" },
+  { img: "Laurine_01.jpg", author: "Laurine" },
+  { img: "Laurine_02.jpg", author: "Laurine" },
+  { img: "Laurine_03.jpg", author: "Laurine" },
+  { img: "Lola_01.jpg", author: "Lola" },
+  { img: "Lola_02.jpg", author: "Lola" },
+  { img: "Lola_03.jpg", author: "Lola" },
+  { img: "Louise_01.jpg", author: "Louise" },
+  { img: "Louise_02.jpg", author: "Louise" },
+  { img: "Louise_03.jpg", author: "Louise" },
+  { img: "Malo_01.jpg", author: "Malo" },
+  { img: "Malo_02.jpg", author: "Malo" },
+  { img: "Malo_03.jpg", author: "Malo" },
+  { img: "Malo_04.jpg", author: "Malo" },
+  { img: "Malo_05.jpg", author: "Malo" },
+  { img: "Malo_06.jpg", author: "Malo" },
+  { img: "Malo_07.jpg", author: "Malo" },
+  { img: "Malo_08.jpg", author: "Malo" },
+  { img: "Malo_09.jpg", author: "Malo" },
+  { img: "Malo_10.jpg", author: "Malo" },
+  { img: "Malo_11.jpg", author: "Malo" },
+  { img: "Malo_12.jpg", author: "Malo" },
+  { img: "Malo_13.jpg", author: "Malo" },
+  { img: "Malo_14.jpg", author: "Malo" },
+  { img: "Maxime_01.jpg", author: "Maxime" },
+  { img: "Maxime_02.jpg", author:  "Maxime" },
+  { img: "Maxime_03.jpg", author:  "Maxime" },
+  { img: "Titou_01.jpg", author: "Titou" }
+];
+
+let round = 0;
+let score = 0;
+let usedCitations = [];
+
+const imageEl = document.getElementById("citationImage");
+const choicesEl = document.getElementById("choices");
+const roundEl = document.getElementById("round");
+const feedbackEl = document.getElementById("feedback");
+const scoreEl = document.getElementById("score");
+
+function shuffle(arr) {
+  return arr.sort(() => 0.5 - Math.random());
+}
+
+function nextRound() {
+  choicesEl.innerHTML = "";
+  feedbackEl.textContent = "";
+
+  if (round === MAX_ROUNDS) {
+    roundEl.textContent = "🎉 Fin du jeu";
+    scoreEl.textContent = `Score final : ${score} / ${MAX_ROUNDS}`;
+    imageEl.style.display = "none";
+    return;
+  }
+
+  round++;
+  roundEl.textContent = `Citation ${round} / ${MAX_ROUNDS}`;
+
+  const citation = shuffle(citations.filter(c => !usedCitations.includes(c)))[0];
+  usedCitations.push(citation);
+
+  imageEl.src = citationsFolder + citation.img;
+
+  const authors = [...new Set(citations.map(c => c.author))];
+  const wrong = shuffle(authors.filter(a => a !== citation.author)).slice(0,2);
+  const choices = shuffle([citation.author, ...wrong]);
+
+  choices.forEach(name => {
+    const btn = document.createElement("button");
+    btn.textContent = name;
+    btn.onclick = () => checkAnswer(btn, citation.author);
+    choicesEl.appendChild(btn);
+  });
+}
+
+function checkAnswer(btn, correct) {
+  document.querySelectorAll("#choices button").forEach(b => b.disabled = true);
+
+  if (btn.textContent === correct) {
+    feedbackEl.textContent = "✅ Bien joué !";
+    score++;
+  } else {
+    feedbackEl.textContent = `❌ Faux ! C'était ${correct}`;
+  }
+
+  scoreEl.textContent = `Score : ${score}`;
+  setTimeout(nextRound, 1200);
+}
+
+/* =====================
+   DÉMARRAGE
+===================== */
+const startBtn = document.getElementById("startBtn");
+const startScreen = document.getElementById("startScreen");
+const bgMusic = document.getElementById("bgMusic");
+
+startBtn.addEventListener("click", () => {
+  bgMusic.volume = 0.3;
+  bgMusic.play().catch(() => {});
+  startScreen.style.display = "none";
+  nextRound();
+});
+</script>
+
+</body>
+</html>
