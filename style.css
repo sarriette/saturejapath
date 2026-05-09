@@ -627,6 +627,7 @@ iframe {
     flex-direction: row;
     flex-wrap: nowrap;
     height : 321px;
+    margin-top: 1.5em;
 }
 
 /*Titouan's room*/
@@ -897,6 +898,7 @@ nav.blue-nav {
     margin-right:3em;
     align-items: center;
     justify-content: center;
+    margin-top: -6em;
 }
 
 .stuffinternet {
@@ -1028,20 +1030,19 @@ p.cyan {
 
 /*index note à l'attention des visiteurs et visiteuses*/
 .a-l-attention {
+    position: relative;
     align-items: center;
-    /*border-style: solid;
-    border-color: #000000;
-    border-width: 3px;*/
-    border-radius: 15px;
-    /*background-color: #ccc;*/
-    margin-left: 15em;
-    margin-right:15em;
-    padding-top: 1px;
-    padding-bottom: 1px;
+    border-radius: 8px;
     background-image: url(images/banner-50.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    height: 17px;
+    width: 850px;
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    text-align: center;
 }
 
 .a-l-attention p {
@@ -1054,6 +1055,8 @@ p.cyan {
 }
 
 .note-note {
+     margin: 0;
+    width: 100%;
     text-align:center;
 }
 
