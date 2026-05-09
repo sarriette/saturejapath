@@ -24,7 +24,14 @@ fetch('menu.html')
         'titouan-s-room.html',
         'tulba.html',
         'oekoumene.html',
-        'jeu_pieds.html'
+        'jeu_pieds.html',
+        'jardin.html',
+        'salon.html',
+        'entree.html',
+        'code.html',
+        'ce-qui-me-manque.html',
+        'messyflowerzz.html',
+        'webdeck-player/index.html'
       ];
       const randomIndex = Math.floor(Math.random() * projectPages.length);
       window.location.href = projectPages[randomIndex];
