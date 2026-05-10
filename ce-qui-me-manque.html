@@ -33,6 +33,7 @@
                 border-radius: 8px;
                 padding: 5px;
                 margin-top:15px;
+                position: relative;
             }
 
             .titre {
@@ -46,6 +47,7 @@
                 font-style: normal;
                 font-size: 40pt;
                 color:rgb(21, 0, 40);
+                position: relative;
             }
 
             .ingrid-darling-regular {
@@ -130,6 +132,97 @@
                 height: auto;
                 margin-right: 5px;
             }
+
+            .pie {
+                position: absolute;
+                 top:0px;
+                 left:600px;
+                 width: 90px;
+                 height: auto;
+            }
+
+            .galoche {
+                position: absolute;
+                 top:120px;
+                 left:540px;
+                 width: 80px;
+                 height: auto;
+            }
+
+            .escargog {
+                position: absolute;
+                 top:40px;
+                 left:40px;
+                 width: 100px;
+                 height: auto;
+            }
+
+            .sauterelle {
+                position: absolute;
+                 top:110px;
+                 left:120px;
+                 width:80px;
+                 height: auto;
+            }
+
+            .lézard {
+                position: absolute;
+                 top:10px;
+                 left:240px;
+                 width: 90px;
+                 height: auto;
+            }
+
+            .frontale {
+                position: absolute;
+                 top:110px;
+                 left:0px;
+                 width: 80px;
+                 height: auto;
+            }
+
+            .diamond4 {
+                position: absolute;
+                 top:40px;
+                 left:170px;
+                 width: 30px;
+                 height: auto;
+            }
+
+            .diamond8 {
+                position: absolute;
+                 top:120px;
+                 left:440px;
+                 width: 20px;
+                 height: auto;
+            }
+
+            .diamond2 {
+                position: absolute;
+                 top:40px;
+                 left:500px;
+                 width: 20px;
+                 height: auto;
+            }
+
+            .fleur1 {
+                position: absolute;
+                 top:130px;
+                 left:280px;
+                 width: 23px;
+                 height: auto;
+            }
+
+            .etoiles {
+                width: 400px;
+                height: auto;
+            }
+
+            .traces {
+                width: 400px;
+                height: auto;
+                margin-bottom: 2em;
+            }
         </style>
     </head>
 
@@ -137,7 +230,20 @@
 
         <main>
             <div class="contenu floral2">
-                <div class="titre floral3">Des choses qui me manquent</div>
+                <div class="titre floral3">
+                    Des choses qui me manquent
+                </div>
+
+                <img src="images/deco/pie.png" class="pie">
+                <img src="images/ce-qui-me-manque/galoche.png" class="galoche">
+                <img src="images/ce-qui-me-manque/escargog.png" class="escargog">
+                <img src="images/ce-qui-me-manque/sauterelle.png" class="sauterelle">
+                <img src="images/ce-qui-me-manque/lézard.png" class="lézard">
+                <img src="images/ce-qui-me-manque/frontale.png" class="frontale">
+                <img src="images/deco/diamond4.png" class="diamond4">
+                <img src="images/deco/diamond8.png" class="diamond8">
+                <img src="images/deco/diamond2.png" class="diamond2">
+                <img src="images/deco/fleur1.png" class="fleur1">
                 
                 <div class="sous-titre ingrid-darling-regular marron">Des choses qui me manquent quand je suis à la ville et que je pense à la campagne.</div>
                 <div class="center" style="margin-top:30px">
@@ -154,13 +260,26 @@
                     se détendait, et surtout aucune odeur de pollution. Dans ces moments, une voiture peut passer de temps en temps, mais 
                     ça ne me dérange pas. 
                     Les fréquences de
-                    son vrombissement appartiennent à ce qu'on appelle le "buit gris", et en fait ça berce.
+                    son vrombissement appartiennent à ce qu'on appelle le "buit gris" : c'est un son composé de toutes
+                    les fréquences, mais les fréquences basses et aigues ont une intensité sonore plus forte que les médiums,
+                    ce qui fait que ça a un effet apaisant.
                 </p>
+
+                <audio controls class="center">
+                  <source src="sounds/voiture.mp3" type="audio/mpeg">
+                </audio>
+
                 <p>
                     <img src="images/borders/ddjl0bu-34e938d6-768a-499b-99a8-7f3e03b4f66a.gif" class="pin">
                     J'apprécie aussi qu'on entende les grillons qui frottent leurs ailes. C'est quelque chose que j'oublie après quelques minutes dehors,
                     mais je l'oublie aussi quand je retourne à la ville, ainsi je suis éternellement surprise quand je retourne chez mes parents.
+                    (Bon la vérité c'est que jsp si j'ai mis un bruit de grillon ou de criquet sur l'audio help les naturalistes.)
                 </p>
+
+                <audio controls class="center">
+                  <source src="sounds/criquets.mp3" type="audio/mpeg">
+                </audio>
+
                 <p>
                     <img src="images/borders/ddjl0bu-34e938d6-768a-499b-99a8-7f3e03b4f66a.gif" class="pin">
                     Quelque chose de très important aussi pour moi : les étoiles. A la ville, je n'en vois que quelques unes. Mais ici, 
@@ -174,14 +293,22 @@
                 <p>
                     <img src="images/borders/ddjl0bu-34e938d6-768a-499b-99a8-7f3e03b4f66a.gif" class="pin">
                     Je connais surtout la carte du ciel au mois d'août. Depuis chez ma mère, où il y a peu de pollution lumineuse, on voit toujours très
-                    bien les bras de la Voie Lactée. J'ai quelques photos faites au téléphone.
+                    bien les bras de la Voie Lactée. En attendant de me procurer un trépied, j'essaie de prendre des photos au téléphone.
                 </p>
+
+                <img src="images/ce-qui-me-manque/etoiles.jpg" class="center etoiles">
+
                 <p>
                     <img src="images/borders/ddjl0bu-34e938d6-768a-499b-99a8-7f3e03b4f66a.gif" class="pin">
                     Je sors les poubelles la nuit pour grapiller quelques instants du spectacle. J'ai pris les galoches de ma mère et une frontale
                     qui trainait. La lumière blanche se réfléchit sur les traces de cagouilles sur les murs de pierre. Ça aussi, c'est fascinant.
                     Si on s'approche, les couleurs se déplacent le long de la surface visqueuse.
                 </p>
+
+                <video controls class="center traces">
+                    <source src="images/ce-qui-me-manque/traces.mp4" type="video/webm">
+                </video>
+
                 <img src="images/ce-qui-me-manque/galoche.png" style="height:70px; width: auto;" class="center floral1">
 
                 <div class="center" style="margin-top: 30px">
