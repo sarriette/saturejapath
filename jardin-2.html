@@ -231,6 +231,11 @@ function set_width() {
       cursor: url(images/cursors/dragonfly.cur), pointer;
     }
 
+    .center {
+                display: block;
+                margin:auto;
+            }
+
     /* --- Scène fixe --- */
     .scene {
       position: relative;
@@ -287,7 +292,16 @@ function set_width() {
       left: 620px;
       top: 470px;
       width: 90px;
-      height: atuo;
+      height: auto;
+      z-index: 2;
+    }
+
+    .charlouse {
+      position: absolute;
+      left: 200px;
+      top: 200px;
+      width: 50px;
+      height: auto;
       z-index: 2;
     }
 </style>
@@ -298,10 +312,13 @@ function set_width() {
         <!-- moon widget -->
         
         <div class="scene">
-            <iframe width="180" height="180" style="border:none" src="https://dimden.dev/moon?custom=1" name="dimdenmoonwidget"></iframe>
+            <iframe width="180px" height="180px" style="border:none" src="https://dimden.dev/moon?custom=1" name="dimdenmoonwidget" class="center"></iframe>
             <!-- <img class="panneau" src="images/maison/jardin/chemin_de_la_sarriette.webp" alt="panneau welcome"/> -->
             <a href="ce-qui-me-manque.html">
               <img src="images/ce-qui-me-manque/galoche.png" class="galoche objet">
+            </a>
+            <a href="cats2.html">
+              <img src="images/maison/jardin/charlouse.png" class="charlouse objet">
             </a>
         </div>
 
