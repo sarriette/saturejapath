@@ -3,106 +3,438 @@
     <head>
         <meta charset="utf-8">
         <title>Ressources - Satureja path</title> 
-        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" href="style.css"> -->
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Fontdiner+Swanky&family=Jacquarda+Bastarda+9&family=Reenie+Beanie&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=The+Girl+Next+Door&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Eater&family=Flavors&family=Gloria+Hallelujah&family=Lacquer&family=Mansalva&family=Rubik:ital,wght@0,300..900;1,300..900&family=Single+Day&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     </head>
 
 <style>
+    /* ----------------------menu--------------------- */
+    .barre {
+    padding: 1em;
+}
+
+.info:hover {
+    opacity:0.5;
+}
+
+:root {
+    --button_color: #e8e8e8; /* Définit la couleur de fond des boutons */
+}
+
+/* From Uiverse.io by Voxybuns */ 
+button {
+    /* Variables */
+    --button_radius: 0.75em;
+    --button_color: #e8e8e8;
+    --button_outline_color: #000000;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--button_radius);
+    background: var(--button_outline_color);
+  }
+  
+  .button_top {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.75em 1.5em;
+    background: var(--button_color);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+  }
+  
+  button:hover .button_top {
+    /* Pull the button upwards when hovered */
+    transform: translateY(-0.33em);
+  }
+  
+  button:active .button_top {
+    /* Push the button downwards when pressed */
+    transform: translateY(0);
+  }
+
+
+/* Conteneur du menu déroulant */
+.dropdown {
+    position: relative; /* Permet de positionner le menu par rapport au bouton "Projects" */
+    display: inline-block;
+}
+
+/* Liste du menu déroulant */
+.dropdown-menu {
+    display: none; /* Masque le menu par défaut */
+    position: absolute; /* Position relative au conteneur parent */
+    top: 100%; /* Aligne le menu juste en dessous du bouton */
+    left: 0;
+    background-color: var(--button_color); /* Même couleur que les boutons */
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0; /* Supprime le padding par défaut de la liste */
+    margin: 0;
+    list-style: none; /* Supprime les puces des listes */
+    z-index: 10; /* Assure que le menu est au-dessus */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Ajoute une ombre subtile */
+    min-width: 150px; /* Largeur minimale */
+}
+
+/* Éléments individuels du menu */
+.dropdown-menu li {
+    padding: 0.4em;
+    text-align: left;
+}
+
+/* Liens à l’intérieur des éléments */
+.dropdown-menu li a {
+    text-decoration: none;
+    color: var(--button_outline_color);
+    display: block;
+    padding: 0.5em 1em;
+}
+
+/* Afficher le menu lors du survol du bouton ou du conteneur */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Style sur le survol des liens */
+.dropdown-menu li a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* en-tête */
+.en-tete {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Centre verticalement les éléments */ 
+    gap: 0.4em;/* Espacement égal entre les éléments */
+    padding: 1em; /* Exemple de couleur pour la barre */
+}
+
+.en-tete img { /* Ajustez cette valeur pour redimensionner le logo */
+    margin-right: 1em; /* Espace entre le logo et les autres éléments */
+}
+    /* ---------------------fin menu-------------------------- */
+
     img.fav {
         height: 20px;
         width: auto;
     }
+
+    body {
+        background-image: url(images/backgrounds/ownbackground3.jpg);
+        background-size: 50%;
+        background-attachment: fixed;
+    }
+
+    h1 {
+        font-family: "Lacquer";
+        font-size: 30pt;
+    }
+
+    h2, ul {
+        font-family: "Lacquer";
+        line-height: 20pt;
+    }
+
+    li, p {
+        font-family: "Space Mono";
+    }
+
+    /* a {
+        /* color:#9daf24; */
+        /*color: rgb(106, 2, 69);
+    /*} */
+
+    a {
+    text-decoration: none;
+    color:#000000;
+}
+
+a:hover {
+    color:black;
+    text-decoration: none;
+}
+
+a.underline:hover {
+    text-decoration: underline;
+}
+
+    .lien {
+        color: rgb(106, 2, 69);
+        text-decoration: underline;
+    }
+
+    .lien:hover {
+        background-color: rgb(149, 194, 61);
+    }
+
+    .section {
+        width: 720px; 
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .s1 {
+        border: solid;
+        border-radius: 15px;
+        border-width: 4px;
+        border-color: rgb(164, 87, 158);
+        margin-bottom: 30px;
+        background-image: url(images/backgrounds/ownbackground4.jpg);
+        background-size: contain;
+    }
+
+    .s2 {
+        border: solid;
+        border-radius: 15px;
+        border-width: 4px;
+        border-color: rgb(168, 217, 34);
+        margin-bottom: 30px;
+        background-image: 
+            linear-gradient(rgba(153, 199, 79, 0.5), rgba(153, 199, 79, 0.5)),
+            url(images/backgrounds/ownbackground1.jpg);
+        background-size: contain;
+    }
+
+    .s3 {
+        border: solid;
+        border-radius: 15px;
+        border-width: 4px;
+        border-color: rgb(119, 216, 231);
+        margin-bottom: 30px;
+        background-image: 
+            linear-gradient(rgba(144, 201, 224, 0.5), rgba(144, 201, 224, 0.5)),
+            url(images/backgrounds/ownbackground2.jpg);
+        background-size: contain;
+    }
+
+    .s4 {
+        border: solid;
+        border-radius: 15px;
+        border-width: 4px;
+        border-color: rgb(168, 217, 34);
+        margin-bottom: 30px;
+        background-image: 
+            linear-gradient(rgba(153, 199, 79, 0.6), rgba(153, 199, 79, 0.6)),
+            url(images/backgrounds/ownbackground1.jpg);
+        background-size: contain;
+    }
+
+    .lys {
+        position: absolute;
+        top: 210px;
+        left: 15px;
+        height: 400px;
+        width: auto;
+    }
+
+    .faon {
+        position: absolute;
+        top: 400px;
+        right: 380px;
+        height: 200px;
+        width: auto;
+    }
+
+    .plante {
+        position: absolute;
+        top: 280px;
+        right: 50px;
+        height: 400px;
+        width: auto;
+    }
+
+    .dauphin {
+        position: absolute;
+        top: 830px;
+        right: 50px;
+        height: 300px;
+        width: auto;
+    }
+
+    .champi {
+        position: absolute;
+        top: 1280px;
+        right: 15px;
+        height: 300px;
+        width: auto;
+    }
+
+    .lievre {
+        position: absolute;
+        top: 930px;
+        left: 15px;
+        height: 250px;
+        width: auto;
+    }
+
+    .licorne {
+        position: absolute;
+        top: 1430px;
+        left: 40px;
+        height: 360px;
+        width: auto;
+    }
+    
+    .pegase {
+        position: absolute;
+        top: 1680px;
+        right: 30px;
+        height: 300px;
+        width: auto;
+    }
+
+    .che {
+        position: absolute;
+        top: 110px;
+        right: 300px;
+        height: 140px;
+        width: auto;
+    }
+
+    .dauphin2 {
+        position: absolute;
+        top: 680px;
+        right: 400px;
+        height: 140px;
+        width: auto;
+    }
+
+    .retour {
+        padding: 15px;
+        text-align: center;
+    }
+        
+    a.retour {
+      font-size: 16pt;
+      color:#af0
+    }
+
+    a.retour:hover {
+      color: rgb(130, 222, 229);
+    }
+
 </style>
 
 <body>
+    <div id="menu-container"></div>
     <main>
-        <p>Non-commercial radio stations:</p>
-            <ul>
-                <li><a href="https://www.ekodesgarrigues.com/">l'eko des garrigues</a></li>
-                <li><a href="https://www.radiozinzine.org/">radio zinzine</a></li>
-                <li><a href="https://siamsa.ie/">radio siamsa</a></li>
-                <li><a href="https://podcast.radio-pulsar.org/">radio pulsar</a></li>
-                <li><a href="https://www.djam.radio/">le djam radio</a></li>
-            </ul>
+        <img src="images/deco/lys.gif" class="lys">
+        <img src="images/deco/faon.gif"class="faon">
+        <img src="images/deco/plante.gif" class="plante">
+        <img src="images/deco/dauphin.gif" class="dauphin">
+        <img src="images/deco/lievre.gif" class="lievre">
+        <img src="images/deco/licorne.gif" class="licorne">
+        <img src="images/deco/champi.gif" class="champi">
+        <img src="images/deco/pegase.gif" class="pegase">
+        <img src="images/deco/che.gif" class="che">
+        <img src="images/deco/dauphin2.gif" class="dauphin2">
+        <div class="section s1">
+            <h1>cultural ressources</h1>
+            <p>Here are some audiovisual ressources I use to expand my knowledge, education and taste (: To be completed.</p>
 
-        <p>Free books</p>
-            <ul>
-                <li><a>The anarchist library</a></li>
-                <li><a>La librairie anarchiste</a></li>
-                <li><a>... marxiste</a></li>
-                <li><a>z-library</a></li>
-            </ul>
+            <p><span style="font-size: 14pt;"><em>SORRY FOR NON-FRENCH SPEAKERS, ALMOST EVERYTHING IS IN FRENCH</em></span> (but you can watch yt videos with subtitles)</p>
+        </div>
+        
+        <div class="section s2">
+            <h2>non-commercial radio stations <img src="https://www.smiley-lol.com/smiley/musique/ecoutehifi.gif"></h2>
+                <ul>
+                    <li><a class="lien" href="https://www.ekodesgarrigues.com/">l'eko des garrigues</a> - nice music and podcasts</li>
+                    <li><a class="lien" href="https://www.radiozinzine.org/">radio zinzine</a> - nice music and podcasts</li>
+                    <li><a class="lien" href="https://siamsa.ie/">radio siamsa</a> - traditional irish music</li>
+                    <li><a class="lien" href="https://podcast.radio-pulsar.org/">radio pulsar</a> - nice music and podcasts</li>
+                    <li><a class="lien" href="https://www.djam.radio/">le djam radio</a> - nice music</li>
+                </ul>
+        </div>
 
-        <p>Some yt channels I recommend:</p>
-            <ul>Feminism
-                <li><a href="https://www.youtube.com/watch?v=K0Q8F0ipF9Q"><img src="images/deco/diamond2.png"class="fav">Agrafe</a> - materialist feminism</li>
-                <li><a href="https://www.youtube.com/watch?v=rpYfpKAvOYg">Fashion Quiche</a> - philosophy, feminism, fashion, pop culture</li>
-                <li><a href="https://www.youtube.com/@GameOfHearth/playlists"><img src="images/deco/diamond2.png"class="fav">Game of Hearth</a> - ecofeminism, queer, political ecology</li>
-                <li><a href="https://www.youtube.com/watch?v=oylHn2lQdkI">Illegally Blondes</a> - feminism, medias, pop culture, politics</li>
-                <li><a href=""></a></li>
-            </ul>
+        <div class="section s3">
+            <h2>free books <img src="https://www.smiley-lol.com/smiley/loisirs/lire-ecrire/lire1livre.gif"></h2>
+                <ul>
+                    <li><a class="lien" href="https://theanarchistlibrary.org/special/index">The anarchist library</a></li>
+                    <li><a class="lien" href="https://fr.anarchistlibraries.net/special/index">La bibliothèque anarchiste</a></li>
+                    <li><a class="lien" href="https://www.marxists.org/francais/index.htm">Archives internet marxistes</a></li>
+                    <li><a class="lien" href="https://z-library.sk/">z-library</a> - everything possible in pdf</li>
+                    <li><a class="lien" href="https://infokiosques.net/">infokiosques</a> - brochures</li>
+                </ul>
+        </div>
 
-            <ul>Ecology</ul>
-                <li><a href="https://www.youtube.com/@Pr%C3%A9sages/videos">Présages</a> - ecology, fascism, colonialism</li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
+        <div class="section s4">
+        <h2>some yt channels I recommend <img src="https://www.smiley-lol.com/smiley/metiers/fermier-cowboy/ferme2.gif"></h2>
+            <p>(<img src="images/deco/diamond3.png"class="fav">:my favourites)</p>
+                <ul><b>Feminism</b>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=K0Q8F0ipF9Q"><img src="images/deco/diamond3.png"class="fav"> Agrafe</a> - materialist feminism</li>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=rpYfpKAvOYg">Fashion Quiche</a> - philosophy, feminism, fashion, pop culture</li>
+                    <li><a class="lien" href="https://www.youtube.com/@GameOfHearth/playlists"><img src="images/deco/diamond3.png"class="fav"> Game of Hearth</a> - ecofeminism, queer, political ecology</li>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=oylHn2lQdkI">Illegally Blondes</a> - feminism, medias, pop culture, politics</li>
+                </ul>
 
-            <ul>Anticarceralism, 1312...
-                <li><a href="https://www.youtube.com/@ANTIPATRIARCAME">Antipatriarcrame</a> - anticarceralism, antifascism, feminism</li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-            </ul>
+                <ul><b>Ecology </b>
+                    <li><a class="lien" href="https://www.youtube.com/@GameOfHearth/playlists"><img src="images/deco/diamond3.png"class="fav"> Game of Hearth</a> - ecofeminism, queer, political ecology</li>
+                    <li><a class="lien" href="https://www.youtube.com/@Pr%C3%A9sages/videos">Présages</a> - ecology, fascism, colonialism</li>
+                </ul>
 
-            <ul>Marxism</ul>
-                <li><a href="https://www.youtube.com/@cathedrale_osseuse/playlists">Cathédrale Osseuse</a> - marxism, feminism, ecology</li>
-                <li><a href="https://www.youtube.com/@punjo">Punjo</a> - marxism, feminism, veganism</li>
-                <li><a href="https://www.youtube.com/@seulsurmarx">Seul sur marx</a> - marxism</li>
-                <li><a href=""></a></li>
+                <ul><b>Anticarceralism, 1312, criminal justice system</b>
+                    <li><a class="lien" href="https://www.youtube.com/@ANTIPATRIARCAME"><img src="images/deco/diamond3.png"class="fav"> Antipatriarcrame</a> - anticarceralism, antifascism, feminism</li>
+                </ul>
 
-            <ul>History</ul>
-                <li><a href="https://www.youtube.com/watch?v=93qzIeD6B2U"><img src="images/deco/diamond2.png"class="fav">L'Hydre aux mille têtes</a> - revolutions across the world, history</li>
-                <li><a href="https://www.youtube.com/@Ouidaccord"><img src="images/deco/diamond2.png"class="fav">Oui d'accord</a> - history of capitalism</li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
+                <ul><b>Marxism</b>
+                    <li><a class="lien" href="https://www.youtube.com/@cathedrale_osseuse/playlists">Cathédrale Osseuse</a> - marxism, feminism, ecology</li>
+                    <li><a class="lien" href="https://www.youtube.com/@punjo">Punjo</a> - marxism, feminism, veganism</li>
+                    <li><a class="lien" href="https://www.youtube.com/@seulsurmarx">Seul sur marx</a> - marxism</li>
+                </ul>
 
-            <ul>Many political things at the same time
-                <li><a href="https://www.youtube.com/@AcheUnderscore/videos">ache</a> - anticapitalism, feminism, anticolonialism, video games</li>
-                <li><a href="https://www.youtube.com/watch?v=tPQUWECwzD8">Mathieu Burgalassis</a> - react, media, antifascism, political actuality</li>
-                <li><a href="https://www.youtube.com/@lacarologie/featured">La Carologie</a> - vlog, sociology, acab, relationships, infantism, feminism...</li>
-                <li><a href="https://www.youtube.com/watch?v=xlCnN8twUP4">Les vidéos de Léo</a> - politics, pop culture, feminism...</li>
-                <li><a href="https://www.youtube.com/@MinutesRouges">Minutes Rouges</a> - marxism, communism, anarchy</li>
-                <li><a href="https://www.youtube.com/@Politikon_"><img src="images/deco/diamond2.png"class="fav">Politikon</a> - philosophy, sociology, marxism, anarchy, capitalism...</li>
-                <li><a href="https://www.youtube.com/@TroublanteAcide">Troublante Acide</a> - react, antifascism, media, feminism, internet, anticolonialism...</li>
-                <li><a href="https://www.youtube.com/@NouvellesPenseesCritiques">Nouvelles Pensées Critiques</a> - interviews of politicians and activists</li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
+                <ul><b>History</b>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=93qzIeD6B2U"><img src="images/deco/diamond3.png"class="fav"> L'Hydre aux mille têtes</a> - revolutions across the world, history</li>
+                    <li><a class="lien" href="https://www.youtube.com/@Ouidaccord"><img src="images/deco/diamond3.png"class="fav"> Oui d'accord</a> - history of capitalism</li>
+                </ul>
 
-            </ul>
+                <ul><b>Many political things at the same time </b>
+                    <li><a class="lien" href="https://www.youtube.com/@AcheUnderscore/videos">ache</a> - anticapitalism, feminism, anticolonialism, video games</li>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=tPQUWECwzD8">Mathieu Burgalassi</a> - react, media, antifascism, political actuality</li>
+                    <li><a class="lien" href="https://www.youtube.com/@lacarologie/featured">La Carologie</a> - vlog, sociology, acab, relationships, infantism, feminism...</li>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=xlCnN8twUP4">Les vidéos de Léo</a> - politics, pop culture, feminism...</li>
+                    <li><a class="lien" href="https://www.youtube.com/@MinutesRouges">Minutes Rouges</a> - marxism, communism, anarchy</li>
+                    <li><a class="lien" href="https://www.youtube.com/@Politikon_"><img src="images/deco/diamond3.png"class="fav"> Politikon</a> - philosophy, sociology, marxism, anarchy, capitalism...</li>
+                    <li><a class="lien" href="https://www.youtube.com/@TroublanteAcide">Troublante Acide</a> - react, antifascism, media, feminism, internet, anticolonialism...</li>
+                    <!-- <li><a class="lien" href="https://www.youtube.com/@NouvellesPenseesCritiques">Nouvelles Pensées Critiques</a> - interviews of politicians and activists</li> -->
+                </ul>
 
-            <ul>Science
-                <li><a href="https://www.youtube.com/watch?v=di8MewR_nMs">La Fouloscopie</a> - cognitive science, science of crowd behaviour</li>
-                <li><a href="https://www.youtube.com/watch?v=oPhIwyKwA2s">Gregoire Simpson</a> - social science, bourgoisie</li>
-                <li><a href="https://www.youtube.com/@ScienceEtonnante/playlists">ScienceEtonnante</a> - physics, astrology, biology...</li>
-                <li><a href="https://www.youtube.com/@SimplexPaleo"><img src="images/deco/diamond2.png"class="fav">Simplex Paléo</a> - evolution, paleological species</li>
-                <li><a href=""></a></li>
-            </ul>
+                <ul><b>Science </b>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=di8MewR_nMs">La Fouloscopie</a> - cognitive sciences, science of crowd behaviour</li>
+                    <li><a class="lien" href="https://www.youtube.com/watch?v=oPhIwyKwA2s">Gregoire Simpson</a> - social sciences, bourgoisie...</li>
+                    <li><a class="lien" href="https://www.youtube.com/@ScienceEtonnante/playlists">ScienceEtonnante</a> - physics, astrology, biology...</li>
+                    <li><a class="lien" href="https://www.youtube.com/@SimplexPaleo"><img src="images/deco/diamond3.png"class="fav"> Simplex Paléo</a> - evolution, paleological species</li>
+                </ul>
 
-            <ul>Art</ul>
-                <li><a href="https://www.youtube.com/@Spark-Stories-FR"><img src="images/deco/diamond2.png"class="fav">Spark stories</a> - just freedom</li>
-                <li><a href="https://www.youtube.com/@thepurplepalace85"><img src="images/deco/diamond2.png"class="fav">The Purple Palace</a> - vlog, visual art</li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
+                <ul><b>Art </b>
+                    <li><a class="lien" href="https://www.youtube.com/@Spark-Stories-FR"><img src="images/deco/diamond3.png"class="fav"> Spark stories</a> - just freedom</li>
+                    <li><a class="lien" href="https://www.youtube.com/@thepurplepalace85"><img src="images/deco/diamond3.png"class="fav"> The Purple Palace</a> - vlog, visual art</li>
+                </ul>
+        </div>
 
+        <div class="mono retour" style="font-family: Space Mono;">
+                <a href="salon.html" class="mono retour">
+                    retourner au salon
+                </a>
+            </div>
     </main>
+    <script src="menu.js"></script>
 </body>
 
 </html>
