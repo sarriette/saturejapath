@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Gallery - Satureja path</title> 
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Eater&family=Flavors&family=Gloria+Hallelujah&family=Lacquer&family=Mansalva&family=Rubik:ital,wght@0,300..900;1,300..900&family=Single+Day&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    </head>
+
+<style>
+main {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.menu {
+  position: sticky;
+  top: 10px;
+  width: 180px;
+  flex-shrink: 0;
+  padding: 20px;
+  border: solid 4px #ea0;
+  border-radius: 15px;
+  box-sizing: border-box;
+  margin-left: 140px;
+  background-color: rgba(244, 175, 2, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.contenu {
+  flex: 1;
+  min-height: 100vh;
+  padding: 30px;
+  border: solid 4px #ea0;
+  border-radius: 15px;
+  background-color: rgba(244, 175, 2, 0.5);
+  margin-right: 140px;
+}
+
+body {
+    background-image: url(images/backgrounds/minipx-001-20260719.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.img-menu {
+    transition: transform 0.5s ease;
+     width: 100%;
+    height: auto;
+}
+
+.img-menu:hover {
+    transform: rotate(360deg);
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.flavors {
+    font-family: Flavors;
+    font-size: 16pt;
+}
+
+.space {
+    font-family: Space Mono;
+    font-size: 10pt;
+}
+
+.center {
+    text-align: center;
+}
+
+.crochet-cont-photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.crochet-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.img-200 {
+    height: 200px;
+    width: auto;
+}
+
+.img-160 {
+    height: 160px;
+    width: auto;
+}
+
+.img-250 {
+    height: 270px;
+    width: auto;
+}
+
+</style>
+<body>
+    <div id="menu-container"></div>
+    <main>
+        <div class="menu">
+            <div class="menu-item" data-target="crochet">
+                <img src="images/crochet/pull2.webp" class="img-menu">
+                <div class="flavors center">Crochet</div>
+                <br>
+            </div>
+
+            <div class="menu-item" data-target="photography">
+                <img src="images/deco/champi.gif" class="img-menu">
+                <div class="flavors center">Photography</div>
+                <br>
+            </div>
+
+            <div class="menu-item" data-target="artsy-pages">
+                <img src="images/deco/pegase.gif" class="img-menu">
+                <div class="flavors center">Artsy pages</div>
+            </div>
+        </div>
+
+        <div class="contenu">
+            <div class="crochet section active">
+                <div class="flavors" style="font-size: 28pt">Tops</div>
+                    <div class="crochet-cont-photos">
+                       <div class="crochet-photo">
+                            <img src="images/crochet/pull1.webp" class="img-200">
+                            <div class="space center">tesserae jumper pattern by <br>@crochet.byjessie on instagram</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/pull2.webp" class="img-200">
+                            <div class="space center">argia bag pattern by <br>@crochet.byjessie but on a sweater</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/party-top.webp" class="img-200">
+                            <div class="space">party mesh top</div>
+                        </div> 
+                    </div>
+
+                <div class="flavors" style="font-size: 28pt">Hats</div>
+                    <div class="crochet-cont-photos">
+                        <div class="crochet-photo">
+                            <img src="images/crochet/jester_hat.webp" class="img-200">
+                            <div class="space center">jester hat with collar</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/ribbed_beanie3.webp" class="img-160">
+                            <div class="space center">ribbed beanie #1 for P.</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/ribbed_beanie4.webp" class="img-160">
+                            <div class="space center">ribbed beanie #2 for G.</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/ribbed_beanie2.webp" class="img-200">
+                            <div class="space center">ribbed beanie #3 for G.</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/ribbed_beanie1.webp" class="img-160">
+                            <div class="space center">ribbed beanie #4 (bicolor)</div>
+                        </div> 
+                        
+                        <div class="crochet-photo">
+                            <img src="images/crochet/beanie1.webp" class="img-160">
+                            <div class="space center">houndstooth beanie for Y.</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/pirate_beanie.webp" class="img-160">
+                            <div class="space center">fishbones beanie for <br>T. the pirate</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/clown.webp" class="img-160">
+                            <div class="space center">clown balaclava</div>
+                        </div> 
+                    </div>
+
+                <div class="flavors" style="font-size: 28pt">Scarves</div>
+                    <div class="crochet-cont-photos">
+                        <div class="crochet-photo">
+                            <img src="images/crochet/scarf1.webp" class="img-250">
+                            <div class="space center">tunisian crochet scarf for G.</div>
+                        </div> 
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/scarf2.webp" class="img-250">
+                            <div class="space center">moss stitch scarf</div>
+                        </div> 
+                    </div>
+
+                <div class="flavors" style="font-size: 28pt">Other</div>
+                    <div class="crochet-cont-photos">
+                        <div class="crochet-photo">
+                            <img src="images/crochet/big_ass_blanket.webp" class="img-200">
+                            <div class="space center">big ass granny stitch blanket</div>
+                        </div>
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/chiengue.webp" class="img-250">
+                            <div class="space center">cute dog keychain for A.</div>
+                        </div>
+
+                        <div class="crochet-photo">
+                            <img src="images/crochet/giraf.webp" class="img-250">
+                            <div class="space center">giraffe plush for A.</div>
+                        </div>
+
+                        <!-- <div class="crochet-photo">
+                            <img src="images/crochet/bag.webp" class="img-200">
+                            <div class="space center">bag for G.</div>
+                        </div> -->
+                    </div>
+            </div>
+
+            <div class="photography section">
+                Nothing here for the moment. Come back later.
+            </div>
+
+            <div class="artsy-pages section">
+                Nothing here for the moment. Come back later.
+            </div>
+        </div>
+
+    </main>
+    <script src="menu.js"></script>
+    <script>
+        const menuItems = document.querySelectorAll(".menu-item");
+        const sections = document.querySelectorAll(".section");
+
+        menuItems.forEach(item => {
+            item.addEventListener("click", () => {
+            
+                // Cache toutes les sections
+                sections.forEach(section => {
+                    section.classList.remove("active");
+                });
+            
+                // Affiche la bonne section
+                const cible = item.dataset.target;
+                document.querySelector("." + cible).classList.add("active");
+            });
+        });
+    </script>
+</body>
+</html>
