@@ -1354,7 +1354,8 @@ p.p-blanc {
     /*position:static;*/
     /*background-size: 100% 100%;*/
     height: fit-content;
-    width: fit-content;
+    overflow-y: auto;
+    width: 220px;
     position: sticky;
     top: 30px; /* Ajustez selon vos besoins */
     align-self: flex-start;

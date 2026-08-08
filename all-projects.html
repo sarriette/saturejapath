@@ -11,6 +11,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Beastly&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     </head>
+    <style>
+        li {
+            margin-left: -20px;
+        }
+
+        .tags {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-right: 10px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            gap: 7px;
+        }
+
+        .tag {
+           border: solid;
+            border-color: black;
+            border-width: 1px; 
+        }
+
+        .tag-bar {
+        }
+    </style>
 
     <body style="
     background-image: 
@@ -21,25 +45,38 @@
         <main>
             <div class="ap-main">
                 <!-- side bar -->
-                <div class="ap-side-bar">
-                    <p class="mono">2026</p>
-                    <ul class="ap-months">
-                        <li class="mono"><a class="mono underline" href="#juillet2026">Juillet 2026 (2)</a></li>
-                        <li class="mono"><a class="mono underline" href="#mai2026">Mai 2026 (1)</a></li>
-                        <li class="mono"><a class="mono underline" href="#avril2026">Avril 2026 (1)</a></li>
-                        <li class="mono"><a class="mono underline" href="#mars2026">Mars 2026 (1)</a></li>
-                    </ul>
-                    <p class="mono">2025</p>
-                    <ul class="ap-months">
-                        <li class="mono"><a class="mono underline" href="#septembre2025">Septembre 2025 (1)</a></li>
-                        <li class="mono"><a class="mono underline" href="#aout2025">Août 2025 (2)</a></li>
-                        <li class="mono"><a class="mono underline" href="#juin2025">Juin 2025 (1)</a></li>
-                        <li class="mono"><a class="mono underline" href="#avril2025">Avril 2025 (2)</a></li>
-                        <li class="mono"><a class="mono underline" href="#mars2025">Mars 2025 (1)</a></li>
-                        <li class="mono"><a class="mono underline" href="#fevrier2025">Février 2025 (2)</a></li>
-                        <li class="mono"><a class="mono underline" href="#janvier2025">Janvier 2025 (2)</a></li>
-                    </ul>
-                </div>
+                <div class="side-bars">
+                    <div class="ap-side-bar">
+                        <p class="mono center">2026</p>
+                        <ul class="ap-months">
+                            <li class="mono"><a class="mono underline" href="#juillet2026">Juillet 2026 (2)</a></li>
+                            <li class="mono"><a class="mono underline" href="#mai2026">Mai 2026 (1)</a></li>
+                            <li class="mono"><a class="mono underline" href="#avril2026">Avril 2026 (1)</a></li>
+                            <li class="mono"><a class="mono underline" href="#mars2026">Mars 2026 (1)</a></li>
+                        </ul>
+                        <p class="mono center">2025</p>
+                        <ul class="ap-months">
+                            <li class="mono"><a class="mono underline" href="#septembre2025">Septembre 2025 (1)</a></li>
+                            <li class="mono"><a class="mono underline" href="#aout2025">Août 2025 (2)</a></li>
+                            <li class="mono"><a class="mono underline" href="#juin2025">Juin 2025 (1)</a></li>
+                            <li class="mono"><a class="mono underline" href="#avril2025">Avril 2025 (2)</a></li>
+                            <li class="mono"><a class="mono underline" href="#mars2025">Mars 2025 (1)</a></li>
+                            <li class="mono"><a class="mono underline" href="#fevrier2025">Février 2025 (2)</a></li>
+                            <li class="mono"><a class="mono underline" href="#janvier2025">Janvier 2025 (2)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="tag-bar ap-side-bar">
+                        <p class="mono center">Tags</p>
+
+                        <div class="tags">
+                            <div class="mono tag active" data-tag="all">ALL</div>
+                            <div class="mono tag" data-tag="flowers">FLOWERS</div>
+                            <div class="mono tag" data-tag="photography">PHOTOGRAPHY</div>
+                            <div class="mono tag" data-tag="games">GAMES</div>
+                        </div>
+                    </div>
+                </div> 
 
                 <!-- all projects -->
                 <div class="ap-container">
@@ -105,8 +142,6 @@
                                 </a></div>
                             </div>
 
-                    <h2 class="mono" id="juillet2025">juillet 2025</h2>
-
                     <h2 class="mono" id="juin2025">juin 2025</h2>
                             <div class="slider">
                                 <div class="card"><a href="oekoumene.html">
@@ -114,8 +149,6 @@
                                     <p>Œkoumène</p>
                                 </a></div>
                             </div>
-
-                    <h2 class="mono" id="mai2025">mai 2025</h2>
                     
                     <h2 class="mono" id="avril2025">avril 2025</h2>
                             <div class="slider">
