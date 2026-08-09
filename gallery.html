@@ -23,7 +23,7 @@ main {
 .menu {
   position: sticky;
   top: 10px;
-  width: 180px;
+  width: 170px;
   flex-shrink: 0;
   padding: 20px;
   border: solid 4px #ea0;
@@ -53,10 +53,92 @@ body {
     background-attachment: fixed;
 }
 
+body.photography-theme {
+    background-image: none;
+    background-color: #324 ;
+}
+
+body.photography-theme .menu {
+    background-color: rgba(34, 34, 51, 0);
+    border-color: rgb(152, 175, 222);
+    border-radius: 0px;
+    border-width: 5px;
+    border-style: double;
+}
+
+body.photography-theme .contenu {
+    background-color: rgba(34, 34, 51, 0);
+    border-color: rgb(152, 175, 222);
+    border-radius: 0px;
+    border-width: 5px;
+    border-style: dashed;
+}
+
+body.photography-theme .flavors {
+    color:rgb(152, 175, 222);
+    text-shadow: 2px 2px rgb(0, 42, 254);
+}
+
+body.bad-art-theme {
+    background-image: url(images/backgrounds/grass2.png);
+}
+
+body.bad-art-theme .menu {
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgb(242, 0, 255);
+    border-radius: 0px;
+    border-width: 5px;
+}
+
+body.bad-art-theme .contenu {
+    background-color: rgba(34, 34, 51, 0);
+    border-color: rgb(0, 255, 13);
+    border-radius: 0px;
+    border-width: 5px;
+    border-style: dashed;
+}
+
+body.bad-art-theme .flavors {
+    color:rgb(167, 228, 230);
+    text-shadow: 2px 2px rgb(0, 42, 254);
+}
+
+body.collections-theme {
+    background-image: url(images/backgrounds/kayou-compresse.webp);
+    background-size: cover;
+}
+
+body.collections-theme .menu {
+    background-color: rgba(153, 148, 139, 0.604);
+    border-color: rgba(153, 148, 139, 0.8);
+    border-radius: 15px;
+    border-width: 5px;
+    border-style: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+body.collections-theme .contenu {
+    background-color: rgba(153, 148, 139, 0.604);
+    border-color: rgba(153, 148, 139, 0.8);
+    border-radius: 15px;
+    border-width: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    border-style: none;
+}
+
+body.collections-theme .flavors {
+    color:rgb(9, 255, 0);
+    text-shadow: 2px 2px rgb(95, 42, 9);
+} 
+
 .img-menu {
     transition: transform 0.5s ease;
      width: 100%;
-    height: auto;
+    height: 80px;
+    width: auto;
+    align-items: center;
+    margin: auto;
+    display: flex;
 }
 
 .img-menu:hover {
@@ -127,15 +209,21 @@ body {
                 <br>
             </div>
 
-            <div class="menu-item" data-target="photography">
+            <div class="menu-item" data-target="photography" data-theme="photography-theme">
                 <img src="images/deco/champi.gif" class="img-menu">
                 <div class="flavors center">Photography</div>
                 <br>
             </div>
 
-            <div class="menu-item" data-target="artsy-pages">
+            <div class="menu-item" data-target="bad-art" data-theme="bad-art-theme">
+                <img src="images/deco/champi.gif" class="img-menu">
+                <div class="flavors center">Bad art</div>
+                <br>
+            </div>
+
+            <div class="menu-item" data-target="collections" data-theme="collections-theme">
                 <img src="images/deco/pegase.gif" class="img-menu">
-                <div class="flavors center">Artsy pages</div>
+                <div class="flavors center">Collections</div>
             </div>
         </div>
 
@@ -243,7 +331,11 @@ body {
                 Nothing here for the moment. Come back later.
             </div>
 
-            <div class="artsy-pages section">
+            <div class="bad-art section">
+                Nothing here for the moment. Come back later.
+            </div>
+
+            <div class="collections section">
                 Nothing here for the moment. Come back later.
             </div>
         </div>
@@ -265,6 +357,9 @@ body {
                 // Affiche la bonne section
                 const cible = item.dataset.target;
                 document.querySelector("." + cible).classList.add("active");
+            
+                // Change le thème de la page
+                document.body.className = item.dataset.theme;
             });
         });
     </script>
