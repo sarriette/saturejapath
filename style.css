@@ -1343,7 +1343,10 @@ p.p-blanc {
 /* all projects - side bar */
 .ap-side-bar {
     align-items: center;
-    border-radius: 15px;
+    border-radius: 0px;
+    border-color: magenta;
+    border-width: 5px;
+    border-style: solid;
     margin: 2em;
     padding-top: 1px;
     padding-bottom: 1px;
@@ -1359,6 +1362,8 @@ p.p-blanc {
     position: sticky;
     top: 30px; /* Ajustez selon vos besoins */
     align-self: flex-start;
+
+    height: calc(100vh - 400px);
 }
 
 .ap-side-bar p {
@@ -1368,6 +1373,12 @@ p.p-blanc {
 .ap-side-bar li {
     font-size: 10pt;
     white-space: nowrap;
+}
+
+.tag-bar {
+    height: fit-content;
+    top: 380px;
+    position: sticky;
 }
 
 ul.ap-months {

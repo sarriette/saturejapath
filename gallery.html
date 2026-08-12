@@ -207,12 +207,49 @@ body.collections-theme .flavors {
     width: 100%;
 }
 
+/* photography */
+.photography-contenu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.box-photography {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    max-width: 150px;
+}
+
+.box-photography:hover {
+    border-width: 1px;
+    border-color: rgb(152, 175, 222);
+    border-style:dashed;
+}
+
+.box-photography img {
+    height: 80px;
+    width:auto;
+    align-items: center;
+}
+
+.box-photography p {
+    text-align:center;
+    margin-bottom: 1px;
+    font-family: 'Space Mono';
+    color: rgb(152, 175, 222);
+    font-size: 10pt;
+}
+
 </style>
 <body>
     <div id="menu-container"></div>
     <main>
         <div class="menu">
-            <div class="menu-item" data-target="crochet">
+            <div class="menu-item" data-target="crochet" data-theme="default">
                 <img src="images/crochet/pull2.webp" class="img-menu">
                 <div class="flavors center">Crochet</div>
                 <br>
@@ -237,7 +274,7 @@ body.collections-theme .flavors {
         </div>
 
         <div class="contenu">
-            <div class="crochet section active">
+            <div class="crochet section active" id="crochet">
                 <div class="flavors" style="font-size: 28pt;">Tops</div>
                     <div class="crochet-cont-photos">
                        <div class="crochet-photo">
@@ -336,14 +373,49 @@ body.collections-theme .flavors {
                     </div>
             </div>
 
-            <div class="photography section">
-                Nothing here for the moment. Come back later.
+            <div class="photography section" id="photography">
+                <div class="photography-contenu">
+                    <div class="box-photography"><a href="rainbow.html" target="_blank">
+                        <img src="images/rainbow3.jpg">
+                        <p>RAINBOW PHOTOGRAPHS</p></a>
+                    </div>
+
+                    <div class="box-photography"><a href="messyflowerzz.html" target="_blank">
+                        <img src="images/messyfl .jpg">
+                        <p>MESSYFLOWERZZ</p></a>
+                    </div>
+
+                    <div class="box-photography"><a href="cats2.html" target="_blank">
+                        <img src="images/chats/charlouse.webp">
+                        <p>CATS</p></a>
+                    </div>
+
+                    <div class="box-photography"><a href="massilia.html" target="_blank">
+                        <img src="images/massilia/Screenshot_2023-05-03-20-15-56-221_com.camerasideas.instashot.jpg">
+                        <p>MASSILIA</p></a>
+                    </div>
+
+                    <div class="box-photography"><a href="kakis.html" target="_blank">
+                        <img src="images/kakis/les-bonnes/ouvre1.jpg">
+                        <p>KAKIS</p></a>
+                    </div>
+
+                    <div class="box-photography"><a href="titouan-s-room.html" target="_blank">
+                        <img src="images/titouan/3.jpg">
+                        <p>TITOUAN'S ROOM</p></a>
+                    </div>
+
+                    <div class="box-photography"><a href="posters.html" target="_blank">
+                        <img src="images/posters/casse-tete.jpg">
+                        <p>POSTERS</p></a>
+                    </div>
+                </div>
             </div>
 
-            <div class="bad-art section">
+            <div class="bad-art section" id="bad-art">
                 <img src="images/bad-art/vieillesse.jpg" style="height: 500px; width: auto;">
                 <img src="images/bad-art/autoportrait.jpg" style="height: 500px; width: auto;">
-                <img src="images/bad-art/ouverture.jpg" style="height: 500px; width: auto;">
+                <img src="images/bad-art/ouverture3.jpg" style="height: 500px; width: auto;">
                 <img src="images/bad-art/singe.png" style="height: 500px; width: auto;">
                 <img src="images/bad-art/ecar-removebg-preview.png" style="height: 350px; width: auto;">
                 <!-- <img src="images/bad-art/weed.jpg" style="height: 400px; width: auto;"> -->
@@ -359,7 +431,7 @@ body.collections-theme .flavors {
                 <!-- <img src="images/bad-art/ville.png" style="height: 250px; width: auto;"> -->
             </div>
 
-            <div class="collections section">
+            <div class="collections section" id="collections">
                 Nothing here for the moment. Come back later.
             </div>
         </div>
@@ -370,22 +442,68 @@ body.collections-theme .flavors {
         const menuItems = document.querySelectorAll(".menu-item");
         const sections = document.querySelectorAll(".section");
 
+        function afficherSection(nom, theme) {
+
+            // Cache toutes les sections
+            sections.forEach(section => {
+                section.classList.remove("active");
+            });
+        
+            // Affiche la bonne section
+            const section = document.querySelector("." + nom);
+        
+            if (section) {
+                section.classList.add("active");
+            }
+        
+            // Change le thème du body
+            document.body.className = theme;
+        }
+
+        // menuItems.forEach(item => {
+        //     item.addEventListener("click", () => {
+            
+        //         // Cache toutes les sections
+        //         sections.forEach(section => {
+        //             section.classList.remove("active");
+        //         });
+            
+        //         // Affiche la bonne section
+        //         const cible = item.dataset.target;
+        //         document.querySelector("." + cible).classList.add("active");
+            
+        //         // Change le thème de la page
+        //         document.body.className = item.dataset.theme;
+        //     });
+        // });
+
         menuItems.forEach(item => {
             item.addEventListener("click", () => {
             
-                // Cache toutes les sections
-                sections.forEach(section => {
-                    section.classList.remove("active");
-                });
-            
-                // Affiche la bonne section
                 const cible = item.dataset.target;
-                document.querySelector("." + cible).classList.add("active");
+                const theme = item.dataset.theme;
             
-                // Change le thème de la page
-                document.body.className = item.dataset.theme;
+                afficherSection(cible, theme);
             });
         });
+
+        const hash = window.location.hash;
+
+        if (hash) {
+        
+            const nom = hash.substring(1);
+        
+            const item = document.querySelector(
+                `.menu-item[data-target="${nom}"]`
+            );
+        
+            if (item) {
+                afficherSection(
+                    item.dataset.target,
+                    item.dataset.theme
+                );
+            }
+        }
     </script>
 </body>
 </html>
