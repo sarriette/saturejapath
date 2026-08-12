@@ -1377,7 +1377,7 @@ p.p-blanc {
 
 .tag-bar {
     height: fit-content;
-    top: 380px;
+    top: calc(30px + (100vh - 400px) + 20px);
     position: sticky;
 }
 

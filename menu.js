@@ -33,7 +33,10 @@ fetch('menu.html')
         'messyflowerzz.html',
         'webdeck-player/index.html',
         'ressources.html',
-        'gallery.html'
+        'gallery.html',
+        'rainbow.html',
+        'gallery.html#bad-art',
+        'gallery.html#photography'
       ];
       const randomIndex = Math.floor(Math.random() * projectPages.length);
       window.location.href = projectPages[randomIndex];
