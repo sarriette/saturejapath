@@ -3,48 +3,115 @@
     <head>
         <meta charset="utf-8">
         <title>Favourite albums - Satureja path</title> 
-        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="style.css">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Ingrid+Darling&family=Jacquarda+Bastarda+9&family=Love+Ya+Like+A+Sister&family=Puppies+Play&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     
         <style>
+
             .contenu-categorie {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
+                width: 1320px;
+                /* border-style: dotted;
+                border-color: blue; */
+                margin: auto;
             }
 
             .case-album {
                 height: 170px;
-                width: 350px;
+                width: 320px;
                 border: 40px solid transparent;
                 padding: 5px;
-                border-image: url(images/borders/path876946.png) 70 round;
+                border-image: url(images/borders/path876946.png) 66 round;
                 overflow: auto;
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
             }
 
             .case-album-texte {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
+            }
+
+            h1 {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 32pt;
+            }
+
+            h2 {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 24pt;
+                margin-left: 4em;
+            }
+
+            h3 {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 18pt;
+                margin: 0em;
+            }
+
+            p {
+                font-family: 'Times New Roman', Times, serif;
+                margin: 0em;
+            }
+
+            .center {
+                display: flex;
+                flex-wrap: wrap;
+                margin: auto;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .video-container {
+                width: 136px; /* Taille contrôlée */
+                height: 136px;
+                /*overflow: hidden;*/
+                border-radius: 0px;
+                /* border-color: blue;
+                border-style: dotted; */
+                margin-left: 2px;
+                margin-top: 2px;
+                margin-right: 5px;
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
             }
         </style>
 
-        <body>
+        <body style="background-color: white;">
             <div id="menu-container"></div>
             <main>
                 <h1>My favourite albums</h1>
-                <p>These are albums I...</p>
+                <p class="center">These are albums I...</p>
 
-                <h2>Trip hop/downtempo</h2>
+                <h2>Jazz</h2>
                 <div class="contenu-categorie">
                     <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+
+                        
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe frameborder="0" allowfullscreen
+                                    src="https://www.youtube.com/watch?v=EzAMe5GP6cc&list=PLWeUYhuNh82DuZQgoOr9EdQiSmoMs34_W">
+                                </iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
                         <!-- partie youtube -->
                         <div class="case-album-texte">
-                            <h2>Nom de l'album - artiste</h2>
+                            <h3>Nom de l'album - artiste</h3>
                             <p>texte explicatif de l'album et pq je l'aime</p>
                         </div>
                     </div>
@@ -52,7 +119,7 @@
                     <div class="case-album">
                         <!-- partie youtube -->
                         <div class="case-album-texte">
-                            <h2>Nom de l'album - artiste</h2>
+                            <h3>Nom de l'album - artiste</h3>
                             <p>texte explicatif de l'album et pq je l'aime</p>
                         </div>
                     </div>
@@ -60,15 +127,7 @@
                     <div class="case-album">
                         <!-- partie youtube -->
                         <div class="case-album-texte">
-                            <h2>Nom de l'album - artiste</h2>
-                            <p>texte explicatif de l'album et pq je l'aime</p>
-                        </div>
-                    </div>
-
-                    <div class="case-album">
-                        <!-- partie youtube -->
-                        <div class="case-album-texte">
-                            <h2>Nom de l'album - artiste</h2>
+                            <h3>Nom de l'album - artiste</h3>
                             <p>texte explicatif de l'album et pq je l'aime</p>
                         </div>
                     </div>
