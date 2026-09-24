@@ -30,6 +30,17 @@
                 overflow: auto;
                 display: flex;
                 flex-direction: column;
+                background:
+                    radial-gradient(
+                        ellipse 90% 90%,
+                        rgba(164, 93, 179, 0.5) 0%,
+                        rgba(164, 93, 179, 0.4) 35%,
+                        rgba(164, 93, 179, 0.2) 50%,
+                        rgba(164, 93, 179, 0) 65%, 
+                        rgba(164, 93, 179, 0) 100%
+                    );
+
+                background-clip: padding-box;
             }
 
             .case-album-texte {
@@ -83,25 +94,62 @@
                 width: 100%;
                 height: 100%;
             }
+
+            body {
+                    background-image:
+                    url("images/backgrounds/grain1.png"),
+                    linear-gradient(
+                        15deg,
+                        rgb(195, 34, 157) 0%,
+                        rgb(155, 86, 160) 10%,
+                        rgba(34, 193, 195, 1) 20%,
+                        rgb(195, 187, 34) 30%,
+                        rgb(138, 139, 79) 40%,
+                        /* rgb(62, 148, 16) 50%, */
+                        rgb(5, 151, 153) 60%,
+                        /* rgb(34, 93, 195) 70%, */
+                        rgb(112, 73, 131) 80%,
+                        rgb(149, 131, 159) 90%,
+                        rgb(5, 186, 171) 100%
+                    );
+
+                background-repeat: repeat, no-repeat;
+                background-size: auto, cover;
+            }
+
+            body::before {
+                content: "";
+                inset: 0;
+
+                background-image: url("images/backgrounds/grain1.png");
+                background-repeat: repeat;
+
+                opacity: 0.7;
+
+                pointer-events: none;
+                z-index: 0;
+            }
         </style>
 
-        <body style="background-color: white;">
+        <body>
             <div id="menu-container"></div>
             <main>
                 <h1>My favourite albums</h1>
-                <p class="center">These are albums I...</p>
+                <p class="center" style="margin-left: 7em; margin-right: 7em;">These are albums I...
+                    <br>-> go to JAZZ NEO SOUL TRIP HOP/DOWNTEMPO PROGRESSIVE ROCK ALTERNATIVE ROCK BAROQUE MUSIC RELATED ELECTRO POP/FOLK HIP HOP/RAP TRADITIONAL MUSIC FILM SOUNDTRACKS
+                    OTHER OTHEROTHER
+                </p>
 
                 <h2>Jazz</h2>
                 <div class="contenu-categorie">
                     <div class="case-album">
                         <h3>Anne Paceo - Circles</h3>
-
-                        
                         <div class="case-album-texte">
                             <div class="video-container">
-                                <iframe frameborder="0" allowfullscreen
-                                    src="https://www.youtube.com/watch?v=EzAMe5GP6cc&list=PLWeUYhuNh82DuZQgoOr9EdQiSmoMs34_W">
-                                </iframe>
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
                             </div>
                             <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
                                 <br><b>Favourite track:</b> Toundra</p>
@@ -109,28 +157,609 @@
                     </div>
 
                     <div class="case-album">
-                        <!-- partie youtube -->
+                        <h3>Sissoko, Segal, Parisien, Peirani - Les Egarés</h3>
                         <div class="case-album-texte">
-                            <h3>Nom de l'album - artiste</h3>
-                            <p>texte explicatif de l'album et pq je l'aime</p>
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/6NsbLrPOD4E?list=PL9a8XlQ9rvHuUE4KMis3ZBO16YsGrJ7qY"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Great musicians united to produce this pure pépite.
+                                <br><b>Favourite track:</b> Esperanza</p>
                         </div>
                     </div>
 
                     <div class="case-album">
-                        <!-- partie youtube -->
+                        <h3>Leïla Martial – Jubilä 432</h3>
                         <div class="case-album-texte">
-                            <h3>Nom de l'album - artiste</h3>
-                            <p>texte explicatif de l'album et pq je l'aime</p>
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Genius woman singing and chatting with birds.
+                                <br><b>Favourite tracks:</b> La rencontre, La bergère</p>
                         </div>
                     </div>
 
                     <div class="case-album">
-                        <!-- partie youtube -->
+                        <h3>Badbadnotgood – III</h3>
                         <div class="case-album-texte">
-                            <h3>Nom de l'album - artiste</h3>
-                            <p>texte explicatif de l'album et pq je l'aime</p>
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Not only jazz but also fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Triangle, Confessions ft. Leland Whitty</p>
                         </div>
                     </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Neo soul</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h2>Trip hop/downtempo</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Stoner rock/progressive rock/doom metal/groove metal</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Alternative rock</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Baroque music related</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Electro</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Pop/folk</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Traditional music</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <h2>Film soundtracks</h2>
+                <div class="contenu-categorie">
+
+                    <div class="case-album">
+                        <h3>Anne Paceo - Circles</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Crazy saxophones and voices, with electronic and hip hop influences and great improvs
+                                <br><b>Favourite track:</b> Toundra</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+
+                    <div class="case-album">
+                        <h3>Badbadnotgood – IV</h3>
+                        <div class="case-album-texte">
+                            <div class="video-container">
+                                <iframe
+                                    src="https://www.youtube.com/embed/EzAMe5GP6cc"
+                                    frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <p>Jazz fusion rock hip hop
+                                <br><b>Favourite tracks:</b> Time Moves Slow, Chompy’s Paradise, In Your Eyes</p>
+                        </div>
+                    </div>
+                    
                 </div>
 
             </main>
