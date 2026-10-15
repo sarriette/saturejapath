@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pink trash - Satureja path</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&family=Xanh+Mono&family=Ingrid+Darling&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Flavors&family=Lacquer&&family=Jacquarda+Bastarda+9&family=Love+Ya+Like+A+Sister&family=Puppies+Play&family=Rubik:ital,wght@0,300..900;1,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    h1 {
+        font-family: 'Flavors';
+        font-size: 40pt;
+        color:#99ccee;
+        text-shadow: 2px 2px #120543;
+        margin-top: -2px;
+    }
+
+    p {
+        font-family: 'Space Mono';
+        margin-left: 0em;
+        text-align: center;
+    }
+
+    /* .pt-cont {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .pt-obj {
+        display: flex;
+        flex-direction: column;
+    } */
+
+    .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 8px;
+        width: 900px;
+        max-width: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .div1 {
+        grid-row: span 2 / span 2;
+    }
+
+
+    .div3 {
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+
+    .div4 {
+        grid-column-start: 3;
+        grid-row-start: 1;
+    }
+
+    .div5 {
+        grid-column-start: 3;
+        grid-row-start: 2;
+    }
+
+    .div6 {
+        grid-column-start: 4;
+        grid-row-start: 1;
+    }
+
+    .div7 {
+        grid-column-start: 4;
+        margin-top: -50px;
+    }
+        
+</style>
+
+<body style="background-color: #dd44aa;">
+    <div id="menu-container"></div>
+    
+    <main>
+        <h1>Pink trash</h1>
+        <!-- <div class="pt-cont">
+            <div class="pt-obj">
+                <img>
+                <p></p>
+            </div>
+
+            <div class="pt-obj">
+                <img>
+                <p></p>
+            </div>
+
+            <div class="pt-obj">
+                <img>
+                <p></p>
+            </div>
+        </div> -->
+
+        <div class="parent">
+            <div class="div1">
+                <img src="images/pink trash/papier (1).webp" style="height: 500px; width: auto;">
+            </div>
+            <div class="div2">
+                <img src="images/pink trash/pinklady.webp" style="height: 160px; width: auto; margin-left:30px; margin-top: 50px;">
+            </div>
+            <div class="div3">
+                <img src="images/pink trash/theplein.webp" style="height: 200px; width: auto;">
+            </div>
+            <div class="div4">
+                <img src="images/pink trash/ricola1.webp" style="height: 200px; width: auto;">
+            </div>
+            <div class="div5">
+                <img src="images/pink trash/ricola2.webp" style="height: 200px; width: auto;">
+            </div>
+            <div class="div6">
+                <img src="images/pink trash/the.webp" style="height: 200px; width: auto;">
+            </div>
+            <div class="div7">
+                <img src="images/pink trash/haribo (1).webp" style="height: 300px; width: auto;">
+            </div>
+        </div>
+    </main>
+
+    <script src="menu.js"></script>
+</body>
+</html>
