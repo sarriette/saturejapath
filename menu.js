@@ -36,7 +36,11 @@ fetch('menu.html')
         'gallery.html',
         'rainbow.html',
         'gallery.html#bad-art',
-        'gallery.html#photography'
+        'gallery.html#photography',
+        'gallery.html#collections',
+        'pink-trash.html',
+        'chambre.html',
+        'all-projects.html'
       ];
       const randomIndex = Math.floor(Math.random() * projectPages.length);
       window.location.href = projectPages[randomIndex];

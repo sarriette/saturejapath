@@ -68,16 +68,43 @@
 
     .objet:hover {
       /* Glow qui suit la transparence de l'image */
-      filter: drop-shadow(0 0 15px rgb(225, 0, 255)); /* rgba(226, 241, 131, 0.95) */
+      filter: drop-shadow(0 0 15px rgb(190, 190, 16)); /* rgba(226, 241, 131, 0.95) */
       cursor: url(images/cursors/Hand.cur), pointer;
     }
 
     a.pink {
-        color:blue;
+        color: #fff;
     }
 
     a.pink:hover {
-        color:magenta;
+        color:rgb(163, 163, 224);
+    }
+
+    .app-photo {
+      left: 487px;
+      top: 60px;
+      height: 70px;
+      width: auto;
+      position: absolute;
+      z-index:2;
+    }
+
+    .pelote {
+      left: 820px ;
+      top: 340px ;
+      height: 90px;
+      width: auto;
+      position: absolute;
+      z-index:2;
+    }
+
+    .lecteur {
+      left: 310px ;
+      top: 114px ;
+      height: 150px;
+      width: auto;
+      position: absolute;
+      z-index:2;
     }
 
 </style>
@@ -87,6 +114,17 @@
 
     <main>
         <div class="scene">
+            <a href="gallery.html#photography" target="_blank">
+              <img class="objet app-photo" src="images/maison/chambre/panasonic-lumix-fs40-appareil-photo-numerique-1172278025-removebg-preview.png" alt="Tableau" />
+            </a>
+
+            <a href="gallery.html#crochet" target="_blank">
+              <img class="objet pelote" src="images/maison/chambre/pelote.png" alt="Tableau" />
+            </a>
+
+            <a href="albums.html" target="_blank">
+              <img class="objet lecteur" src="images/maison/chambre/lecteur_cd-removebg-preview.png" alt="Tableau" />
+            </a>
           
         </div>
         <div class="mono center"><a href="entree.html" class="mono pink">
